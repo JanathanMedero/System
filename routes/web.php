@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,6 +13,9 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'home'])->name('dashboard');
+
+    //Sistema de ordenes
+    Route::get('empleados', [EmployeController::class, 'index'])->name('employe.index');
 
 });
 

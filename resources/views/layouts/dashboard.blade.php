@@ -131,7 +131,7 @@ data-template="vertical-menu-template-free"
 
 			<ul class="menu-inner py-1">
 				<!-- Dashboard -->
-				<li class="menu-item active">
+				<li class="menu-item {{ (request()->is('dashboard')) ? 'active' : '' }}">
 					<a href="{{ route('dashboard') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-home-circle"></i>
 						<div data-i18n="Analytics">Inicio</div>
@@ -144,31 +144,31 @@ data-template="vertical-menu-template-free"
 					<span class="menu-header-text">Sistema de ordenes</span>
 				</li>
 
-				<li class="menu-item">
-					<a href="#" class="menu-link">
+				<li class="menu-item {{ (request()->is('empleados')) ? 'active' : '' }}">
+					<a href="{{ route('employe.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-user"></i>
 						<div data-i18n="Basic">Empleados</div>
 					</a>
 				</li>
-				<li class="menu-item">
+				<li class="menu-item {{ (request()->is('clientes')) ? 'active' : '' }}">
 					<a href="#" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-user"></i>
 						<div data-i18n="Basic">Clientes</div>
 					</a>
 				</li>
-				<li class="menu-item">
+				<li class="menu-item {{ (request()->is('ordenes-de-venta')) ? 'active' : '' }}">
 					<a href="#" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-money"></i>
 						<div data-i18n="Basic">Ordenes de venta</div>
 					</a>
 				</li>
-				<li class="menu-item">
+				<li class="menu-item {{ (request()->is('ordenes-de-servicio')) ? 'active' : '' }}">
 					<a href="#" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-briefcase-alt-2"></i>
 						<div data-i18n="Basic">Ordenes de servicio</div>
 					</a>
 				</li>
-				<li class="menu-item">
+				<li class="menu-item {{ (request()->is('ordenes-de-servicio-en-sitio')) ? 'active' : '' }}">
 					<a href="#" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-buildings"></i>
 						<div data-i18n="Basic">Ordenes de servicio en sitio</div>
@@ -182,7 +182,7 @@ data-template="vertical-menu-template-free"
 
 				<li class="menu-header small text-uppercase"><span class="menu-header-text">Sistema de inventario</span></li>
 				<!-- Cards -->
-				<li class="menu-item">
+				<li class="menu-item {{ (request()->is('inventario')) ? 'active' : '' }}">
 					<a href="cards-basic.html" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-package" ></i>
 						<div data-i18n="Basic">Inventario</div>
