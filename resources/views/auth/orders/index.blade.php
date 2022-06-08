@@ -20,12 +20,18 @@
 					</tr>
 				</thead>
 				<tbody>
+					@foreach($employees as $user)
 					<tr>
 						<td>
-							<i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+							<strong>{{ $user->name }}</strong>
 						</td>
-						<td>Albert Cook</td>
-						<td><span class="badge bg-label-primary me-1">Active</span></td>
+						<td>{{ $user->email }}</td>
+						<td>
+							@if($user->role->id == 1)
+							<span class="badge bg-label-success me-1">{{ $user->role->role }}</span></td>
+							@else
+							<span class="badge bg-label-primary me-1">{{ $user->role->role }}</span></td>
+							@endif
 						<td>
 							<div class="row">
 								<div class="col-md-3">
@@ -37,8 +43,14 @@
 							</div>
 						</td>
 					</tr>
+					@endforeach
 				</tbody>
 			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12 d-flex justify-content-end">
+			{{ $employees->links('vendor.pagination.custom_pagination') }}
 		</div>
 	</div>
 </div>
