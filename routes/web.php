@@ -14,8 +14,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'home'])->name('dashboard');
 
-    //Sistema de ordenes
+    //Empleados
     Route::get('empleados', [EmployeController::class, 'index'])->name('employe.index');
+    Route::post('empleado', [EmployeController::class, 'store'])->name('employe.store');
+
+    //Sistema de ordenes
 
 });
 

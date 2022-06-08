@@ -27,23 +27,33 @@
 							aria-label="Close"
 							></button>
 						</div>
-						<form action="#" method="POST">
+						<form action="{{ route('employe.store') }}" method="POST">
 							@csrf
 							<div class="modal-body">
 								<div class="row">
 									<div class="col mb-3">
 										<label for="name" class="form-label">Nombre</label>
-										<input type="text" id="name" class="form-control" placeholder="Ingrese el nombre" required />
+										<input type="text" id="name" name="name" class="form-control" placeholder="Ingrese el nombre" required />
 									</div>
 								</div>
-								<div class="row g-2">
+								<div class="row g-2 mb-3">
 									<div class="col mb-0">
 										<label for="email" class="form-label">Correo electrónico</label>
-										<input type="email" id="email" class="form-control" placeholder="Ingrese el correo electrónico" required />
+										<input type="email" id="email" name="email" class="form-control" placeholder="Ingrese el correo electrónico" required />
 									</div>
 									<div class="col mb-0">
 										<label for="password" class="form-label">Contraseña</label>
-										<input type="password" id="password" class="form-control" placeholder="Ingrese la contraseña" required minlength="5"/>
+										<input type="password" id="password" name="password" class="form-control" placeholder="Ingrese la contraseña" required minlength="5"/>
+									</div>
+								</div>
+								<div class="row">
+									<div class="mb-3">
+										<label for="rol" class="form-label">Asigne un rol para el empleado</label>
+										<select class="form-select" id="rol" aria-label="Default select example" name="rol_id" required>
+											<option selected disabled>Seleccione una de las opciones</option>
+											<option value="1">Administrador</option>
+											<option value="2">Empleado</option>
+										</select>
 									</div>
 								</div>
 							</div>
