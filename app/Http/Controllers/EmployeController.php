@@ -26,4 +26,13 @@ class EmployeController extends Controller
 
         return back()->with('success', 'Empleado creado correctamente');
     }
+
+    public function destroy($id)
+    {
+        $user = User::where('id', $id)->first();
+
+        $user->delete();
+
+        return back()->with('danger', 'Empleado eliminado correctamente');
+    }
 }

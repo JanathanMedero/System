@@ -17,6 +17,7 @@ Route::middleware(['auth'])->group(function () {
     //Empleados
     Route::get('empleados', [EmployeController::class, 'index'])->name('employe.index');
     Route::post('empleado', [EmployeController::class, 'store'])->name('employe.store');
+    Route::delete('empleado/{id}/eliminado', [EmployeController::class, 'destroy'])->name('employe.destroy');
 
     //Sistema de ordenes
 

@@ -105,7 +105,11 @@
 									@endif
 									@if(Auth::user()->role->id == 1)
 									<div class="col-md-6">
-										<button type="button" class="btn rounded-pill btn-danger">Eliminar</button>
+										<form action="{{ route('employe.destroy', $user->id) }}" method="POST">
+											@csrf
+											@method('DELETE')
+											<button type="submit" class="btn rounded-pill btn-danger show_confirm">Eliminar</button>
+										</form>
 									</div>
 									@endif
 								</div>
@@ -124,3 +128,29 @@
 	</div>
 	<!--/ Bordered Table -->
 	@endsection
+
+@section('extra-js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+	$('.show_confirm').click(function(event) {
+		var form =  $(this).closest("form");
+		var name = $(this).data("name");
+		event.preventDefault();
+		swal({
+			title: `Esta seguro que desea eliminar este empleado?`,
+			text: "Esta acción no se puede revertir",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+			buttons: ["Cancelar", "Si, Borrar"],
+		})
+		.then((willDelete) => {
+			if (willDelete) {
+				form.submit();
+			}
+		});
+	});
+</script>
+
+@endsection
