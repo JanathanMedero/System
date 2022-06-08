@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use App\Models\Role;
 use DB;
 use Hash;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,12 +16,54 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $RolAdministrador = Role::create([
+            'role' => 'Administrador',
+        ]);
+
+        $RolEmpleado = Role::create([
+            'role' => 'Empleado',
+        ]);
 
         DB::table('users')->insert([
-            'name' => 'Janathan Medero Pineda',
-            'email' => 'webmaster@pyscom.com',
-            'password' => Hash::make('webmaster.pyscom2021'),
+            'role_id'   => $RolAdministrador->id,
+            'name'      => 'Janathan Medero Pineda',
+            'email'     => 'webmaster@pyscom.com',
+            'password'  => Hash::make('webmaster.pyscom2021'),
+        ]);
+
+        DB::table('users')->insert([
+            'role_id'   => $RolAdministrador->id,
+            'name'      => 'Jose Alberto Avalos Villaseñor',
+            'email'     => 'gerencia@pyscom.com',
+            'password'  => Hash::make('gerencia.pyscom.2021'),
+        ]);
+
+        DB::table('users')->insert([
+            'role_id'   => $RolAdministrador->id,
+            'name'      => 'Catalina Alcocer',
+            'email'     => 'ventas@pyscom.com',
+            'password'  => Hash::make('ventas.pyscom2021'),
+        ]);
+
+        DB::table('users')->insert([
+            'role_id'   => $RolEmpleado->id,
+            'name'      => 'Ana Manuela Bautista Cruz',
+            'email'     => 'pyscom@live.com.mx',
+            'password'  => Hash::make('ana.pyscom2021'),
+        ]);
+
+        DB::table('users')->insert([
+            'role_id'   => $RolEmpleado->id,
+            'name'      => 'Eduardo de la Cruz',
+            'email'     => 'sistemas@pyscom.com',
+            'password'  => Hash::make('sistemas.pyscom2021'),
+        ]);
+
+        DB::table('users')->insert([
+            'role_id'   => $RolEmpleado->id,
+            'name'      => 'Sinuhé Daniel Velzquez',
+            'email'     => 'logistica@pyscom.com',
+            'password'  => Hash::make('logistica.pyscom2021'),
         ]);
 
     }
