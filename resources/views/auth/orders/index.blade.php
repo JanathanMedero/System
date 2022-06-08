@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+
+@include('partials.alerts')
+
 <!-- Bordered Table -->
 <div class="card">
 	<div class="row">
