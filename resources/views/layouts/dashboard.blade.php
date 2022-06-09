@@ -144,12 +144,14 @@ data-template="vertical-menu-template-free"
 					<span class="menu-header-text">Sistema de ordenes</span>
 				</li>
 
+				@if(Auth::user()->id == 1)
 				<li class="menu-item {{ (request()->is('empleados')) ? 'active' : '' }}">
 					<a href="{{ route('employe.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-user"></i>
 						<div data-i18n="Basic">Empleados</div>
 					</a>
 				</li>
+				@endif
 				<li class="menu-item {{ (request()->is('clientes')) ? 'active' : '' }}">
 					<a href="#" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-user"></i>
@@ -263,6 +265,10 @@ data-template="vertical-menu-template-free"
 		<!-- Content wrapper -->
 		<div class="content-wrapper">
 			<!-- Content -->
+
+			<div class="container mt-4">
+				@include('partials.alerts')
+			</div>
 
 			<div class="container-xxl flex-grow-1 container-p-y">
 				<div class="row">
