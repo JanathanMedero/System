@@ -25,5 +25,6 @@ Route::middleware(['auth'])->group(function () {
     //Clientes
     Route::get('clientes', [ClientController::class, 'index'])->name('client.index');
     Route::post('cliente', [ClientController::class, 'store'])->name('client.store');
+    Route::put('cliente/{slug}/actualizado', [ClientController::class, 'update'])->name('client.update');
 
 });

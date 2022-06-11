@@ -28,4 +28,24 @@ class ClientController extends Controller
 
         return back()->with('success', 'Cliente creado correctamente');
     }
+
+    public function update(Request $request, $slug)
+    {
+        $client = Client::where('slug', $slug)->first();
+
+        $client->name   = $request->name;
+        $client->slug   = Str::slug($request->name);
+        $client->rfc    = $request->rfc;
+        $client->phone  = $request->phone;
+        $client->street = $request->street;
+        $client->number = $request->number;
+        $client->suburb = $request->suburb;
+        $client->cp     = $request->cp;
+
+        $client->save();
+
+        return back()->with('info', 'Cliente actualizado correctamente');
+
+    }
+
 }
