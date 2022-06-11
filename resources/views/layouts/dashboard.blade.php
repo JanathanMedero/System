@@ -51,6 +51,8 @@ data-template="vertical-menu-template-free"
 		<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
 		<script src="{{ asset('assets/js/config.js') }}"></script>
 
+		@livewireStyles
+
 		@yield('extra-css')
 
 	</head>
@@ -359,6 +361,9 @@ data-template="vertical-menu-template-free"
 
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+@livewireScripts
+
 @yield('extra-js')
 
 </body>
