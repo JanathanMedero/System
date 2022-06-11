@@ -13,9 +13,7 @@ class EmployeController extends Controller
     {
         $employees = User::where('id', '!=',  Auth::user()->id)->paginate(10);
 
-        // $employees = User::paginate(10);
-
-        return view('auth.orders.index', compact('employees'));
+        return view('auth.employees.index', compact('employees'));
     }
 
     public function store(Request $request)
@@ -38,12 +36,10 @@ class EmployeController extends Controller
         $user->email = $request->email;
 
         if ($request->password) {
-            $user->password = $request->password;
+            $user->password = Hash::make($request->password);
         }
 
-        dd($request->role_id);
-
-        $user->role_id = $request->role_id;
+        $user->role_id = $request->rol_id;
 
         $user->save();
 

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
 class ControlAccessMiddleware
 {
@@ -19,7 +20,7 @@ class ControlAccessMiddleware
 
          $blockAccess = true;
 
-         if(auth()->user()->id == 1){
+         if(Auth::user()->role->id == 1){
             $blockAccess = false;
          }
 

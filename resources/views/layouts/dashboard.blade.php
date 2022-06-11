@@ -144,7 +144,7 @@ data-template="vertical-menu-template-free"
 					<span class="menu-header-text">Sistema de ordenes</span>
 				</li>
 
-				@if(Auth::user()->id == 1)
+				@if(Auth::user()->role->id == 1)
 				<li class="menu-item {{ (request()->is('empleados')) ? 'active' : '' }}">
 					<a href="{{ route('employe.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-user"></i>
@@ -153,7 +153,7 @@ data-template="vertical-menu-template-free"
 				</li>
 				@endif
 				<li class="menu-item {{ (request()->is('clientes')) ? 'active' : '' }}">
-					<a href="#" class="menu-link">
+					<a href="{{ route('client.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-user"></i>
 						<div data-i18n="Basic">Clientes</div>
 					</a>
@@ -236,7 +236,11 @@ data-template="vertical-menu-template-free"
 										</div>
 										<div class="flex-grow-1">
 											<span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
-											<small class="text-muted">Admin</small>
+											@if(Auth::user()->role->id == 1)
+											<small class="text-muted">Administrador</small>
+											@else
+											<small class="text-muted">Empleado</small>
+											@endif
 										</div>
 									</div>
 								</a>
