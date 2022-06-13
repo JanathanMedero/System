@@ -168,15 +168,15 @@
                                     </div>
 
                                     @endif
-                                    @if(Auth::user()->role->id == 1)
+                                    {{-- @if(Auth::user()->role->id == 1)
                                     <div class="col-md-6">
                                         <form action="#" method="POST">
                                             @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn rounded-pill btn-danger show_confirm">Eliminar</button>
+                                            @method('PUT')
+                                            <button type="submit" class="btn rounded-pill btn-danger show_confirm">Suspender</button>
                                         </form>
                                     </div>
-                                    @endif
+                                    @endif --}}
                                 </div>
                             </td>
                         </tr>

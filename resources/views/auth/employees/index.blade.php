@@ -6,8 +6,6 @@
 
 @section('content')
 
-@include('partials.alerts')
-
 <!-- Bordered Table -->
 <div class="card">
 	<div class="row">
@@ -147,13 +145,23 @@
 
 									@endif
 									@if(Auth::user()->role->id == 1)
+									@if($user->confirmed == 1)
 									<div class="col-md-6">
-										<form action="{{ route('employe.destroy', $user->id) }}" method="POST">
+										<form action="{{ route('employe.suspend', $user->id) }}" method="POST">
 											@csrf
-											@method('DELETE')
-											<button type="submit" class="btn rounded-pill btn-danger show_confirm">Eliminar</button>
+											@method('PUT')
+											<button type="submit" class="btn rounded-pill btn-danger show_confirm">Suspender</button>
 										</form>
 									</div>
+									@else
+									<div class="col-md-6">
+										<form action="{{ route('employe.suspend', $user->id) }}" method="POST">
+											@csrf
+											@method('PUT')
+											<button type="submit" class="btn rounded-pill btn-success show_active">Activar</button>
+										</form>
+									</div>
+									@endif
 									@endif
 								</div>
 							</td>
@@ -181,12 +189,33 @@
 			var name = $(this).data("name");
 			event.preventDefault();
 			swal({
-				title: `Esta seguro que desea eliminar este empleado?`,
-				text: "Esta acción no se puede revertir",
+				title: `Esta seguro que desea suspender la cuenta de este empleado?`,
+				text: "Esta acción no le permitirá acceder al sistema",
 				icon: "warning",
 				buttons: true,
 				dangerMode: true,
-				buttons: ["Cancelar", "Si, Borrar"],
+				buttons: ["Cancelar", "Si, Suspender"],
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+					form.submit();
+				}
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		$('.show_active').click(function(event) {
+			var form =  $(this).closest("form");
+			var name = $(this).data("name");
+			event.preventDefault();
+			swal({
+				title: `Esta seguro que desea reactivar la cuenta de este empleado?`,
+				text: "Esta acción ahora le permitirá acceder al sistema",
+				icon: "warning",
+				buttons: true,
+				dangerMode: false,
+				buttons: ["Cancelar", "Si, activar"],
 			})
 			.then((willDelete) => {
 				if (willDelete) {

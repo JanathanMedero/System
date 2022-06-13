@@ -47,12 +47,21 @@ class EmployeController extends Controller
 
     }
 
-    public function destroy($id)
+    public function suspend_account($id)
     {
         $user = User::where('id', $id)->first();
 
-        $user->delete();
+        if ($user->confirmed === 1) {
+            $user->confirmed = 0;
+        }else{
+            $user->confirmed = 1;
+        }
 
-        return back()->with('danger', 'Empleado eliminado correctamente');
+        $user->save();
+
+        if ($user->confirmed == 1) {
+            return back()->with('success', 'Cuenta de empleado activada correctamente');
+        }
+        return back()->with('danger', 'Cuenta de empleado suspendida correctamente');
     }
 }

@@ -48,4 +48,17 @@ class ClientController extends Controller
 
     }
 
+    public function suspend_account($slug)
+    {
+        $client = Client::where('slug', $slug)->first();
+
+        $client->confirmed != $client->confirmed;
+
+        if ($client->confirmed == 1) {
+            return back()->with('success', 'Cuenta activada correctamente');
+         }else{
+            return back()->with('danger', 'Cuenta suspendida correctamente');
+         }
+    }
+
 }
