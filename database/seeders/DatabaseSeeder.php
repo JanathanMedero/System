@@ -16,6 +16,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        DB::table('offices')->insert([
+            'name' => 'Matríz',
+        ]);
+
+        DB::table('offices')->insert([
+            'name' => 'Sucursal Virrey',
+        ]);
+
         $RolAdministrador = Role::create([
             'role' => 'Administrador',
         ]);

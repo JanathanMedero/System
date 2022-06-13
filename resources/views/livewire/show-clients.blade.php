@@ -107,7 +107,11 @@
                                 <div class="row">
                                     @if(Auth::user()->role->id == 1 || $user->id == Auth::user()->id )
                                     <div class="col-md-3">
-                                        <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#modalCenter-{{ $client->slug }}">Editar</button>
+                                        <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#modalCenter-{{ $client->slug }}">Editar
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a type="button" href="{{ route('service.all', $client->slug) }}" class="btn rounded-pill btn-success">Nuevo servicio</a>
                                     </div>
 
                                     <div class="modal fade" id="modalCenter-{{ $client->slug }}" tabindex="-1" aria-hidden="true">
