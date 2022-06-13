@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="col mb-0">
                                             <label for="number" class="form-label">Número (Opcional)</label>
-                                            <input type="number" id="number" name="number" class="form-control" placeholder="Ingrese el número de casa"/>
+                                            <input type="number" min="1" id="number" name="number" class="form-control" placeholder="Ingrese el número de casa"/>
                                         </div>
                                     </div>
                                     <div class="row g-2 mb-3">
@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="col mb-0">
                                             <label for="cp" class="form-label">Código Postal (Opcional)</label>
-                                            <input type="number" id="cp" name="cp" class="form-control" placeholder="Ingrese el código postal"/>
+                                            <input type="number" min="1" id="cp" name="cp" class="form-control" placeholder="Ingrese el código postal"/>
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="4"><h3 class="mb-0 text-center"><strong>No se encontró al cliente</strong></h3></td>
+                            <td colspan="4"><h3 class="mb-0 text-center"><strong>No se encontró ningún cliente</strong></h3></td>
                         </tr>
                         @endforelse
                     </tbody>
@@ -197,3 +197,4 @@
     </div>
     <!--/ Bordered Table -->
 </div>
+

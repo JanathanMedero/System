@@ -15,9 +15,18 @@ class ClientController extends Controller
 
     public function store(Request $request)
     {
+        $slug = Str::slug($request->name);
+
+        $client = Client::where('slug', $slug)->first();
+
+        if ($client) {
+            $random = Str::random(15);
+            $slug = $slug.'-'.$random;
+        }
+
         Client::create([
             'name'      => $request->name,
-            'slug'      => Str::slug($request->name),
+            'slug'      => $slug,
             'rfc'       => $request->rfc,
             'phone'     => $request->phone,
             'street'    => $request->street,
