@@ -24,7 +24,7 @@
 						<h3 class="card-title text-center"><strong>Orden de venta</strong></h3>
 					</div>
 					<div class="row">
-						<a href="#" class="btn btn-outline-primary mt-2">Crear orden de venta</a>
+						<a href="{{ route('saleOrder.create', $client->slug) }}" class="btn btn-outline-primary mt-2">Crear orden de venta</a>
 					</div>
 				</div>
 			</div>

@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SaleOrderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Middleware\ControlAccessMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -30,5 +31,10 @@ Route::middleware(['auth'])->group(function () {
 
     //servicios
     Route::get('servicio/{slug}', [ServiceController::class, 'all_services'])->name('service.all');
+
+    //Orden de venta
+    Route::get('nueva-orden-de-venta/{slug}', [SaleOrderController::class, 'create'])->name('saleOrder.create');
+    Route::get('ordenes-de-venta', [SaleOrderController::class, 'index'])->name('saleOrder.index');
+    Route::post('venta-completada/{slug}', [SaleOrderController::class, 'store'])->name('saleOrder.store');
 
 });

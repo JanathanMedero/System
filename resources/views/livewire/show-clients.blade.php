@@ -105,7 +105,6 @@
                             @endif
                             <td>
                                 <div class="row">
-                                    @if(Auth::user()->role->id == 1 || $user->id == Auth::user()->id )
                                     <div class="col-md-3">
                                         <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#modalCenter-{{ $client->slug }}">Editar
                                         </button>
@@ -170,8 +169,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    @endif
                                     {{-- @if(Auth::user()->role->id == 1)
                                     <div class="col-md-6">
                                         <form action="#" method="POST">

@@ -160,8 +160,8 @@ data-template="vertical-menu-template-free"
 						<div data-i18n="Basic">Clientes</div>
 					</a>
 				</li>
-				<li class="menu-item {{ (request()->is('ordenes-de-venta')) ? 'active' : '' }}">
-					<a href="#" class="menu-link">
+				<li class="menu-item {{ (request()->is('ordenes-de-venta')) ? 'active' : '' }} {{ (request()->is('nueva-orden-de-venta/*')) ? 'active' : '' }}">
+					<a href="{{ route('saleOrder.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-money"></i>
 						<div data-i18n="Basic">Ordenes de venta</div>
 					</a>
