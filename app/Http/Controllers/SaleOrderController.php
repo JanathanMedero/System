@@ -55,7 +55,7 @@ class SaleOrderController extends Controller
 
             DB::commit();
 
-            return back()->with('success', 'Orden de venta creada correctamente');
+            return redirect()->route('saleOrder.index')->with('success', 'Orden de venta creada correctamente');
 
         } catch (\Exception $e) {
           DB::rollback();
