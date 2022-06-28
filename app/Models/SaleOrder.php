@@ -15,7 +15,13 @@ class SaleOrder extends Model
 
     public function product()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasOne(Product::class, 'sale_id');
+    }
+
+    //test
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'sale_id');
     }
 
     public function client()

@@ -36,5 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('nueva-orden-de-venta/{slug}', [SaleOrderController::class, 'create'])->name('saleOrder.create');
     Route::get('ordenes-de-venta', [SaleOrderController::class, 'index'])->name('saleOrder.index');
     Route::post('venta-completada/{slug}', [SaleOrderController::class, 'store'])->name('saleOrder.store');
+    Route::get('orden-de-venta/{id}', [SaleOrderController::class, 'show'])->name('saleOrder.show');
+    Route::get('orden-de-venta/producto/{slug}', [SaleOrderController::class, 'show_product'])->name('saleOrder.showProduct');
 
 });

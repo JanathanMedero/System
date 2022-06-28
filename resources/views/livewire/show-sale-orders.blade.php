@@ -46,7 +46,7 @@
                             <td>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <button type="button" class="btn rounded-pill btn-info">Mostrar orden</button>
+                                        <a href="{{ route('saleOrder.show', $order->id) }}" type="button" class="btn rounded-pill btn-info">Mostrar orden</a>
                                     </div>
                                     <div class="col-md-4">
                                         <a type="button" href="#" class="btn rounded-pill btn-danger">Eliminar orden</a>

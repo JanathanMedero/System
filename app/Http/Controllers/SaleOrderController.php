@@ -27,6 +27,15 @@ class SaleOrderController extends Controller
         return view('auth.saleOrder.create', compact('client', 'employees'));
     }
 
+    public function show($id)
+    {
+        $order = SaleOrder::where('id', $id)->first();
+
+        $employees = User::get();
+
+        return view('auth.saleOrder.show', compact('order', 'employees'));
+    }
+
     public function store(Request $request, $slug)
     {
         $client = Client::where('slug', $slug)->first();
@@ -55,7 +64,7 @@ class SaleOrderController extends Controller
 
             DB::commit();
 
-            return redirect()->route('saleOrder.index')->with('success', 'Orden de venta creada correctamente');
+            return redirect()->route('saleOrder.show', $sale->id)->with('success', 'Orden de venta creada correctamente');
 
         } catch (\Exception $e) {
           DB::rollback();
