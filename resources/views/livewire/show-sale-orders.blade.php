@@ -10,7 +10,7 @@
                     <div class="col-md-12 px-4">
                         <div class="input-group input-group-merge">
                             <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                            <input type="text" wire:model="search" class="form-control" placeholder="Buscar orden de venta (Ingrese el no. de orden)... "aria-label="Search..."/>
+                            <input type="number" wire:model="search" class="form-control" placeholder="Buscar orden de venta (Ingrese el no. de orden)... "aria-label="Search..."/>
                         </div>
                     </div>
                 </div>
@@ -38,9 +38,9 @@
                             <td>{{ $order->created_at->diffForHumans() }}</td>
                             <td>
                                 @if($order->office_id == 1)
-                                Sucursal Matriz
+                                <span class="badge bg-primary">Sucursal Matriz</span>
                                 @else
-                                Sucursal Virrey
+                                <span class="badge bg-warning">Sucursal Virrey</span>
                                 @endif
                             </td>
                             <td>
