@@ -36,6 +36,15 @@ class SaleOrderController extends Controller
         return view('auth.saleOrder.show', compact('order', 'employees'));
     }
 
+    public function show_product($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+
+        $employees = User::get();
+
+        return view('auth.saleOrder.show_product', compact('product', 'employees'));
+    }
+
     public function store(Request $request, $slug)
     {
         $client = Client::where('slug', $slug)->first();
@@ -71,4 +80,25 @@ class SaleOrderController extends Controller
           return $e->getMessage();
       }
   }
+
+  public function add_product(Request $request, $id)
+  {
+    $order = SaleOrder::where('id', $id)->first();
+
+    Product::create([
+        'sale_id'       => $order->id,
+        'name'          => $request->name,
+        'slug'          => Str::slug($request->name),
+        'quantity'      => $request->quantity,
+        'unit_price'    => $request->unit_price,
+        'net_price'     => $request->net_price,
+        'description'   => $request->description,
+        'warranty'      => $request->warranty,
+        'observations'  => $request->observations,
+    ]);
+
+    return back()->with('success', 'Producto agregado correctamente');
+
+}
+
 }

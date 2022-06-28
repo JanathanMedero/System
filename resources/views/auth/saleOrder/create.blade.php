@@ -32,7 +32,7 @@
 									<label class="form-label" for="unit_price">Precio unitario</label>
 									<div class="input-group">
 										<span class="input-group-text">$</span>
-										<input type="text" id="unit_price" class="form-control" name="unit_price" placeholder="Ingrese el precio unitario">
+										<input type="number" id="unit_price" class="form-control" name="unit_price" placeholder="Ingrese el precio unitario">
 										<span class="input-group-text">.00</span>
 									</div>
 								</div>
@@ -42,7 +42,7 @@
 									<label class="form-label" for="net_price">Precio neto</label>
 									<div class="input-group">
 										<span class="input-group-text">$</span>
-										<input type="text" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto">
+										<input type="number" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto">
 										<span class="input-group-text">.00</span>
 									</div>
 								</div>

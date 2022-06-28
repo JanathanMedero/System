@@ -14,7 +14,7 @@ class Product extends Model
 
     public function saleOrder()
     {
-        return $this->belongsTo(SaleOrder::class);
+        return $this->belongsTo(SaleOrder::class, 'id');
     }
 
 }
