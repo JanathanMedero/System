@@ -41,5 +41,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('orden-de-venta/{id}/actualizada', [SaleOrderController::class, 'update_order'])->name('saleOrder.update.order');
     Route::get('orden-de-venta/producto/{slug}', [SaleOrderController::class, 'show_product'])->name('saleOrder.showProduct');
     Route::post('orden-de-venta/{id}/nuevo-producto', [SaleOrderController::class, 'add_product'])->name('saleOrder.addProduct');
+    Route::delete('orden-de-venta/producto/{slug}/eliminado', [SaleOrderController::class, 'destroy_product'])->name('saleOrder.destroyProduct');
 
 });

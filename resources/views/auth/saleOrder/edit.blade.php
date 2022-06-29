@@ -210,14 +210,18 @@
 										<td>${{ $product->unit_price }} M.N.</td>
 										<td>${{ $product->net_price }} M.N.</td>
 										<td class="d-flex justify-content-center">
-											<a href="{{ route('saleOrder.showProduct', $product->slug) }}" type="button" class="btn rounded-pill btn-info mx-4">
-												<span class="tf-icons bx bx-edit-alt"></span>&nbsp; Editar
-											</a>
-
-											<button type="button" class="btn rounded-pill btn-danger">
-												<span class="tf-icons bx bx-trash"></span>&nbsp; Eliminar
-											</button>
-
+											<div>
+												<a href="{{ route('saleOrder.showProduct', $product->slug) }}" type="button" class="btn rounded-pill btn-info mx-4">
+													<span class="tf-icons bx bx-edit-alt"></span>&nbsp; Editar
+												</a>
+											</div>
+											<form class="form-delete" action="{{ route('saleOrder.destroyProduct', $product->slug) }}" method="POST">
+												@method("delete")
+												@csrf
+												<button type="submit" class="btn rounded-pill btn-danger">
+													<span class="tf-icons bx bx-trash"></span>&nbsp; Eliminar
+												</button>
+											</form>
 										</td>
 									</tr>
 									@endforeach
@@ -232,5 +236,31 @@
 	</div>
 
 </div>
+
+@endsection
+
+@section('extra-js')
+<script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
+
+
+<script>
+	$('.form-delete').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+			title: '¿Estas seguro de eliminar la orden?',
+			text: "Esta acción no se puede revertir",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Borrar',
+			cancelButtonText: 'Cancelar'
+		}).then((result) => {
+			if (result.value) {
+				this.submit();
+			}
+		})
+	});
+</script>
 
 @endsection

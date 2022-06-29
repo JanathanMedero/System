@@ -140,6 +140,15 @@ class SaleOrderController extends Controller
 
     return back()->with('success', 'Producto agregado correctamente');
 
-}
+    }
+
+    public function destroy_product($slug)
+    {
+        $product = product::where('slug', $slug)->first();
+
+        $product->delete();
+
+        return back()->with('danger', 'producto eliminado correctamente');
+    }
 
 }
