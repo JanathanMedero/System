@@ -51,11 +51,11 @@
 												<div class="row">
 													<div class="col-6 mb-3">
 														<label for="name" class="form-label">Nombre del producto</label>
-														<input type="text" id="name" class="form-control" placeholder="Ingresa el nombre del producto" name="name" />
+														<input type="text" id="name" class="form-control" placeholder="Ingresa el nombre del producto" name="name" required />
 													</div>
 													<div class="col-6 mb-3">
 														<label for="quantity" class="form-label">Cantidad del producto</label>
-														<input type="number" id="quantity" class="form-control" placeholder="Ingrese la cantidad" name="quantity" />
+														<input type="number" id="quantity" class="form-control" placeholder="Ingrese la cantidad" name="quantity" required />
 													</div>
 												</div>
 												<div class="row g-2 mt-2">
@@ -64,7 +64,7 @@
 															<label class="form-label" for="unit_price">Precio unitario</label>
 															<div class="input-group">
 																<span class="input-group-text">$</span>
-																<input type="number" id="unit_price" class="form-control" name="unit_price" placeholder="Ingrese el precio unitario">
+																<input type="number" id="unit_price" class="form-control" name="unit_price" placeholder="Ingrese el precio unitario" required>
 																<span class="input-group-text">.00</span>
 															</div>
 														</div>
@@ -74,7 +74,7 @@
 															<label class="form-label" for="net_price">Precio neto</label>
 															<div class="input-group">
 																<span class="input-group-text">$</span>
-																<input type="number" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto">
+																<input type="number" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto" required>
 																<span class="input-group-text">.00</span>
 															</div>
 														</div>
@@ -84,7 +84,7 @@
 												<div class="row">
 													<div class="col-12 mt-2">
 														<label for="description" class="form-label">Descripción del producto</label>
-														<textarea class="form-control" name="description" id="description" rows="5" placeholder="Ingrese la descripción del producto..." style="resize: none;"></textarea>
+														<textarea class="form-control" name="description" id="description" rows="5" placeholder="Ingrese la descripción del producto..." style="resize: none;" required></textarea>
 													</div>
 												</div>
 
