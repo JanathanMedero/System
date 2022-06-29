@@ -27,13 +27,13 @@ class SaleOrderController extends Controller
         return view('auth.saleOrder.create', compact('client', 'employees'));
     }
 
-    public function show($id)
+    public function edit($id)
     {
         $order = SaleOrder::where('id', $id)->first();
 
         $employees = User::get();
 
-        return view('auth.saleOrder.show', compact('order', 'employees'));
+        return view('auth.saleOrder.edit', compact('order', 'employees'));
     }
 
     public function show_product($slug)

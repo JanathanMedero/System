@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-<title>Número de orden: {{ $product->saleOrder->id }}</title>
+<title>Editar producto: {{ $product->name }}</title>
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-md-4 mb-4">
-							<h4 class="mb-0"><strong>Orden de venta no. {{ $product->saleOrder->id }}</strong></h4>
+							<h4 class="mb-0"><strong>Editar producto: {{ $product->name }}</strong></h4>
 						</div>
 					</div>
 					<div class="row">
