@@ -21,23 +21,24 @@
 						</div>
 					</div>
 
-					<form action="#" method="POST">
+					<form action="{{ route('saleOrder.update', $product->slug) }}" method="POST">
+						@method('PUT')
 						@csrf
 						<div class="row mt-3">
 							<div class="col-lg-3 mb-3">
 								<label class="form-label" for="name">Nombre del producto</label>
-								<input type="text" class="form-control" name="name" id="name" placeholder="Ingrese el nombre del producto" value="{{ $product->name }}">
+								<input type="text" class="form-control" name="name" id="name" placeholder="Ingrese el nombre del producto" value="{{ $product->name }}" required>
 							</div>
 							<div class="col-lg-3 mb-3">
 								<label class="form-label" for="quantity">Cantidad del producto</label>
-								<input type="number" min="1" class="form-control" name="quantity" id="quantity" placeholder="Ingrese la cantidad del producto" value="{{ $product->quantity }}">
+								<input type="number" min="1" class="form-control" name="quantity" id="quantity" placeholder="Ingrese la cantidad del producto" value="{{ $product->quantity }}" required>
 							</div>
 							<div class="col-lg-3">
 								<div class="mb-3 input-group">
 									<label class="form-label" for="unit_price">Precio unitario</label>
 									<div class="input-group">
 										<span class="input-group-text">$</span>
-										<input type="text" id="unit_price" class="form-control" name="unit_price" placeholder="Ingrese el precio unitario" value="{{ $product->unit_price }}">
+										<input type="text" id="unit_price" class="form-control" name="unit_price" placeholder="Ingrese el precio unitario" value="{{ $product->unit_price }}" required>
 										<span class="input-group-text">.00</span>
 									</div>
 								</div>
@@ -47,16 +48,20 @@
 									<label class="form-label" for="net_price">Precio neto</label>
 									<div class="input-group">
 										<span class="input-group-text">$</span>
-										<input type="text" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto" value="{{ $product->net_price }}">
+										<input type="text" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto" value="{{ $product->net_price }}" required>
 										<span class="input-group-text">.00</span>
 									</div>
 								</div>
+							</div>
+							<div class="col-lg-3">
+								<label class="form-label" for="warranty">Garantía (Opcional)</label>
+								<input type="text" min="1" class="form-control" name="warranty" id="warranty" placeholder="Ingrese la garantía del producto" value="{{ $product->warranty }}">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-lg-12 mt-2">
 								<label for="description" class="form-label">Descripción del producto</label>
-								<textarea class="form-control" name="description" id="description" rows="5" placeholder="Ingrese la descripción del producto..." style="resize: none;">{{ $product->description }}</textarea>
+								<textarea class="form-control" name="description" id="description" rows="5" placeholder="Ingrese la descripción del producto..." style="resize: none;" required>{{ $product->description }}</textarea>
 							</div>
 						</div>
 
@@ -68,15 +73,15 @@
 						</div>
 
 						<div class="row mt-4">
-							<div class="col-lg-3">
+							{{-- <div class="col-lg-3">
 								<label for="date_of_sale" class="col-md-12 col-form-label pt-0">Fecha de venta</label>
 								<div class="mb-3 input-group">
 									<div class="col-md-12">
-										<input class="form-control" type="date" id="date_of_sale" value="{{ date('Y-m-d', strtotime($product->created_at)) }}">
+										<input class="form-control" type="date" name="date_of_sale" id="date_of_sale" value="{{ date('Y-m-d', strtotime($product->created_at)) }}">
 									</div>
 								</div>
-							</div>
-							<div class="col-lg-3">
+							</div> --}}
+							{{-- <div class="col-lg-3">
 									<label for="employe_id" class="form-label">Le atendio:</label>
 								<div class="mb-3 input-group">
 									<select class="form-select" id="employe_id" name="employe_id">
@@ -85,12 +90,8 @@
 										@endforeach
 									</select>
 								</div>
-							</div>
-							<div class="col-lg-3">
-								<label class="form-label" for="warranty">Garantía (Opcional)</label>
-								<input type="text" min="1" class="form-control" name="warranty" id="warranty" placeholder="Ingrese la garantía del producto">
-							</div>
-							<div class="col-lg-3">
+							</div> --}}
+							{{-- <div class="col-lg-3">
 									<label for="office_id" class="form-label">Seleccione una sucursal:</label>
 								<div class="mb-3 input-group">
 									<select class="form-select" id="office_id" name="office_id">
@@ -98,12 +99,12 @@
 										<option {{ $product->saleOrder->office_id == '2' ? 'selected' : '' }} value="2">Sucursal Virrey</option>
 									</select>
 								</div>
-							</div>
+							</div> --}}
 						</div>
 
 						<div class="row">
 							<div class="col-lg-4 mt-4">
-								<button type="submit" class="btn btn-primary">Crear orden</button>
+								<button type="submit" class="btn btn-info">Actualizar producto</button>
 							</div>
 						</div>
 

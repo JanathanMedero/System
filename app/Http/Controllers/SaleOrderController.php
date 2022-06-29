@@ -45,6 +45,33 @@ class SaleOrderController extends Controller
         return view('auth.saleOrder.show_product', compact('product', 'employees'));
     }
 
+    public function update(Request $request, $slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+
+        $slug = Str::slug($request->name);
+
+        $search = Product::where('slug', $slug)->first();
+
+        if ($search) {
+            $slug = Str::slug($request->name . '-' . Str::random(15));
+        }
+
+        $product->name          = $request->name;
+        $product->slug          = $slug;
+        $product->quantity      = $request->quantity;
+        $product->unit_price    = $request->unit_price;
+        $product->net_price     = $request->net_price;
+        $product->description   = $request->description;
+        $product->warranty      = $request->warranty;
+        $product->observations  = $request->observations;
+
+        $product->save();
+
+        return redirect()->route('saleOrder.edit', $product->sale_id)->with('success', 'Producto editado correctamente');
+
+    }
+
     public function store(Request $request, $slug)
     {
         $client = Client::where('slug', $slug)->first();
