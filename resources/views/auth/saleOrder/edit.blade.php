@@ -184,9 +184,9 @@
 								</div>
 							</div>
 
-							<button type="button" class="btn rounded-pill btn-warning">
+							<a type="button" href="{{ route('pdf.saleOrder', $order->id) }}" target="_blank" class="btn rounded-pill btn-warning text-white">
 								<span class="tf-icons bx bx-printer"></span>&nbsp; Imprimir orden de venta
-							</button>
+							</a>
 						</div>
 					</div>
 					<div class="row">

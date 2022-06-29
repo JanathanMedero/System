@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SaleOrderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Middleware\ControlAccessMiddleware;
@@ -42,5 +43,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('orden-de-venta/producto/{slug}', [SaleOrderController::class, 'show_product'])->name('saleOrder.showProduct');
     Route::post('orden-de-venta/{id}/nuevo-producto', [SaleOrderController::class, 'add_product'])->name('saleOrder.addProduct');
     Route::delete('orden-de-venta/producto/{slug}/eliminado', [SaleOrderController::class, 'destroy_product'])->name('saleOrder.destroyProduct');
+
+    //PDF
+    Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');
 
 });
