@@ -25,13 +25,13 @@
 			<div class="card">
 				<div class="card-body">
 					<div class="row">
-						<div class="col-lg-7">
+						<div class="col-lg-5">
 							<div class="row">
 								<h3 class="mb-0"><strong>Productos</strong></h3>
 							</div>
 						</div>
-						<div class="col-lg-5 d-flex justify-content-end">
-							<div class="mx-3">
+						<div class="col-lg-7 d-flex justify-content-end">
+							<div>
 								<button type="button" class="btn rounded-pill btn-success" data-bs-toggle="modal" data-bs-target="#new-product">
 									<span class="tf-icons bx bx-package"></span>&nbsp; Agregar producto
 								</button>
@@ -100,6 +100,73 @@
 														<label class="form-label" for="warranty">Garantía (Opcional)</label>
 														<input type="text" min="1" class="form-control" name="warranty" id="warranty" placeholder="Ingrese la garantía del producto">
 													</div>
+												</div>
+
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+													<span class="tf-icons bx bx-x"></span>&nbsp; Cancelar
+												</button>
+
+												<button type="submit" class="btn btn-primary">
+													<span class="tf-icons bx bx-save"></span>&nbsp; Guardar
+												</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+
+							<div class="mx-3">
+								<button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#edit-order">
+									<span class="tf-icons bx bx-edit"></span>&nbsp; Editar orden
+								</button>
+							</div>
+
+							<div class="modal fade" id="edit-order" tabindex="-1" aria-hidden="true">
+								<div class="modal-dialog modal-lg" role="document">
+									<form action="{{ route('saleOrder.update.order', $order->id) }}" method="POST">
+										@method('PUT')
+										@csrf
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel3">Editar orden</h5>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												<div class="row">
+													<div class="col-lg-6">
+														<label for="date_of_sale" class="col-md-12 col-form-label pt-0">Fecha de venta</label>
+														<div class="mb-3 input-group">
+															<div class="col-md-12">
+																<input class="form-control" type="date" name="date_of_sale" id="date_of_sale" value="{{ date('Y-m-d', strtotime($order->created_at)) }}" required>
+															</div>
+														</div>
+													</div>
+
+													<div class="col-lg-6">
+														<label for="employe_id" class="form-label">Le atendio:</label>
+														<div class="mb-3 input-group">
+															<select class="form-select" id="employe_id" name="employe_id" required>
+																@foreach($employees as $user)
+																<option {{ $user->id == $order->employe_id ? 'selected' : '' }}  value="{{ $user->id }}">{{ $user->name }}</option>
+																@endforeach
+															</select>
+														</div>
+													</div>
+
+												</div>
+												<div class="row g-2 mt-2">
+													<div class="col-lg-12">
+														<label for="office_id" class="form-label">Seleccione una sucursal:</label>
+														<div class="mb-3 input-group">
+															<select class="form-select" id="office_id" name="office_id" required>
+																<option {{ $order->office_id == '1' ? 'selected' : '' }} value="1">Sucursal Matriz</option>
+																<option {{ $order->office_id == '2' ? 'selected' : '' }} value="2">Sucursal Virrey</option>
+															</select>
+														</div>
+													</div>
+
 												</div>
 
 											</div>

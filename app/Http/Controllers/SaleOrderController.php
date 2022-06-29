@@ -72,6 +72,20 @@ class SaleOrderController extends Controller
 
     }
 
+    public function update_order(Request $request, $id)
+    {
+        $order = SaleOrder::where('id', $id)->first();
+
+        $order->created_at  = $request->date_of_sale;
+        $order->employe_id  = $request->employe_id;
+        $order->office_id   = $request->office_id;
+
+        $order->save();
+
+        return back()->with('success', 'Orden actualizada correctamente');
+
+    }
+
     public function store(Request $request, $slug)
     {
         $client = Client::where('slug', $slug)->first();

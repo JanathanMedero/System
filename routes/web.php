@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('venta-completada/{slug}', [SaleOrderController::class, 'store'])->name('saleOrder.store');
     Route::get('orden-de-venta/{id}', [SaleOrderController::class, 'edit'])->name('saleOrder.edit');
     Route::put('orden-de-venta/producto/{slug}', [SaleOrderController::class, 'update'])->name('saleOrder.update');
+    Route::put('orden-de-venta/{id}/actualizada', [SaleOrderController::class, 'update_order'])->name('saleOrder.update.order');
     Route::get('orden-de-venta/producto/{slug}', [SaleOrderController::class, 'show_product'])->name('saleOrder.showProduct');
     Route::post('orden-de-venta/{id}/nuevo-producto', [SaleOrderController::class, 'add_product'])->name('saleOrder.addProduct');
 
