@@ -12,7 +12,9 @@ class PDFController extends Controller
     {
         $order = SaleOrder::where('id', $id)->first();
 
-        $pdf = PDF::loadView('pdfSaleOrder', compact('order'));
+        $total = $order->products->pluck('net_price')->sum();
+
+        $pdf = PDF::loadView('pdfSaleOrder', compact('order', 'total'));
         return $pdf->stream();
     }
 }

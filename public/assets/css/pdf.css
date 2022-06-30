@@ -1,0 +1,142 @@
+.header
+{
+	width: 100%;
+	background-color: red;
+	height: 120px;
+	overflow: hidden;
+}
+
+.logo
+{
+	width: 30%;
+	float: left;
+}
+
+.logo img
+{
+	width: 180px;
+}
+
+.logo-title
+{
+	width: 70%;
+	height: 120px;
+	background-color: pink;
+	float: left;
+	vertical-align: middle;
+}
+
+.logo-title p
+{
+	line-height: 60px;
+	text-align: center;
+	font-size: 16px;
+	font-family: 'Poppins', sans-serif;
+}
+
+.title-order
+{
+	width: 100%;
+	height: 42px;
+	background-color: green;
+	vertical-align: middle;
+	margin-top: 0px;
+}
+
+p.order-sale-title
+{
+	font-size: 32px;
+	text-align: center;
+	font-family: 'Poppins', sans-serif;
+}
+
+.order-details
+{
+	width: 100%;
+	height: 38px;
+	background-color: red;
+	vertical-align: middle;
+}
+
+.employe
+{
+	width: 50%;
+	float: left;
+	height: 38px;
+}
+
+.employe p
+{
+	font-size: 18px;
+	font-family: 'Poppins', sans-serif;
+}
+
+.date p
+{
+	font-size: 18px;
+	font-family: 'Poppins', sans-serif;
+}
+
+.date
+{
+	width: 50%;
+	float: left;
+	height: 100%;
+	text-align: right;
+}
+
+.no-order
+{
+	width: 100%;
+	height: 30px;
+	vertical-align: middle;
+	margin-top: 15px;
+}
+
+.client
+{
+	width: 50%;
+	height: 100%;
+	float: left;
+	padding-bottom: 30px;
+}
+
+.client p
+{
+	font-size: 18px;
+}
+
+.no-sale
+{
+	width: 50%;
+	float: left;
+	text-align: right;
+}
+
+.no-sale p
+{
+	font-size: 18px;
+}
+
+
+.box01{
+  width: 600px;
+  height: 300px;
+  border: 5px solid red;
+  background: white;
+  color: black;
+}
+
+.box02{
+  width: 300px;
+  height: 50px;
+  background: blue;
+  float: left;
+}
+
+.box03{
+  width: 300px;
+  height: 180px;
+  background: green;
+  float: left;
+}
