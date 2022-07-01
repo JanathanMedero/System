@@ -120,16 +120,16 @@
 			</div>
 			@endif
 			@if($order->advance)
-			<div style="width: 20%; display: inline-block;">
+			<div style="width: 30%; display: inline-block;">
 				<p class="text-format mb-0"><strong>Anticipo: </strong><u>${{ $order->advance }}.00</p>
 			</div>
 			@else
-			<div style="width: 20%; display: inline-block;">
+			<div style="width: 30%; display: inline-block;">
 				<p class="text-format mb-0"><strong>Anticipo: </strong><u>N/A</p>
 			</div>
 			@endif
-			<div style="width: 55%; display: inline-block;">
-				<p class="text-format mb-0"><strong>Tipo de pago: </strong><u>Pago en efectivo</p>
+			<div style="width: 45%; display: inline-block;">
+				<p class="text-format mb-0"><strong>Tipo de pago: </strong><u>{{ $order->pay }}</p>
 			</div>
 		</div>
 
@@ -184,8 +184,8 @@
 				@else
 				<td><u>Sin observaciones</u></td>
 				@endif
-				<td>$ {{ $product->unit_price }}.00</td>
-				<td>$ {{ $product->net_price }}.00</td>
+				<td>${{ $product->unit_price }}.00</td>
+				<td>${{ $product->net_price }}.00</td>
 			</tr>
 		  @endforeach
 		</table>
