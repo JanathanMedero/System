@@ -27,6 +27,7 @@ class CreateSaleOrdersTable extends Migration
             $table->foreign('office_id')->references('id')->on('offices');
 
             $table->integer('advance')->nullable();
+            $table->string('pay');
 
 
             $table->timestamps();

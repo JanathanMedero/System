@@ -88,7 +88,7 @@
 			@endif
 		</div>
 
-		<div style="width: 100%;">
+		<div style="width: 100%;" class="mb-2">
 			@if($order->client->street)
 			<div style="width: 50%; display: inline-block;">
 				<p class="text-format mb-0"><strong>DOMICILIO: </strong><u>{{ $order->client->street }} {{ $order->client->number }}</u></p>
@@ -111,23 +111,26 @@
 
 		<div style="width: 100%;">
 			@if($order->client->cp)
-			<div style="width: 50%; display: inline-block;">
+			<div style="width: 20%; display: inline-block;">
 				<p class="text-format mb-0"><strong>C.P.: </strong><u>{{ $order->client->cp }}</p>
 			</div>
 			@else
-			<div style="width: 50%; display: inline-block;">
+			<div style="width: 20%; display: inline-block;">
 				<p class="text-format mb-0"><strong>C.P.: </strong><u>Sin registrar</p>
 			</div>
 			@endif
 			@if($order->advance)
-			<div style="width: 49%; display: inline-block;">
+			<div style="width: 20%; display: inline-block;">
 				<p class="text-format mb-0"><strong>Anticipo: </strong><u>${{ $order->advance }}.00</p>
 			</div>
 			@else
-			<div style="width: 49%; display: inline-block;">
+			<div style="width: 20%; display: inline-block;">
 				<p class="text-format mb-0"><strong>Anticipo: </strong><u>N/A</p>
 			</div>
 			@endif
+			<div style="width: 55%; display: inline-block;">
+				<p class="text-format mb-0"><strong>Tipo de pago: </strong><u>Pago en efectivo</p>
+			</div>
 		</div>
 
 		{{-- <div style="width: 100%">

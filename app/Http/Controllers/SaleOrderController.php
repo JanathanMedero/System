@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSaleOrderRequest;
 use App\Models\Client;
 use App\Models\Product;
 use App\Models\SaleOrder;
@@ -90,17 +91,20 @@ class SaleOrderController extends Controller
 
     }
 
-    public function store(Request $request, $slug)
+    public function store(StoreSaleOrderRequest $request, $slug)
     {
         $client = Client::where('slug', $slug)->first();
 
         DB::beginTransaction();
 
         try {
+
             $sale = SaleOrder::create([
                 'employe_id'    => $request->employe_id,
                 'client_id'     => $client->id,
                 'office_id'     => $request->office_id,
+                'advance'       => $request->advance,
+                'pay'           => $request->pay,
             ]);
 
             Product::create([
@@ -164,7 +168,7 @@ class SaleOrderController extends Controller
         $total = $order->products->pluck('net_price')->sum();
 
         if ($request->advance > $total) {
-            return back()->with('danger', 'El anticipo no puede ser mayor a la deuda total');
+            return back()->with('danger', 'El anticipo no puede ser mayor a la venta total');
         }
 
         $order->save();

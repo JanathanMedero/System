@@ -11,7 +11,7 @@ class SaleOrder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['client_id', 'employe_id', 'office_id', 'advance'];
+    protected $fillable = ['client_id', 'employe_id', 'office_id', 'advance', 'pay'];
 
     public function product()
     {
