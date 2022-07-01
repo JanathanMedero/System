@@ -33,7 +33,11 @@ class SaleOrderController extends Controller
 
         $employees = User::get();
 
-        return view('auth.saleOrder.edit', compact('order', 'employees'));
+        $total = $order->products->pluck('net_price')->sum();
+
+        $subtotal = ($total - $order->advance);
+
+        return view('auth.saleOrder.edit', compact('order', 'employees', 'total', 'subtotal'));
     }
 
     public function show_product($slug)
@@ -114,7 +118,7 @@ class SaleOrderController extends Controller
 
             DB::commit();
 
-            return redirect()->route('saleOrder.show', $sale->id)->with('success', 'Orden de venta creada correctamente');
+            return redirect()->route('saleOrder.edit', $sale->id)->with('success', 'Orden de venta creada correctamente');
 
         } catch (\Exception $e) {
           DB::rollback();
@@ -149,6 +153,23 @@ class SaleOrderController extends Controller
         $product->delete();
 
         return back()->with('danger', 'producto eliminado correctamente');
+    }
+
+    public function add_advance(Request $request, $id)
+    {
+        $order = SaleOrder::where('id', $id)->first();
+
+        $order->advance = $request->advance;
+
+        $total = $order->products->pluck('net_price')->sum();
+
+        if ($request->advance > $total) {
+            return back()->with('danger', 'El anticipo no puede ser mayor a la deuda total');
+        }
+
+        $order->save();
+
+        return back()->with('success', 'Anticipo agregado correctamente');
     }
 
 }

@@ -26,6 +26,8 @@ class CreateSaleOrdersTable extends Migration
             $table->unsignedBigInteger('office_id');
             $table->foreign('office_id')->references('id')->on('offices');
 
+            $table->integer('advance')->nullable();
+
 
             $table->timestamps();
         });

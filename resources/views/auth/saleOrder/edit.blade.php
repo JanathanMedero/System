@@ -11,8 +11,11 @@
 			<div class="card">
 				<div class="card-body">
 					<div class="row">
-						<div class="col-md-4">
-							<h4 class="mb-0"><strong>Orden de venta no. {{ $order->id }} - Cliente: {{ $order->client->name }}</strong></h4>
+						<div class="col-md-6">
+							<h4 class="mb-0"><strong>Cliente: {{ $order->client->name }}</strong></h4>
+						</div>
+						<div class="col-md-6 d-flex justify-content-end">
+							<h4 class="mb-0"><strong>Orden de venta no. {{ $order->id }}</strong></h4>
 						</div>
 					</div>
 				</div>
@@ -25,12 +28,51 @@
 			<div class="card">
 				<div class="card-body">
 					<div class="row">
-						<div class="col-lg-5">
+						<div class="col-lg-4">
 							<div class="row">
 								<h3 class="mb-0"><strong>Productos</strong></h3>
 							</div>
 						</div>
-						<div class="col-lg-7 d-flex justify-content-end">
+						<div class="col-lg-8 d-flex justify-content-end">
+							<div class="mx-3">
+								<button type="button" class="btn rounded-pill btn-dark" data-bs-toggle="modal" data-bs-target="#advance">
+									<span class="tf-icons bx bx-dollar"></span>&nbsp; Agregar anticipo
+								</button>
+							</div>
+
+							{{-- Modal --}}
+							<div class="modal fade" id="advance" tabindex="-1" aria-hidden="true">
+								<div class="modal-dialog modal-sm" role="document">
+									<form action="{{ route('saleOrder.update.advance', $order->id) }}" method="POST">
+										@method('PUT')
+										@csrf
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel3">Agregar anticipo</h5>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												<div class="row">
+													<div class="col-12 mb-3">
+														<label for="quantity" class="form-label">Anticipo</label>
+														<input type="number" min="0" id="quantity" class="form-control" placeholder="Ingrese el anticipo" name="advance" value="{{ $order->advance }}" />
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+													<span class="tf-icons bx bx-x"></span>&nbsp; Cancelar
+												</button>
+
+												<button type="submit" class="btn btn-primary">
+													<span class="tf-icons bx bx-save"></span>&nbsp; Guardar
+												</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+
 							<div>
 								<button type="button" class="btn rounded-pill btn-success" data-bs-toggle="modal" data-bs-target="#new-product">
 									<span class="tf-icons bx bx-package"></span>&nbsp; Agregar producto
@@ -227,6 +269,18 @@
 									@endforeach
 								</tbody>
 							</table>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12 d-flex justify-content-end">
+								<div class="flex-column">
+									@if($order->advance)
+									<h5 class="mb-1">Anticipo: <strong style="color: red;">${{ $order->advance }} M.N.</strong></h5>
+									@endif
+									<h5 class="mb-1">Subtotal: <strong style="color: green;">${{ $subtotal }} M.N.</strong></h5>
+									<h5>Venta total: <strong style="color: green;">${{ $total }} M.N.</strong></h5>
+								</div>
+							</div>
 						</div>
 
 					</div>

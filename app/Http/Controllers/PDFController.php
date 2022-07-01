@@ -14,7 +14,9 @@ class PDFController extends Controller
 
         $total = $order->products->pluck('net_price')->sum();
 
-        $pdf = PDF::loadView('pdfSaleOrder', compact('order', 'total'));
+        $subtotal = ($total - $order->advance);
+
+        $pdf = PDF::loadView('pdfSaleOrder', compact('order', 'total', 'subtotal'));
         return $pdf->stream();
     }
 }

@@ -109,10 +109,32 @@
 			@endif
 		</div>
 
-		<div style="width: 100%;" class="mb-2">
-			@if($order->client->postal_code)
+		<div style="width: 100%;">
+			@if($order->client->cp)
+			<div style="width: 50%; display: inline-block;">
+				<p class="text-format mb-0"><strong>C.P.: </strong><u>{{ $order->client->cp }}</p>
+			</div>
+			@else
+			<div style="width: 50%; display: inline-block;">
+				<p class="text-format mb-0"><strong>C.P.: </strong><u>Sin registrar</p>
+			</div>
+			@endif
+			@if($order->advance)
+			<div style="width: 49%; display: inline-block;">
+				<p class="text-format mb-0"><strong>Anticipo: </strong><u>${{ $order->advance }}.00</p>
+			</div>
+			@else
+			<div style="width: 49%; display: inline-block;">
+				<p class="text-format mb-0"><strong>Anticipo: </strong><u>N/A</p>
+			</div>
+			@endif
+		</div>
+
+		{{-- <div style="width: 100%">
+			<div style="width: 49%;" class="mb-2">
+			@if($order->client->cp)
 			<div style="width: 100%; display: inline-block;">
-				<p class="text-format mb-0"><strong>C.P.: </strong><u>{{ $order->client->postal_code }}</p>
+				<p class="text-format mb-0"><strong>C.P.: </strong><u>{{ $order->client->cp }}</p>
 			</div>
 			@else
 			<div style="width: 100%; display: inline-block;">
@@ -120,6 +142,18 @@
 			</div>
 			@endif
 		</div>
+		<div style="width: 49%;" class="mb-2">
+			@if($order->advance)
+			<div style="width: 100%; display: inline-block;">
+				<p class="text-format mb-0"><strong>Anticipo: </strong><u>${{ $order->advance }}.00</p>
+			</div>
+			@else
+			<div style="width: 100%; display: inline-block;">
+				<p class="text-format mb-0"><strong>Anticipo: </strong><u>N/A</p>
+			</div>
+			@endif
+		</div>
+		</div> --}}
 
 
 		<table style="width:100%; border: 1px solid black;" class="my-4">
@@ -155,7 +189,13 @@
 
 		<div style="width: 100%">
 			<div style="width: 100%; display: inline-block; text-align: right;">
-				<p class="text-format mb-0"><strong>TOTAL A PAGAR: </strong><u>${{ $total }}.00</p>
+				<p class="text-format mb-0"><strong>TOTAL A PAGAR: </strong><u>${{ $subtotal }}.00</p>
+			</div>
+		</div>
+
+		<div style="width: 100%">
+			<div style="width: 100%; display: inline-block; text-align: right;">
+				<p class="text-format mb-0"><strong>VENTA TOTAL: </strong><u>${{ $total }}.00</p>
 			</div>
 		</div>
 
