@@ -84,6 +84,7 @@ class SaleOrderController extends Controller
         $order->created_at  = $request->date_of_sale;
         $order->employe_id  = $request->employe_id;
         $order->office_id   = $request->office_id;
+        $order->pay         = $request->pay;
 
         $order->save();
 

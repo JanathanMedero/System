@@ -28,12 +28,12 @@
 			<div class="card">
 				<div class="card-body">
 					<div class="row">
-						<div class="col-lg-4">
+						<div class="col-lg-3 d-flex align-items-center">
 							<div class="row">
 								<h3 class="mb-0"><strong>Productos</strong></h3>
 							</div>
 						</div>
-						<div class="col-lg-8 d-flex justify-content-end">
+						<div class="col-lg-9 d-flex justify-content-end">
 							<div class="mx-3">
 								<button type="button" class="btn rounded-pill btn-dark" data-bs-toggle="modal" data-bs-target="#advance">
 									<span class="tf-icons bx bx-dollar"></span>&nbsp; Agregar anticipo
@@ -199,7 +199,20 @@
 
 												</div>
 												<div class="row g-2 mt-2">
-													<div class="col-lg-12">
+
+													<div class="col-lg-6">
+														<label for="pay" class="form-label">Seleccione el tipo de pago:</label>
+														<div class="mb-3 input-group">
+															<select class="form-select" id="pay" name="pay">
+																<option value="Pago en efectivo" {{ $order->pay == 'Pago en efectivo' ? 'selected' : '' }}>Pago en efectivo</option>
+																<option value="Transferencia" {{ $order->pay == 'Transferencia' ? 'selected' : '' }}>Transferencia</option>
+																<option value="Pago con tarjeta" {{ $order->pay == 'Pago con tarjeta' ? 'selected' : '' }}>Pago con tarjeta</option>
+																<option value="Cheque" {{ $order->pay == 'Cheque' ? 'selected' : '' }}>Cheque</option>
+															</select>
+														</div>
+													</div>
+
+													<div class="col-lg-6">
 														<label for="office_id" class="form-label">Seleccione una sucursal:</label>
 														<div class="mb-3 input-group">
 															<select class="form-select" id="office_id" name="office_id" required>
@@ -208,7 +221,6 @@
 															</select>
 														</div>
 													</div>
-
 												</div>
 
 											</div>
