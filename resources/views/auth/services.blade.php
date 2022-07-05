@@ -38,7 +38,7 @@
 						<h3 class="card-title text-center"><strong>Orden de servicio</strong></h3>
 					</div>
 					<div class="row">
-						<a href="#" class="btn btn-outline-primary mt-2">Crear orden de servicio</a>
+						<a href="{{ route('serviceOrder.create', $client->slug) }}" class="btn btn-outline-primary mt-2">Crear orden de servicio</a>
 					</div>
 				</div>
 			</div>

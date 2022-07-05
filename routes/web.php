@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SaleOrderController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceOrderController;
 use App\Http\Middleware\ControlAccessMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('orden-de-venta/{id}/nuevo-producto', [SaleOrderController::class, 'add_product'])->name('saleOrder.addProduct');
     Route::delete('orden-de-venta/producto/{slug}/eliminado', [SaleOrderController::class, 'destroy_product'])->name('saleOrder.destroyProduct');
     Route::post('orden-de-venta/{id}/cancelada', [SaleOrderController::class, 'update_status'])->name('saleOrder.updateStatus');
+
+    //Orden de servicio
+    Route::get('nueva-orden-de-servicio/{slug}', [ServiceOrderController::class, 'create'])->name('serviceOrder.create');
 
     //PDF
     Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');

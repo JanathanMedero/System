@@ -15,6 +15,21 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('service_id');
+            $table->foreign('service_id')->references('id')->on('service_orders');
+
+            $table->string('equip');
+            $table->string('brand');
+            $table->string('serie');
+            $table->string('accesories');
+            $table->string('features');
+            $table->string('failure');
+            $table->string('observations');
+            $table->string('solicited_service');
+            $table->string('observations');
+
+
             $table->timestamps();
         });
     }

@@ -166,7 +166,7 @@ data-template="vertical-menu-template-free"
 						<div data-i18n="Basic">Ordenes de venta</div>
 					</a>
 				</li>
-				<li class="menu-item {{ (request()->is('ordenes-de-servicio')) ? 'active' : '' }}">
+				<li class="menu-item {{ (request()->is('ordenes-de-servicio')) ? 'active' : '' }} {{ (request()->is('nueva-orden-de-servicio/*')) ? 'active' : '' }}">
 					<a href="#" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-briefcase-alt-2"></i>
 						<div data-i18n="Basic">Ordenes de servicio</div>
