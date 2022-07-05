@@ -177,4 +177,20 @@ class SaleOrderController extends Controller
         return back()->with('success', 'Anticipo agregado correctamente');
     }
 
+    public function update_status($id)
+    {
+        $order = SaleOrder::where('id', $id)->first();
+
+        if ($order->status == 'active') {
+            $order->status = 'canceled';
+            $order->save();
+            return back()->with('danger', 'Orden de servicio cancelada correctamente');
+        }else{
+            $order->status = 'active';
+            $order->save();
+            return back()->with('success', 'Orden activada correctamente');
+        }
+
+    }
+
 }

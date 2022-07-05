@@ -257,6 +257,7 @@
 									</tr>
 								</thead>
 								<tbody>
+									@if($order->products->isNotEmpty())
 									@foreach($order->products as $product)
 									<tr>
 										<td><strong>{{ $product->name }}</strong></td>
@@ -279,6 +280,11 @@
 										</td>
 									</tr>
 									@endforeach
+									@else
+									<tr>
+										<td colspan="5"><h3 class="my-2 text-center"><strong>Sin productos</strong></h3></td>
+									</tr>
+									@endif
 								</tbody>
 							</table>
 						</div>

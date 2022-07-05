@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col-lg-4 mb-4">
 			<div class="card h-100">
-				<img class="card-img-top" src="{{ asset('images/saleOrder.png') }}" alt="Card image cap" />
+				<img class="card-img-top" src="{{ asset('images/saleOrder.png') }}" style="height: 235px;" alt="Card image cap" />
 				<div class="card-body">
 					<div class="row">
 						<h3 class="card-title text-center"><strong>Orden de venta</strong></h3>
@@ -32,7 +32,7 @@
 
 		<div class="col-lg-4 mb-4">
 			<div class="card h-100">
-				<img class="card-img-top" src="{{ asset('images/serviceOrder.png') }}" alt="Card image cap" />
+				<img class="card-img-top" src="{{ asset('images/serviceOrder.png') }}" style="height: 235px;" alt="Card image cap" />
 				<div class="card-body">
 					<div class="row">
 						<h3 class="card-title text-center"><strong>Orden de servicio</strong></h3>
@@ -46,7 +46,7 @@
 
 		<div class="col-lg-4 mb-4">
 			<div class="card h-100">
-				<img class="card-img-top" src="{{ asset('images/serviceSite.png') }}" alt="Card image cap" />
+				<img class="card-img-top" src="{{ asset('images/serviceSite.png') }}" style="height: 235px;" alt="Card image cap" />
 				<div class="card-body">
 					<div class="row">
 						<h3 class="card-title text-center"><strong>Orden de servicio en sitio</strong></h3>

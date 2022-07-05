@@ -28,6 +28,7 @@ class CreateSaleOrdersTable extends Migration
 
             $table->integer('advance')->nullable();
             $table->string('pay');
+            $table->string('status')->default('active');
 
 
             $table->timestamps();
