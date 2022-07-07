@@ -132,10 +132,72 @@
 							<div class="row">
 								<div class="d-flex justify-content-end">
 									<div>
-										<button type="button" class="btn rounded-pill btn-info mx-3">
+										<button type="button" class="btn rounded-pill btn-info mx-3" data-bs-toggle="modal" data-bs-target="#largeModal">
 											<span class="tf-icons bx bx-edit"></span>&nbsp; Editar orden
 										</button>
 									</div>
+
+									<div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true">
+										<div class="modal-dialog modal-lg" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel3">Editar orden</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<div class="row">
+														<div class="col-6 mb-3">
+															<label for="equip" class="form-label">Equipo</label>
+															<input type="text" id="equip" class="form-control" placeholder="Ejemplo: Gabinete, Monitor, etc." value="{{ $order->service->equip }}" required/>
+														</div>
+														<div class="col-6 mb-3">
+															<label for="brand" class="form-label">Marca</label>
+															<input type="text" id="brand" class="form-control" placeholder="Ingrese la marca del equipo" value="{{ $order->service->brand }}" required />
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-6 mb-3">
+															<label for="serie" class="form-label">No. serie o modelo (Opcional)</label>
+															<input type="text" id="serie" class="form-control" placeholder="Ingrese el modelo o no. de serie del equipo" value="{{ $order->service->serie }}"/>
+														</div>
+														<div class="col-6 mb-3">
+															<label for="accesories" class="form-label">Accesorios (Opcional)</label>
+															<input type="text" id="accesories" class="form-control" placeholder="Ingrese los accesorios del equipo" value="{{ $order->service->accesories }}" />
+														</div>
+													</div>
+													<div class="row g-2">
+														<div class="col-6 mb-0">
+															<label for="features" class="form-label">Características del equipo</label>
+															<input type="text" id="features" class="form-control" placeholder="Ingrese las características del equipo" value="{{ $order->service->features }}" />
+														</div>
+														<div class="col-6 mb-0">
+															<label for="failure" class="form-label">Reporte de falla</label>
+															<input type="text" id="failure" class="form-control" placeholder="Ingrese la falla conocida" value="{{ $order->service->failure }}" />
+														</div>
+													</div>
+													<div class="row g-2 mt-2">
+														<div class="col mb-0">
+															<label for="solicited_service" class="form-label">Servicio solicitado</label>
+															<input type="text" id="solicited_service" class="form-control" placeholder="Ingrese el servicio solicitado" value="{{ $order->service->solicited_service }}" />
+														</div>
+													</div>
+													<div class="row g-2 mt-2">
+														<div class="col mb-0">
+															<label for="observations" class="form-label">Observaciones (Opcional)</label>
+															<textarea type="text" id="observations" class="form-control" placeholder="Ingrese las observaciones del equipo" style="resize: none;" rows="3">{{ $order->service->observations }}</textarea>
+														</div>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+														Cancelar
+													</button>
+													<button type="button" class="btn btn-primary">Guardar</button>
+												</div>
+											</div>
+										</div>
+									</div>
+
 									<div>
 										<button type="button" class="btn rounded-pill btn-danger">
 											<span class="tf-icons bx bx-printer"></span>&nbsp; Imprimir orden
