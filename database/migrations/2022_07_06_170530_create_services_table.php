@@ -27,8 +27,6 @@ class CreateServicesTable extends Migration
             $table->string('failure');
             $table->string('observations');
             $table->string('solicited_service');
-            $table->string('observations');
-
 
             $table->timestamps();
         });

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ServiceOrder extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['employe_id', 'client_id', 'office_id', 'advance', 'pay', 'status'];
 }

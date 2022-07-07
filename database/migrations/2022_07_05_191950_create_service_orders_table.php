@@ -14,8 +14,6 @@ class CreateServiceOrdersTable extends Migration
     public function up()
     {
         Schema::create('service_orders', function (Blueprint $table) {
-            $table->id();
-
             $table->id()->startingValue(6000);
 
             $table->unsignedBigInteger('employe_id');
@@ -27,8 +25,6 @@ class CreateServiceOrdersTable extends Migration
             $table->unsignedBigInteger('office_id');
             $table->foreign('office_id')->references('id')->on('offices');
 
-            $table->integer('advance')->nullable();
-            $table->string('pay');
             $table->string('status')->default('active');
 
             $table->timestamps();
