@@ -167,7 +167,7 @@ data-template="vertical-menu-template-free"
 					</a>
 				</li>
 				<li class="menu-item {{ (request()->is('ordenes-de-servicio')) ? 'active' : '' }} {{ (request()->is('nueva-orden-de-servicio/*')) ? 'active' : '' }}">
-					<a href="#" class="menu-link">
+					<a href="{{ route('serviceOrder.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-briefcase-alt-2"></i>
 						<div data-i18n="Basic">Ordenes de servicio</div>
 					</a>

@@ -55,4 +55,10 @@ class ServiceOrderController extends Controller
       }
 
   }
+
+  public function index()
+  {
+    return view('auth.serviceOrder.index');
+  }
+
 }
