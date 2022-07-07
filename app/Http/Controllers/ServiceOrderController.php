@@ -49,6 +49,8 @@ class ServiceOrderController extends Controller
 
             DB::commit();
 
+            return redirect()->route('serviceOrder.show', $serviceOrder->id)->with('success', 'Orden de servicio creada correctamente');
+
         } catch (\Exception $e) {
           DB::rollback();
           return $e->getMessage();
@@ -59,6 +61,13 @@ class ServiceOrderController extends Controller
   public function index()
   {
     return view('auth.serviceOrder.index');
+  }
+
+  public function show($id)
+  {
+    $order = ServiceOrder::where('id', $id)->first();
+
+    return view('auth.serviceOrder.show', compact('order'));
   }
 
 }

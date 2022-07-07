@@ -21,11 +21,11 @@ class CreateServicesTable extends Migration
 
             $table->string('equip');
             $table->string('brand');
-            $table->string('serie');
-            $table->string('accesories');
+            $table->string('serie')->nullable();
+            $table->string('accesories')->nullable();
             $table->string('features');
             $table->string('failure');
-            $table->string('observations');
+            $table->string('observations')->nullable();
             $table->string('solicited_service');
 
             $table->timestamps();
