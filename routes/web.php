@@ -8,6 +8,7 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SaleOrderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceOrderController;
+use App\Http\Controllers\ServiceOrderSiteController;
 use App\Http\Middleware\ControlAccessMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -56,7 +57,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('orden-de-servicio/{id}/cancelada', [ServiceOrderController::class, 'update_status'])->name('serviceOrder.updateStatus');
 
     //Orden de servicio en sitio
-    // Route::get('ordenes-de-servicio-en-sitio')
+    Route::get('ordenes-de-servicio-en-sitio', [ServiceOrderSiteController::class, 'index'])->name('serviceSite.index');
+    Route::get('nueva-ordenes-de-servicio-en-sitio/{slug}', [ServiceOrderSiteController::class, 'create'])->name('serviceSite.create');
 
     //PDF
     Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');

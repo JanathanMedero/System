@@ -52,7 +52,7 @@
 						<h3 class="card-title text-center"><strong>Orden de servicio en sitio</strong></h3>
 					</div>
 					<div class="row">
-						<a href="#" class="btn btn-outline-primary mt-2">Crear orden de servicio en sitio</a>
+						<a href="{{ route('serviceSite.create', $client->slug) }}" class="btn btn-outline-primary mt-2">Crear orden de servicio en sitio</a>
 					</div>
 				</div>
 			</div>

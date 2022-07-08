@@ -87,7 +87,7 @@
 							</div>
 							<div class="col-lg-4">
 								<div class="mt-1 input-group">
-									<label class="form-label" for="advance">Anticipo(Opcional)</label>
+									<label class="form-label" for="advance">Anticipo (Opcional)</label>
 									<div class="input-group">
 										<span class="input-group-text">$</span>
 										<input type="number" id="advance" class="form-control" name="advance" placeholder="Ingrese el anticipo" value="{{ old('advance', 0) }}" defaultValue="0">
