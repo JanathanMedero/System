@@ -84,7 +84,6 @@ public function update(Request $request, $id)
 
         $serviceOrder->employe_id   = $request->employe_id;
         $serviceOrder->office_id    = $request->office_id;
-        $serviceOrder->invoice      = $request->invoice;
 
         $serviceOrder->service->equip               = $request->equip;
         $serviceOrder->service->brand               = $request->brand;

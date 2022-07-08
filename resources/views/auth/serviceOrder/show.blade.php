@@ -118,12 +118,6 @@
 																</div>
 															</div>
 														</div>
-														<div class="row">
-															<div class="col">
-																<label class="form-label" for="invoice">No. de factura (Opcional)</label>
-																<input type="text" class="form-control" name="invoice" id="invoice" placeholder="Ingresa el número de factura" value="{{ $order->invoice }}">
-															</div>
-														</div>
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
