@@ -100,6 +100,10 @@
 									</select>
 								</div>
 							</div>
+							<div class="col-lg-4">
+								<label class="form-label" for="invoice">No. de factura (Opcional)</label>
+								<input type="text" class="form-control" name="invoice" id="invoice" placeholder="Ingresa el número de factura" value="{{ old('invoice') }}">
+							</div>
 						</div>
 
 						<div class="row">
