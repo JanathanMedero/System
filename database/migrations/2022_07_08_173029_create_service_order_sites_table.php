@@ -16,8 +16,8 @@ class CreateServiceOrderSitesTable extends Migration
         Schema::create('service_order_sites', function (Blueprint $table) {
              $table->id()->startingValue(9000);
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('employe_id');
+            $table->foreign('employe_id')->references('id')->on('users');
 
             $table->unsignedBigInteger('client_id')->nullable();
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
@@ -28,6 +28,8 @@ class CreateServiceOrderSitesTable extends Migration
             $table->date('date_of_service');
             $table->text('observations')->nullable();
             $table->string('advance')->nullable();
+
+            $table->string('status')->default('active');
 
             $table->timestamps();
         });

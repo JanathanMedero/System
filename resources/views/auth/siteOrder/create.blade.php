@@ -27,7 +27,7 @@
 						</div>
 					</div>
 
-					<form action="#" method="POST">
+					<form action="{{ route('serviceSite.store', $client->slug) }}" method="POST">
 						@csrf
 						<div class="row mt-3">
 							<div class="col-lg-4 mb-3">
@@ -68,10 +68,10 @@
 
 						<div class="row mt-3">
 							<div class="col-lg-3">
-								<label for="date_of_sale" class="col-md-12 col-form-label pt-0">Fecha de servicio</label>
+								<label for="date_of_service" class="col-md-12 col-form-label pt-0">Fecha de servicio</label>
 								<div class="mb-3 input-group">
 									<div class="col-md-12">
-										<input class="form-control" type="date" name="date_of_sale" id="date_of_sale" value="{{ old('date_of_sale') }}">
+										<input class="form-control" type="date" name="date_of_service" id="date_of_service" value="{{ old('date_of_service') }}">
 									</div>
 								</div>
 							</div>
