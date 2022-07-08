@@ -53,8 +53,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('ordenes-de-servicio', [ServiceOrderController::class, 'index'])->name('serviceOrder.index');
     Route::get('orden-de-servicio/{id}', [ServiceOrderController::class, 'show'])->name('serviceOrder.show');
     Route::put('orden-de-servicio/{id}', [ServiceOrderController::class, 'update'])->name('serviceOrder.update');
+    Route::post('orden-de-servicio/{id}/cancelada', [ServiceOrderController::class, 'update_status'])->name('serviceOrder.updateStatus');
 
     //PDF
     Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');
+    Route::get('orden-de-servicio/{id}/PDF', [PDFController::class, 'serviceOrder'])->name('pdf.serviceOrder');
 
 });

@@ -55,7 +55,15 @@
 				<p class="text-format mb-0"><strong>Le atendió: </strong><u>{{ $order->employe->name }}</p>
 			</div>
 			<div style="width: 49%; display: inline-block; text-align: right;">
-				<p class="mb-0 text-format">Fecha de venta: <u>{{ date('Y-m-d', strtotime($order->created_at)) }}</u></p>
+				<p class="mb-0 text-format"><strong>Fecha de venta:</strong> <u>{{ date('Y-m-d', strtotime($order->created_at)) }}</u></p>
+			</div>
+		</div>
+
+		<div style="width: 100%;">
+			<div style="width: 50%; display: inline-block;">
+			</div>
+			<div style="width: 49%; display: inline-block; text-align: right;">
+				<p class="mb-0 mt-2 text-format"><strong>No de factura:</strong>_________________________</p>
 			</div>
 		</div>
 
@@ -120,15 +128,15 @@
 			</div>
 			@endif
 			@if($order->advance)
-			<div style="width: 30%; display: inline-block;">
+			<div style="width: 25%; display: inline-block;">
 				<p class="text-format mb-0"><strong>Anticipo: </strong><u>${{ $order->advance }}.00</p>
 			</div>
 			@else
-			<div style="width: 30%; display: inline-block;">
+			<div style="width: 25%; display: inline-block;">
 				<p class="text-format mb-0"><strong>Anticipo: </strong><u>N/A</p>
 			</div>
 			@endif
-			<div style="width: 45%; display: inline-block;">
+			<div style="width: 35%; display: inline-block;">
 				<p class="text-format mb-0"><strong>Tipo de pago: </strong><u>{{ $order->pay }}</p>
 			</div>
 		</div>

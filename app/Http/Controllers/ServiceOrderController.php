@@ -62,51 +62,67 @@ class ServiceOrderController extends Controller
   public function index()
   {
     return view('auth.serviceOrder.index');
-  }
+}
 
-  public function show($id)
-  {
+public function show($id)
+{
     $order = ServiceOrder::where('id', $id)->first();
 
     $employees = User::all();
 
     return view('auth.serviceOrder.show', compact('order', 'employees'));
-  }
+}
 
-  public function update(Request $request, $id)
-  {
+public function update(Request $request, $id)
+{
 
     $serviceOrder = ServiceOrder::where('id', $id)->first();
 
     DB::beginTransaction();
 
-        try{
+    try{
 
-            $serviceOrder->employe_id   = $request->employe_id;
-            $serviceOrder->office_id    = $request->office_id;
-            $serviceOrder->invoice      = $request->invoice;
+        $serviceOrder->employe_id   = $request->employe_id;
+        $serviceOrder->office_id    = $request->office_id;
+        $serviceOrder->invoice      = $request->invoice;
 
-            $serviceOrder->service->equip               = $request->equip;
-            $serviceOrder->service->brand               = $request->brand;
-            $serviceOrder->service->serie               = $request->serie;
-            $serviceOrder->service->accesories          = $request->accesories;
-            $serviceOrder->service->features            = $request->features;
-            $serviceOrder->service->failure             = $request->failure;
-            $serviceOrder->service->observations        = $request->observations;
-            $serviceOrder->service->solicited_service   = $request->solicited_service;
+        $serviceOrder->service->equip               = $request->equip;
+        $serviceOrder->service->brand               = $request->brand;
+        $serviceOrder->service->serie               = $request->serie;
+        $serviceOrder->service->accesories          = $request->accesories;
+        $serviceOrder->service->features            = $request->features;
+        $serviceOrder->service->failure             = $request->failure;
+        $serviceOrder->service->observations        = $request->observations;
+        $serviceOrder->service->solicited_service   = $request->solicited_service;
 
-            $serviceOrder->save();
-            $serviceOrder->service->save();
+        $serviceOrder->save();
+        $serviceOrder->service->save();
 
-            DB::commit();
+        DB::commit();
 
-            return redirect()->route('serviceOrder.show', $serviceOrder->id)->with('success', 'Orden de servicio actualizada correctamente');
+        return redirect()->route('serviceOrder.show', $serviceOrder->id)->with('success', 'Orden de servicio actualizada correctamente');
 
-        } catch (\Exception $e) {
-          DB::rollback();
-          return $e->getMessage();
-      }
-
+    } catch (\Exception $e) {
+      DB::rollback();
+      return $e->getMessage();
   }
+
+}
+
+public function update_status($id)
+{
+    $order = ServiceOrder::where('id', $id)->first();
+
+    if ($order->status == 'active') {
+        $order->status = 'canceled';
+        $order->save();
+        return back()->with('danger', 'Orden de servicio cancelada correctamente');
+    }else{
+        $order->status = 'active';
+        $order->save();
+        return back()->with('success', 'Orden activada correctamente');
+    }
+
+}
 
 }
