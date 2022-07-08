@@ -26,7 +26,6 @@ class CreateServiceOrderSitesTable extends Migration
             $table->foreign('office_id')->references('id')->on('offices');
 
             $table->date('date_of_service');
-            $table->string('folio');
             $table->text('observations')->nullable();
             $table->string('advance')->nullable();
 

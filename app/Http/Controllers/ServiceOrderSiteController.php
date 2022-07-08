@@ -22,4 +22,11 @@ class ServiceOrderSiteController extends Controller
 
         return view('auth.siteOrder.create', compact('client', 'employees'));
     }
+
+    public function store($slug)
+    {
+        $client = Client::where('slug', $slug)->first();
+
+
+    }
 }
