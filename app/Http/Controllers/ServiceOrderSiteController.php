@@ -8,6 +8,7 @@ use App\Models\ServicesOnSites;
 use App\Models\User;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ServiceOrderSiteController extends Controller
 {
@@ -65,7 +66,7 @@ class ServiceOrderSiteController extends Controller
 
 		$total = $order->services->pluck('net_price')->sum();
 
-        $subtotal = ($total - $order->advance);
+		$subtotal = ($total - $order->advance);
 
 		return view('auth.siteOrder.show', compact('order', 'total', 'subtotal'));
 	}
@@ -84,5 +85,23 @@ class ServiceOrderSiteController extends Controller
 		$order->save();
 
 		return back()->with('success', 'Anticipo agregado correctamente');
+	}
+
+	public function add_service(Request $request, $id)
+	{
+		$order = ServiceOrderSite::where('id', $id)->first();
+
+		$random = Str::random(25);
+
+		$service = ServicesOnSites::create([
+			'order_service_id'  => $order->id,
+			'name'              => $request->name,
+			'slug'              => Str::slug($request->slug.'-'.$random),
+			'quantity'          => $request->quantity,
+			'net_price'         => $request->net_price,
+			'description'       => $request->description,
+		]);
+
+		return back()->with('success', 'Servicio agregado correctamente');
 	}
 }

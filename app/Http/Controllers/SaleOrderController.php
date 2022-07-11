@@ -133,12 +133,15 @@ class SaleOrderController extends Controller
 
   public function add_product(Request $request, $id)
   {
+
+    $random = Str::random(25);
+
     $order = SaleOrder::where('id', $id)->first();
 
     Product::create([
         'sale_id'       => $order->id,
         'name'          => $request->name,
-        'slug'          => Str::slug($request->name),
+        'slug'          => Str::slug($request->name.'-'.$random),
         'quantity'      => $request->quantity,
         'unit_price'    => $request->unit_price,
         'net_price'     => $request->net_price,
