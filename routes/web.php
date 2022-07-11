@@ -59,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
     //Orden de servicio en sitio
     Route::get('ordenes-de-servicio-en-sitio', [ServiceOrderSiteController::class, 'index'])->name('serviceSite.index');
     Route::get('nueva-ordenes-de-servicio-en-sitio/{slug}', [ServiceOrderSiteController::class, 'create'])->name('serviceSite.create');
+    Route::get('orden-de-servicio-en-sitio/{slug}', [ServiceOrderSiteController::class, 'show'])->name('serviceSite.show');
     Route::post('nueva-ordenes-de-servicio-en-sitio/{slug}', [ServiceOrderSiteController::class, 'store'])->name('serviceSite.store');
 
     //PDF
