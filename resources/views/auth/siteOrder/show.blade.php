@@ -42,9 +42,44 @@
 										<button type="button" class="btn rounded-pill btn-dark mx-3" data-bs-toggle="modal" data-bs-target="#advance">
 											<span class="tf-icons bx bx-dollar"></span>&nbsp; Agregar anticipo
 										</button>
-										<button type="button" class="btn rounded-pill btn-success" data-bs-toggle="modal" data-bs-target="#advance">
+
+										{{-- Modal --}}
+										<div class="modal fade" id="advance" tabindex="-1" aria-hidden="true">
+											<div class="modal-dialog modal-sm" role="document">
+												<form action="{{ route('siteOrder.update.advance', $order->id) }}" method="POST">
+													@method('PUT')
+													@csrf
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLabel3">Agregar anticipo</h5>
+															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+														</div>
+														<div class="modal-body">
+															<div class="row">
+																<div class="col-12 mb-3">
+																	<label for="quantity" class="form-label">Anticipo</label>
+																	<input type="number" min="0" id="quantity" class="form-control" placeholder="Ingrese el anticipo" name="advance" value="{{ $order->advance }}" />
+																</div>
+															</div>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+																<span class="tf-icons bx bx-x"></span>&nbsp; Cancelar
+															</button>
+
+															<button type="submit" class="btn btn-primary">
+																<span class="tf-icons bx bx-save"></span>&nbsp; Guardar
+															</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+
+										<button type="button" class="btn rounded-pill btn-success" data-bs-toggle="modal" data-bs-target="#">
 											<span class="tf-icons bx bx-building-house"></span>&nbsp; Agregar servicio
 										</button>
+
 										<button type="button" class="btn rounded-pill btn-info mx-3" data-bs-toggle="modal" data-bs-target="#largeModal">
 											<span class="tf-icons bx bx-edit"></span>&nbsp; Editar orden
 										</button>
@@ -160,28 +195,20 @@
 											<th>Cantidad</th>
 											<th>Precio neto</th>
 											<th>Sucursal</th>
-											<th>Estatus de la orden</th>
 											<th>Acciones</th>
 										</tr>
 									</thead>
 									<tbody>
 										@forelse($order->services as $service)
 										<tr>
-											<td><strong>Revisión de camaras</strong></td>
-											<td>1</td>
-											<td>$1800.00 MN</td>
+											<td><strong>{{ $service->name }}</strong></td>
+											<td>{{ $service->quantity }}</td>
+											<td>$ {{ $service->net_price }} MN</td>
 											<td>
-												{{-- @if($order->office_id == 1) --}}
+												@if($order->office_id == 1)
 												<span class="badge bg-primary">Sucursal Matriz</span>
-												{{-- @else --}}
-												{{-- <span class="badge bg-warning">Sucursal Virrey</span> --}}
-												{{-- @endif --}}
-											</td>
-											<td>
-												@if($order->status == 'active')
-												<span class="badge bg-success">Activa</span>
 												@else
-												<span class="badge bg-danger">Cancelada</span>
+												<span class="badge bg-warning">Sucursal Virrey</span>
 												@endif
 											</td>
 											<td>
@@ -219,6 +246,17 @@
 										@endforelse
 									</tbody>
 								</table>
+							</div>
+							<div class="row">
+								<div class="col-md-12 d-flex justify-content-end mt-4">
+									<div class="flex-column">
+										@if($order->advance)
+										<h5 class="mb-1">Anticipo: <strong style="color: red;">${{ $order->advance }}.00 M.N.</strong></h5>
+										@endif
+										<h5 class="mb-1">Subtotal: <strong style="color: green;">${{ $subtotal }}.00 M.N.</strong></h5>
+										<h5>Venta total: <strong style="color: green;">${{ $total }}.00 M.N.</strong></h5>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

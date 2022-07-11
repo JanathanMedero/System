@@ -172,7 +172,7 @@ data-template="vertical-menu-template-free"
 						<div data-i18n="Basic">Ordenes de servicio</div>
 					</a>
 				</li>
-				<li class="menu-item {{ (request()->is('ordenes-de-servicio-en-sitio')) ? 'active' : '' }} {{ (request()->is('nueva-ordenes-de-servicio-en-sitio/*')) ? 'active' : '' }}">
+				<li class="menu-item {{ (request()->is('ordenes-de-servicio-en-sitio')) ? 'active' : '' }} {{ (request()->is('nueva-ordenes-de-servicio-en-sitio/*')) ? 'active' : '' }} {{ (request()->is('orden-de-servicio-en-sitio/*')) ? 'active' : '' }}">
 					<a href="{{ route('serviceSite.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-buildings"></i>
 						<div data-i18n="Basic">Ordenes de servicio en sitio</div>

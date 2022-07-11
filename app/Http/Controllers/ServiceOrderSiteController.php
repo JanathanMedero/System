@@ -63,6 +63,26 @@ class ServiceOrderSiteController extends Controller
 	{
 		$order = ServiceOrderSite::where('id', $id)->first();
 
-		return view('auth.siteOrder.show', compact('order'));
+		$total = $order->services->pluck('net_price')->sum();
+
+        $subtotal = ($total - $order->advance);
+
+		return view('auth.siteOrder.show', compact('order', 'total', 'subtotal'));
+	}
+
+	public function add_advance(Request $request, $id)
+	{
+		$order = ServiceOrderSite::where('id', $id)->first();
+
+		$total = $order->services->pluck('net_price')->sum();
+
+		if ($request->advance > $total) {
+			return back()->with('danger', 'El anticipo no puede ser mayor a la deuda total');
+		}
+
+		$order->advance = $request->advance;
+		$order->save();
+
+		return back()->with('success', 'Anticipo agregado correctamente');
 	}
 }
