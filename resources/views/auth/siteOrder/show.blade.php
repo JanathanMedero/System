@@ -58,7 +58,7 @@
 															<div class="row">
 																<div class="col-12 mb-3">
 																	<label for="quantity" class="form-label">Anticipo</label>
-																	<input type="number" min="0" id="quantity" class="form-control" placeholder="Ingrese el anticipo" name="advance" value="{{ $order->advance }}" />
+																	<input type="number" min="0" id="quantity" class="form-control" placeholder="Ingrese el anticipo" name="advance" value="{{ $order->advance }}" autofocus />
 																</div>
 															</div>
 														</div>

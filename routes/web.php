@@ -63,6 +63,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('nueva-ordenes-de-servicio-en-sitio/{slug}', [ServiceOrderSiteController::class, 'store'])->name('serviceSite.store');
     Route::put('orden-de-servicio-en-sitio/anticipo/{id}', [ServiceOrderSiteController::class, 'add_advance'])->name('siteOrder.update.advance');
     Route::post('orden-de-servicio-en-sitio/{id}/nuevo-servicio', [ServiceOrderSiteController::class, 'add_service'])->name('siteOrder.addService');
+    Route::post('orden-de-servicio-en-sitio/{id}/cancelada', [ServiceOrderSiteController::class, 'update_status'])->name('siteOrder.updateStatus');
 
     //PDF
     Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');

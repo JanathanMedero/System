@@ -59,14 +59,14 @@
                                         {{-- <a type="button" href="#" class="btn rounded-pill btn-danger">Cancelar orden</a> --}}
 
                                         @if($order->status == 'active')
-                                        <form class="form-delete mx-2" action="#" method="POST">
+                                        <form class="form-delete mx-2" action="{{ route('siteOrder.updateStatus', $order->id) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn rounded-pill btn-danger">
                                                 <span class="tf-icons bx bx-trash"></span>&nbsp; Cancelar orden
                                             </button>
                                         </form>
                                         @else
-                                        <form class="form-active mx-2" action="#" method="POST">
+                                        <form class="form-active mx-2" action="{{ route('siteOrder.updateStatus', $order->id) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn rounded-pill btn-success">
                                                 <span class="tf-icons bx bx-check"></span>&nbsp; Activar orden

@@ -104,4 +104,19 @@ class ServiceOrderSiteController extends Controller
 
 		return back()->with('success', 'Servicio agregado correctamente');
 	}
+
+	public function update_status($id)
+	{
+		$order = ServiceOrderSite::where('id', $id)->first();
+
+        if ($order->status == 'active') {
+            $order->status = 'canceled';
+            $order->save();
+            return back()->with('danger', 'Orden de servicio en sitio cancelada correctamente');
+        }else{
+            $order->status = 'active';
+            $order->save();
+            return back()->with('success', 'Orden activada correctamente');
+        }
+	}
 }
