@@ -12,7 +12,7 @@ class ServiceOrder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['employe_id', 'client_id', 'office_id', 'advance', 'pay', 'status'];
+    protected $fillable = ['employe_id', 'client_id', 'office_id', 'report_id', 'advance', 'pay', 'status'];
 
     public function client()
     {
@@ -27,5 +27,10 @@ class ServiceOrder extends Model
     public function employe()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function report()
+    {
+        return $this->hasOne(Report::class);
     }
 }
