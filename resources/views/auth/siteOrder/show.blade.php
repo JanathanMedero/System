@@ -132,12 +132,73 @@
 											</div>
 										</div>
 
-										<button type="button" class="btn rounded-pill btn-info mx-3" data-bs-toggle="modal" data-bs-target="#largeModal">
+										<button type="button" class="btn rounded-pill btn-info mx-3" data-bs-toggle="modal" data-bs-target="#edit-order">
 											<span class="tf-icons bx bx-edit"></span>&nbsp; Editar orden
 										</button>
+
+										<div class="modal fade" id="edit-order" tabindex="-1" aria-hidden="true">
+											<div class="modal-dialog modal-lg" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel3">Editar orden</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<form action="{{ route('siteOrder.update', $order->id) }}" method="POST">
+														@method('PUT')
+														@csrf
+														<div class="modal-body">
+															<div class="row g-2 mt-2">
+																<div class="col">
+																	<label for="employe_id" class="form-label">Le atendio:</label>
+																	<div class="mb-3 input-group">
+																		<select class="form-select" id="employe_id" name="employe_id" required>
+																			@foreach($employees as $user)
+																			<option {{ $order->employe_id == $user->id ? 'selected' : '' }} value="{{ $user->id }}">{{ $user->name }}</option>
+																			@endforeach
+																		</select>
+																	</div>
+																</div>
+																<div class="col">
+																	<label for="office_id" class="form-label">Seleccione una sucursal:</label>
+																	<div class="mb-3 input-group">
+																		<select class="form-select" id="office_id" name="office_id" required>
+																			<option value="1" {{ $order->office_id == '1' ? 'selected' : '' }} >Sucursal Matriz</option>
+																			<option value="2" {{ $order->office_id == '2' ? 'selected' : '' }}>Sucursal Virrey</option>
+																		</select>
+																	</div>
+																</div>
+																<div class="row g-2">
+																	<div class="col">
+																		<label for="date_of_service" class="col-md-12 col-form-label pt-0">Fecha de servicio</label>
+																		<div class="mb-3 input-group">
+																			<div class="col-md-12">
+																				<input class="form-control" type="date" name="date_of_service" id="date_of_service" value="{{ date('Y-m-d', strtotime($order->date_of_service)) }}" required>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="row g-2">
+																	<div class="col">
+																		<label for="observations" class="form-label">Observaciones (Opcional)</label>
+																		<textarea class="form-control" name="observations" id="observations" rows="5" placeholder="Ingrese las observaciones..." style="resize: none;">{{ $order->observations }}</textarea>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+																Cancelar
+															</button>
+															<button type="submit" class="btn btn-primary">Guardar</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+
 									</div>
 									<div>
-										<a href="{{ route('pdf.serviceOrder', $order->id) }}" target="_blank" type="button" class="btn rounded-pill btn-danger">
+										<a href="{{ route('pdf.serviceOnSite', $order->id) }}" target="_blank" type="button" class="btn rounded-pill btn-danger">
 											<span class="tf-icons bx bx-printer"></span>&nbsp; Imprimir orden
 										</a>
 									</div>
@@ -171,34 +232,77 @@
 											<td>
 												<div class="row">
 													<div class="col-md-6">
-														<a href="{{ route('saleOrder.edit', $order->id) }}" type="button" class="btn rounded-pill btn-info"> <span class="tf-icons bx bx-show"></span>&nbsp;Editar servicio</a>
+														<button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#edit-service-{{ $service->id }}"><span class="tf-icons bx bx-show"></span>&nbsp;Editar servicio</button>
 													</div>
-													<div class="col-md-6">
-														{{-- <a type="button" href="#" class="btn rounded-pill btn-danger">Cancelar orden</a> --}}
 
-														@if($order->status == 'active')
-														<form class="form-delete" action="#" method="POST">
+													<div class="modal fade" id="edit-service-{{ $service->id }}" tabindex="-1" aria-hidden="true">
+														<div class="modal-dialog" role="document">
+															<form action="{{ route('siteOrder.updateService', $service->id) }}" method="POST">
+																@method('PUT')
+																@csrf
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h5 class="modal-title" id="exampleModalLabel1">Editar servicio</h5>
+																		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																	</div>
+																	<div class="modal-body">
+																		<div class="row">
+																			<div class="col mb-3">
+																				<label for="name" class="form-label">Nombre del servicio</label>
+																				<input type="text" id="name" name="name" class="form-control" placeholder="Ingrese el nombre del servicio" value="{{ $service->name }}" required/>
+																			</div>
+																		</div>
+																		<div class="row g-2">
+																			<div class="col mb-3">
+																				<label class="form-label" for="quantity">Cantidad de servicios</label>
+																				<input type="number" min="1" class="form-control" name="quantity" id="quantity" placeholder="Ingrese la cantidad de servicios" value="{{ $service->quantity }}" required>
+																			</div>
+																		</div>
+																		<div class="row">
+																			<div class="col mb-0">
+																				<div class="mb-3 input-group">
+																					<label class="form-label" for="net_price">Precio NETO</label>
+																					<div class="input-group mt-1">
+																						<span class="input-group-text">$</span>
+																						<input type="number" min="1" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio NETO" value="{{ $service->net_price }}" required>
+																						<span class="input-group-text">.00</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-lg-12 mt-2">
+																				<label for="description" class="form-label">Descripción del servicio</label>
+																				<textarea class="form-control" name="description" id="description" rows="5" placeholder="Ingrese la descripción del servicio..." style="resize: none;">{{ $service->description }}</textarea>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+																			Cerrar
+																		</button>
+																		<button type="submit" class="btn btn-primary">Guadrar servicio</button>
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+
+													<div class="col-md-6">
+														<form class="form-delete" action="{{ route('siteOrder.destroyService', $service->id) }}" method="POST">
+															@method('DELETE')
 															@csrf
 															<button type="submit" class="btn rounded-pill btn-danger">
 																<span class="tf-icons bx bx-trash"></span>&nbsp; Eliminar servicio
 															</button>
 														</form>
-														@else
-														<form class="form-active" action="#" method="POST">
-															@csrf
-															<button type="submit" class="btn rounded-pill btn-success">
-																<span class="tf-icons bx bx-check"></span>&nbsp; Activar orden
-															</button>
-														</form>
-														@endif
-
 													</div>
 												</div>
 											</td>
 										</tr>
 										@empty
 										<tr>
-											<td colspan="5"><h3 class="mb-0 text-center"><strong>No se encontró ningúna orden de venta</strong></h3></td>
+											<td colspan="5"><h3 class="mb-0 text-center"><strong>No se encontró ningún servicio</strong></h3></td>
 										</tr>
 										@endforelse
 									</tbody>
@@ -225,3 +329,29 @@
 </div>
 
 @endsection
+
+@section('extra-js')
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+	<script type="text/javascript">
+		$('.form-delete').click(function(event) {
+			var form =  $(this).closest("form");
+			var name = $(this).data("name");
+			event.preventDefault();
+			swal({
+				title: `Esta seguro que desea eliminar este servicio?`,
+				text: "Esta acción no se puede revertir",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+				buttons: ["Cancelar", "Si, Borrar"],
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+					form.submit();
+				}
+			});
+		});
+	</script>
+
+	@endsection

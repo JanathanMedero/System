@@ -64,9 +64,13 @@ Route::middleware(['auth'])->group(function () {
     Route::put('orden-de-servicio-en-sitio/anticipo/{id}', [ServiceOrderSiteController::class, 'add_advance'])->name('siteOrder.update.advance');
     Route::post('orden-de-servicio-en-sitio/{id}/nuevo-servicio', [ServiceOrderSiteController::class, 'add_service'])->name('siteOrder.addService');
     Route::post('orden-de-servicio-en-sitio/{id}/cancelada', [ServiceOrderSiteController::class, 'update_status'])->name('siteOrder.updateStatus');
+    Route::put('orden-de-servicio-en-sitio/{id}/datos-actualizados', [ServiceOrderSiteController::class, 'update'])->name('siteOrder.update');
+    Route::put('orden-de-servicio-en-sitio/servicio/{id}/datos-actualizados', [ServiceOrderSiteController::class, 'update_service'])->name('siteOrder.updateService');
+    Route::delete('orden-de-servicio-en-sitio/servicio/{id}/eliminado', [ServiceOrderSiteController::class, 'destroy_service'])->name('siteOrder.destroyService');
 
     //PDF
     Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');
     Route::get('orden-de-servicio/{id}/PDF', [PDFController::class, 'serviceOrder'])->name('pdf.serviceOrder');
+    Route::get('orden-de-servicio-en-sitio/{id}/PDF', [PDFController::class, 'serviceOnSite'])->name('pdf.serviceOnSite');
 
 });

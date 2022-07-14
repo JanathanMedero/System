@@ -68,7 +68,9 @@ class ServiceOrderSiteController extends Controller
 
 		$subtotal = ($total - $order->advance);
 
-		return view('auth.siteOrder.show', compact('order', 'total', 'subtotal'));
+		$employees = User::all();
+
+		return view('auth.siteOrder.show', compact('order', 'total', 'subtotal', 'employees'));
 	}
 
 	public function add_advance(Request $request, $id)
@@ -118,5 +120,45 @@ class ServiceOrderSiteController extends Controller
             $order->save();
             return back()->with('success', 'Orden activada correctamente');
         }
+	}
+
+	public function update(Request $request, $id)
+	{
+		$order = ServiceOrderSite::where('id', $id)->first();
+
+		$order->employe_id 		= $request->employe_id;
+		$order->office_id 		= $request->office_id;
+		$order->date_of_service = $request->date_of_service;
+		$order->observations 	= $request->observations;
+		$order->save();
+
+		return back()->with('success', 'Orden actualizada correctamente');
+	}
+
+	public function update_service(Request $request, $id)
+	{
+		$service = ServicesOnSites::where('id', $id)->first();
+
+		$random = Str::random(25);
+
+		$service->name = $request->name;
+		$service->slug = Str::slug($request->name.'-'.$random);
+		$service->quantity = $request->quantity;
+		$service->net_price = $request->net_price;
+		$service->description = $request->description;
+
+		$service->save();
+
+		return back()->with('success', 'Servicio actualizado correctamente');
+	}
+
+	public function destroy_service($id)
+	{
+		$service = ServicesOnSites::where('id', $id)->first();
+
+		$service->delete();
+
+		return back()->with('success', 'Servicio eliminado correctamente');
+
 	}
 }
