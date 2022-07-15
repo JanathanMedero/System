@@ -17,7 +17,7 @@ class CreateReportsTable extends Migration
             $table->id();
 
             $table->text('report');
-            $table->text('observations');
+            $table->text('observations')->nullable();
 
             $table->timestamps();
         });

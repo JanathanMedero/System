@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Client;
+use App\Models\Report;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,6 +32,6 @@ class ServiceOrder extends Model
 
     public function report()
     {
-        return $this->hasOne(Report::class);
+        return $this->belongsTo(Report::class, 'report_id');
     }
 }

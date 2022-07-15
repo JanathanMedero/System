@@ -55,6 +55,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('orden-de-servicio/{id}', [ServiceOrderController::class, 'show'])->name('serviceOrder.show');
     Route::put('orden-de-servicio/{id}', [ServiceOrderController::class, 'update'])->name('serviceOrder.update');
     Route::post('orden-de-servicio/{id}/cancelada', [ServiceOrderController::class, 'update_status'])->name('serviceOrder.updateStatus');
+    Route::post('orden-de-servicio/{id}/reporte-tecnico', [ServiceOrderController::class, 'report'])->name('serviceOrder.report');
+    Route::put('orden-de-servicio/{id}/reporte-tecnico-editado', [ServiceOrderController::class, 'report_update'])->name('serviceOrder.reportUpdate');
 
     //Orden de servicio en sitio
     Route::get('ordenes-de-servicio-en-sitio', [ServiceOrderSiteController::class, 'index'])->name('serviceSite.index');

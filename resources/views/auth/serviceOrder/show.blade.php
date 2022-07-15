@@ -23,7 +23,7 @@
 			<div class="card">
 				<div class="card-body">
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-6 mb-4">
 							<div class="row">
 								<div class="col-lg-12">
 									<h4 class="mb-0"><strong>Orden de servicio: {{ $order->id }}</strong></h4>
@@ -38,6 +38,94 @@
 						<div class="col-lg-6 d-flex align-items-center justify-content-end">
 							<div class="row">
 								<div class="d-flex justify-content-end">
+									@if($order->report)
+									<div>
+										<button type="button" class="btn rounded-pill btn-info mx-3" data-bs-toggle="modal" data-bs-target="#report-update">
+											<span class="tf-icons bx bx-edit"></span>&nbsp; Editar reporte
+										</button>
+									</div>
+
+									<div class="modal fade" id="report-update" tabindex="-1" aria-hidden="true">
+										<div class="modal-dialog modal-lg" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel3">Editar reporte</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<form action="{{ route('serviceOrder.reportUpdate', $order->id) }}" method="POST">
+													@method('PUT')
+													@csrf
+													<div class="modal-body">
+														<div class="row">
+															<div class="col mb-3">
+																<label for="report" class="form-label">Reporte técnico</label>
+																<textarea type="text" name="report" id="report" class="form-control" placeholder="Ingrese el reporte técnico." style="resize: none;" rows="3" required>{{ $order->report->report }}</textarea>
+															</div>
+														</div>
+
+
+														<div class="row g-2 mt-2">
+															<div class="col mb-0">
+																<label for="observations" class="form-label">Observaciones (Opcional)</label>
+																<textarea type="text" name="observations" id="observations" class="form-control" placeholder="Ingrese las observaciones del equipo" style="resize: none;" rows="3">{{ $order->report->observations }}</textarea>
+															</div>
+														</div>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+															Cancelar
+														</button>
+														<button type="submit" class="btn btn-primary">Guardar</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+
+									@else
+									<div>
+										<button type="button" class="btn rounded-pill btn-success mx-3" data-bs-toggle="modal" data-bs-target="#report">
+											<span class="tf-icons bx bx-edit"></span>&nbsp; Levantar reporte
+										</button>
+									</div>
+
+									<div class="modal fade" id="report" tabindex="-1" aria-hidden="true">
+										<div class="modal-dialog modal-lg" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel3">Levantar reporte</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<form action="{{ route('serviceOrder.report', $order->id) }}" method="POST">
+													@csrf
+													<div class="modal-body">
+														<div class="row">
+															<div class="col mb-3">
+																<label for="report" class="form-label">Reporte técnico</label>
+																<textarea type="text" name="report" id="report" class="form-control" placeholder="Ingrese el reporte técnico." style="resize: none;" rows="3" required>{{ old('report') }}</textarea>
+															</div>
+														</div>
+
+
+														<div class="row g-2 mt-2">
+															<div class="col mb-0">
+																<label for="observations" class="form-label">Observaciones (Opcional)</label>
+																<textarea type="text" name="observations" id="observations" class="form-control" placeholder="Ingrese las observaciones del equipo" style="resize: none;" rows="3">{{ old('observations') }}</textarea>
+															</div>
+														</div>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+															Cancelar
+														</button>
+														<button type="submit" class="btn btn-primary">Guardar</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									@endif
+
 									<div>
 										<button type="button" class="btn rounded-pill btn-info mx-3" data-bs-toggle="modal" data-bs-target="#largeModal">
 											<span class="tf-icons bx bx-edit"></span>&nbsp; Editar orden
@@ -140,40 +228,118 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-12">
-							<hr class="mb-0">
+						<div class="col-lg-6">
+							<div class="demo-inline-spacing mt-4">
+								<ul class="list-group">
+									<li class="list-group-item d-flex align-items-center">
+										<i class="bx bx-laptop me-2"></i>
+										<p class="mb-0"><strong>Equipo:</strong> {{ $order->service->equip }}</p>
+									</li>
+									<li class="list-group-item d-flex align-items-center">
+										<i class="bx bx-at me-2"></i>
+										<p class="mb-0"><strong>Modelo o marca:</strong> {{ $order->service->brand }}</p>
+									</li>
+									<li class="list-group-item d-flex align-items-center">
+										<i class="bx bx-receipt me-2"></i>
+										<p class="mb-0"><strong>Características:</strong> {{ $order->service->features }}</p>
+									</li>
+
+									@if($order->service->serie)
+									<li class="list-group-item d-flex align-items-center">
+										<i class="bx bx-barcode me-2"></i>
+										<p class="mb-0"><strong>No. de serie:</strong> {{ $order->service->serie }}</p>
+									</li>
+									@else
+									<li class="list-group-item d-flex align-items-center">
+										<i class="bx bx-barcode me-2"></i>
+										<p class="mb-0"><strong>No. de serie:</strong> No registrado</p>
+									</li>
+									@endif
+								</ul>
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12 mt-4">
-							<ul>
-								<li><p class="mb-1" style="font-size: 16px;"><strong>Equipo: </strong>{{ $order->service->equip }}</p></li>
-								<li><p class="mb-1" style="font-size: 16px;"><strong>Modelo o marca: </strong>{{ $order->service->brand }}</p></li>
-								<li><p class="mb-1" style="font-size: 16px;"><strong>Características: </strong>{{ $order->service->features }}</p></li>
-								@if($order->service->serie)
-								<li><p class="mb-1" style="font-size: 16px;"><strong>No. serie: </strong>{{ $order->service->serie }}</p></li>
-								@else
-								<li><p class="mb-1" style="font-size: 16px;"><strong>No. serie: </strong>No registrado</p></li>
-								@endif
-								@if($order->service->accesories)
-								<li><p class="mb-1" style="font-size: 16px;"><strong>Accesorios: </strong>{{ $order->service->accesories }}</p></li>
-								@else
-								<li><p class="mb-1" style="font-size: 16px;"><strong>Accesorios: </strong>No se registraron accesorios</p></li>
-								@endif
-								<li><p class="mb-1" style="font-size: 16px;"><strong>Falla: </strong>{{ $order->service->failure }}</p></li>
-								<li><p class="mb-1" style="font-size: 16px;"><strong>Servicio solicitado: </strong>{{ $order->service->solicited_service }}</p></li>
-								@if($order->service->observations)
-								<li><p class="mb-1" style="font-size: 16px;"><strong>Observaciones: </strong>{{ $order->service->observations }}</p></li>
-								@else
-								<li><p class="mb-1" style="font-size: 16px;"><strong>Observaciones: </strong>No se registraron observaciones</p></li>
-								@endif
-							</ul>
+
+						<div class="col-lg-6">
+							<div class="demo-inline-spacing mt-4">
+								<ul class="list-group">
+									@if($order->service->accesories)
+									<li class="list-group-item d-flex align-items-center">
+										<i class="bx bx-plug me-2"></i>
+										<p class="mb-0"><strong>Accesorios:</strong> {{ $order->service->accesories }}</p>
+									</li>
+									@else
+									<li class="list-group-item d-flex align-items-center">
+										<i class="bx bx-plug me-2"></i>
+										<p class="mb-0"><strong>Accesorios:</strong> No registrado</p>
+									</li>
+									@endif
+									<li class="list-group-item d-flex align-items-center">
+										<i class="bx bx-x-circle me-2"></i>
+										<p class="mb-0"><strong>Falla:</strong> {{ $order->service->failure }}</p>
+									</li>
+									<li class="list-group-item d-flex align-items-center">
+										<i class="bx bx-flag me-2"></i>
+										<p class="mb-0"><strong>Servicio solicitado:</strong> {{ $order->service->solicited_service }}</p>
+									</li>
+
+									@if($order->service->observations)
+									<li class="list-group-item d-flex align-items-center">
+										<i class="bx bx-show-alt me-2"></i>
+										<p class="mb-0"><strong>Observaciones:</strong> {{ $order->service->observations }}</p>
+									</li>
+									@else
+									<li class="list-group-item d-flex align-items-center">
+										<i class="bx bx-show-alt me-2"></i>
+										<p class="mb-0"><strong>Observaciones:</strong> No registrado</p>
+									</li>
+									@endif
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	@if($order->report)
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-lg-12">
+							<h3 class="mb-0"><strong>Reporte técnico</strong></h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 mt-4">
+							<div class="input-group">
+								<span class="input-group-text">Reporte técnico</span>
+								<textarea class="form-control" aria-label="With textarea" rows="2" style="resize: none;" readonly>{{ $order->report->report }}</textarea>
+							</div>
+						</div>
+						@if($order->report->observations)
+						<div class="col-lg-6 mt-4">
+							<div class="input-group">
+								<span class="input-group-text">Observaciones</span>
+								<textarea class="form-control" aria-label="With textarea" rows="2" style="resize: none;" readonly>{{ $order->report->observations }}</textarea>
+							</div>
+						</div>
+						@else
+						<div class="col-lg-6 mt-4">
+							<div class="input-group">
+								<span class="input-group-text">Observaciones</span>
+								<textarea class="form-control" aria-label="With textarea" rows="2" style="resize: none;" readonly>No se registraron observaciones</textarea>
+							</div>
+						</div>
+						@endif
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	@endif
 
 </div>
 

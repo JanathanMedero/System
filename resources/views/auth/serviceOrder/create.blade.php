@@ -89,21 +89,6 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-lg-4">
-									<label for="pay" class="form-label">Seleccione el tipo de pago:</label>
-								<div class="mb-3 input-group">
-									<select class="form-select" id="pay" name="pay" required>
-										<option value="Pago en efectivo" {{ old('pay') == 'Pago en efectivo' ? 'selected' : '' }}>Pago en efectivo</option>
-										<option value="Transferencia" {{ old('pay') == 'Transferencia' ? 'selected' : '' }}>Transferencia</option>
-										<option value="Pago con tarjeta" {{ old('pay') == 'Pago con tarjeta' ? 'selected' : '' }}>Pago con tarjeta</option>
-										<option value="Cheque" {{ old('pay') == 'Cheque' ? 'selected' : '' }}>Cheque</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<label class="form-label" for="invoice">No. de factura (Opcional)</label>
-								<input type="text" class="form-control" name="invoice" id="invoice" placeholder="Ingresa el número de factura" value="{{ old('invoice') }}">
-							</div>
 						</div>
 
 						<div class="row">
