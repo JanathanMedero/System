@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Report;
 use App\Models\ServiceOrderSite;
 use App\Models\ServicesOnSites;
 use App\Models\User;
@@ -160,5 +161,45 @@ class ServiceOrderSiteController extends Controller
 
 		return back()->with('success', 'Servicio eliminado correctamente');
 
+	}
+
+	public function report_update(Request $request, $id)
+	{
+		$order = ServiceOrderSite::where('id', $id)->first();
+
+		$report = Report::where('id', $order->report_id)->first();
+
+		$report->report = $request->report;
+		$report->observations = $request->observations;
+
+		$report->save();
+
+		return back()->with('success', 'Reporte actualizado correctamente');
+	}
+
+	public function report(Request $request, $id)
+	{
+		$order = ServiceOrderSite::where('id', $id)->first();
+
+		DB::beginTransaction();
+
+		try {
+
+			$report = Report::create([
+				'report' 		=> $request->report,
+				'observations' 	=> $request->observations,
+			]);
+
+			$order->report_id = $report->id;
+			$order->save();
+
+			DB::commit();
+
+			return back()->with('success', 'Reporte agregado correctamente');
+
+		} catch (\Exception $e) {
+			DB::rollback();
+			return $e->getMessage();
+		}
 	}
 }

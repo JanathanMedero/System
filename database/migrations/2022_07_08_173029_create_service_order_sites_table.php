@@ -19,6 +19,9 @@ class CreateServiceOrderSitesTable extends Migration
             $table->unsignedBigInteger('employe_id');
             $table->foreign('employe_id')->references('id')->on('users');
 
+            $table->unsignedBigInteger('report_id')->nullable();
+            $table->foreign('report_id')->references('id')->on('reports');
+
             $table->unsignedBigInteger('client_id')->nullable();
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
 

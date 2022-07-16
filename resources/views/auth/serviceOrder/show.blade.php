@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container-xxl flex-grow-1 container-p-y">
+<div class="container-xxl flex-grow-1 container-p-y pt-0">
 
 	@if ($errors->any())
 	<div class="alert alert-danger" role="alert">
@@ -17,6 +17,14 @@
 	</div>
 	@endif
 
+
+	<div class="row">
+		<div class="col d-flex justify-content-end mb-4">
+			<a href="{{ route('pdf.serviceOrder', $order->id) }}" target="_blank" type="button" class="btn rounded-pill btn-danger">
+				<span class="tf-icons bx bx-printer"></span>&nbsp; Imprimir orden
+			</a>
+		</div>
+	</div>
 
 	<div class="row">
 		<div class="col-lg-12 mb-4">
@@ -40,7 +48,7 @@
 								<div class="d-flex justify-content-end">
 									@if($order->report)
 									<div>
-										<button type="button" class="btn rounded-pill btn-info mx-3" data-bs-toggle="modal" data-bs-target="#report-update">
+										<button type="button" class="btn rounded-pill btn-warning mx-3" data-bs-toggle="modal" data-bs-target="#report-update">
 											<span class="tf-icons bx bx-edit"></span>&nbsp; Editar reporte
 										</button>
 									</div>
@@ -216,12 +224,6 @@
 												</form>
 											</div>
 										</div>
-									</div>
-
-									<div>
-										<a href="{{ route('pdf.serviceOrder', $order->id) }}" target="_blank" type="button" class="btn rounded-pill btn-danger">
-											<span class="tf-icons bx bx-printer"></span>&nbsp; Imprimir orden
-										</a>
 									</div>
 								</div>
 							</div>

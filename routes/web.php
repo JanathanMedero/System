@@ -69,6 +69,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('orden-de-servicio-en-sitio/{id}/datos-actualizados', [ServiceOrderSiteController::class, 'update'])->name('siteOrder.update');
     Route::put('orden-de-servicio-en-sitio/servicio/{id}/datos-actualizados', [ServiceOrderSiteController::class, 'update_service'])->name('siteOrder.updateService');
     Route::delete('orden-de-servicio-en-sitio/servicio/{id}/eliminado', [ServiceOrderSiteController::class, 'destroy_service'])->name('siteOrder.destroyService');
+    Route::post('orden-de-servicio-en-sitio/{id}/reporte-tecnico', [ServiceOrderSiteController::class, 'report'])->name('siteOrder.report');
+    Route::put('orden-de-servicio-en-sitio/{id}/reporte-tecnico-editado', [ServiceOrderSiteController::class, 'report_update'])->name('siteOrder.reportUpdate');
 
     //PDF
     Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');

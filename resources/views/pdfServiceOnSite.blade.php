@@ -136,13 +136,15 @@
 		  @endforeach
 		</table>
 
+		@if($order->observations)
 		<div style="width: 100%;" class="mt-4">
 			<div style="width: 100%; display: inline-block;">
 				<p class="text-format"><strong>Observaciones: </strong>{{ $order->observations }}</p>
 			</div>
 		</div>
+		@endif
 
-		<div style="width: 100%;">
+		<div style="width: 100%;" class="mt-4">
 			@if($order->advance)
 			<div style="width: 25%; display:inline-block;">
 				<p class="text-format"><strong>Anticipo: </strong>$ {{ $order->advance }}.00</p>

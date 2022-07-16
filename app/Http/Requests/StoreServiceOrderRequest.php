@@ -31,7 +31,6 @@ class StoreServiceOrderRequest extends FormRequest
             'solicited_service'     => 'required',
             'employe_id'            => 'required',
             'office_id'             => 'required',
-            'pay'                   => 'required',
         ];
     }
 
@@ -45,7 +44,6 @@ class StoreServiceOrderRequest extends FormRequest
             'solicited_service.required'    => 'Ingrese el servicio solicitado',
             'employe_id.required'           => 'Seleccione la persona que atendio',
             'office_id.required'            => 'Seleccione una sucursal',
-            'pay.required'                  => 'Ingrese el metodo de pago',
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Client;
+use App\Models\Report;
 use App\Models\ServicesOnSites;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,5 +28,10 @@ class ServiceOrderSite extends Model
     public function employe()
     {
         return $this->belongsTo(User::class, 'employe_id', 'id');
+    }
+
+    public function report()
+    {
+        return $this->belongsTo(Report::class, 'report_id');
     }
 }

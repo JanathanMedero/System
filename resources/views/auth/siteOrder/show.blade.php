@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container-xxl flex-grow-1 container-p-y">
+<div class="container-xxl flex-grow-1 container-p-y pt-0">
 
 	@if ($errors->any())
 	<div class="alert alert-danger" role="alert">
@@ -17,6 +17,13 @@
 	</div>
 	@endif
 
+	<div class="row">
+		<div class="col d-flex justify-content-end mb-4">
+			<a href="{{ route('pdf.serviceOnSite', $order->id) }}" target="_blank" type="button" class="btn rounded-pill btn-danger">
+				<span class="tf-icons bx bx-printer"></span>&nbsp; Imprimir orden
+			</a>
+		</div>
+	</div>
 
 	<div class="row">
 		<div class="col-lg-12 mb-4">
@@ -39,6 +46,93 @@
 							<div class="row">
 								<div class="d-flex justify-content-end">
 									<div>
+
+										@if($order->report)
+
+										<button type="button" class="btn rounded-pill btn-warning mx-3" data-bs-toggle="modal" data-bs-target="#report-update">
+											<span class="tf-icons bx bx-edit"></span>&nbsp; Editar reporte
+										</button>
+
+
+										<div class="modal fade" id="report-update" tabindex="-1" aria-hidden="true">
+											<div class="modal-dialog modal-lg" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel3">Editar reporte</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<form action="{{ route('siteOrder.reportUpdate', $order->id) }}" method="POST">
+														@method('PUT')
+														@csrf
+														<div class="modal-body">
+															<div class="row">
+																<div class="col mb-3">
+																	<label for="report" class="form-label">Reporte técnico</label>
+																	<textarea type="text" name="report" id="report" class="form-control" placeholder="Ingrese el reporte técnico." style="resize: none;" rows="3" required>{{ $order->report->report }}</textarea>
+																</div>
+															</div>
+
+
+															<div class="row g-2 mt-2">
+																<div class="col mb-0">
+																	<label for="observations" class="form-label">Observaciones (Opcional)</label>
+																	<textarea type="text" name="observations" id="observations" class="form-control" placeholder="Ingrese las observaciones del equipo" style="resize: none;" rows="3">{{ $order->report->observations }}</textarea>
+																</div>
+															</div>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+																Cancelar
+															</button>
+															<button type="submit" class="btn btn-primary">Guardar</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+										@else
+
+										<button type="button" class="btn rounded-pill btn-success mx-3" data-bs-toggle="modal" data-bs-target="#report">
+											<span class="tf-icons bx bx-edit"></span>&nbsp; Levantar reporte
+										</button>
+
+										<div class="modal fade" id="report" tabindex="-1" aria-hidden="true">
+											<div class="modal-dialog modal-lg" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel3">Levantar reporte</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<form action="{{ route('siteOrder.report', $order->id) }}" method="POST">
+														@csrf
+														<div class="modal-body">
+															<div class="row">
+																<div class="col mb-3">
+																	<label for="report" class="form-label">Reporte técnico</label>
+																	<textarea type="text" name="report" id="report" class="form-control" placeholder="Ingrese el reporte técnico." style="resize: none;" rows="3" required>{{ old('report') }}</textarea>
+																</div>
+															</div>
+
+
+															<div class="row g-2 mt-2">
+																<div class="col mb-0">
+																	<label for="observations" class="form-label">Observaciones (Opcional)</label>
+																	<textarea type="text" name="observations" id="observations" class="form-control" placeholder="Ingrese las observaciones del equipo" style="resize: none;" rows="3">{{ old('observations') }}</textarea>
+																</div>
+															</div>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+																Cancelar
+															</button>
+															<button type="submit" class="btn btn-primary">Guardar</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+										@endif
+
 										<button type="button" class="btn rounded-pill btn-dark mx-3" data-bs-toggle="modal" data-bs-target="#advance">
 											<span class="tf-icons bx bx-dollar"></span>&nbsp; Agregar anticipo
 										</button>
@@ -132,7 +226,7 @@
 											</div>
 										</div>
 
-										<button type="button" class="btn rounded-pill btn-info mx-3" data-bs-toggle="modal" data-bs-target="#edit-order">
+										<button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#edit-order">
 											<span class="tf-icons bx bx-edit"></span>&nbsp; Editar orden
 										</button>
 
@@ -196,11 +290,6 @@
 											</div>
 										</div>
 
-									</div>
-									<div>
-										<a href="{{ route('pdf.serviceOnSite', $order->id) }}" target="_blank" type="button" class="btn rounded-pill btn-danger">
-											<span class="tf-icons bx bx-printer"></span>&nbsp; Imprimir orden
-										</a>
 									</div>
 								</div>
 							</div>
@@ -326,32 +415,71 @@
 		</div>
 	</div>
 
+	@if($order->report)
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-lg-12">
+							<h3 class="mb-0"><strong>Reporte técnico</strong></h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 mt-4">
+							<div class="input-group">
+								<span class="input-group-text">Reporte técnico</span>
+								<textarea class="form-control" aria-label="With textarea" rows="2" style="resize: none;" readonly>{{ $order->report->report }}</textarea>
+							</div>
+						</div>
+						@if($order->report->observations)
+						<div class="col-lg-6 mt-4">
+							<div class="input-group">
+								<span class="input-group-text">Observaciones</span>
+								<textarea class="form-control" aria-label="With textarea" rows="2" style="resize: none;" readonly>{{ $order->report->observations }}</textarea>
+							</div>
+						</div>
+						@else
+						<div class="col-lg-6 mt-4">
+							<div class="input-group">
+								<span class="input-group-text">Observaciones</span>
+								<textarea class="form-control" aria-label="With textarea" rows="2" style="resize: none;" readonly>No se registraron observaciones</textarea>
+							</div>
+						</div>
+						@endif
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	@endif
+
 </div>
 
 @endsection
 
 @section('extra-js')
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
-	<script type="text/javascript">
-		$('.form-delete').click(function(event) {
-			var form =  $(this).closest("form");
-			var name = $(this).data("name");
-			event.preventDefault();
-			swal({
-				title: `Esta seguro que desea eliminar este servicio?`,
-				text: "Esta acción no se puede revertir",
-				icon: "warning",
-				buttons: true,
-				dangerMode: true,
-				buttons: ["Cancelar", "Si, Borrar"],
-			})
-			.then((willDelete) => {
-				if (willDelete) {
-					form.submit();
-				}
-			});
+<script type="text/javascript">
+	$('.form-delete').click(function(event) {
+		var form =  $(this).closest("form");
+		var name = $(this).data("name");
+		event.preventDefault();
+		swal({
+			title: `Esta seguro que desea eliminar este servicio?`,
+			text: "Esta acción no se puede revertir",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+			buttons: ["Cancelar", "Si, Borrar"],
+		})
+		.then((willDelete) => {
+			if (willDelete) {
+				form.submit();
+			}
 		});
-	</script>
+	});
+</script>
 
-	@endsection
+@endsection
