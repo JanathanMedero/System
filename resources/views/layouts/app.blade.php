@@ -7,7 +7,9 @@
 		<!-- CSRF Token -->
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<title>Iniciar sesión</title>
+		<link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/png">
+
+		<title>Sistema Pyscom - Inicio de sesión</title>
 
 		<!-- Scripts -->
 		<script src="{{ asset('js/app.js') }}" defer></script>
