@@ -7,7 +7,7 @@
 		<!-- CSRF Token -->
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<title>{{ config('app.name', 'Laravel') }}</title>
+		<title>Iniciar sesión</title>
 
 		<!-- Scripts -->
 		<script src="{{ asset('js/app.js') }}" defer></script>
@@ -18,13 +18,28 @@
 
 		<!-- Styles -->
 		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+		<link rel="stylesheet" href="{{ asset('assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
+    	<link rel="stylesheet" href="{{ asset('assets/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
+    	<link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
+
+    	<link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
+
+    	<link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }}" />
+
+    	<script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
+
+    	<script src="{{ asset('assets/js/config.js') }}"></script>
+
+		@yield('extra-css')
+
 	</head>
 	<body>
 		<div id="app">
-			<nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
+			{{-- <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
 				<div class="container">
 					<div class="col-1">
-						<a class="navbar-brand text-white" href="{{ route('home') }}">
+						<a class="navbar-brand text-white" href="{{ route('login') }}">
 							<img src="{{ asset('images/logo.png') }}" class="img-fluid">
 						</a>
 					</div>
@@ -69,13 +84,32 @@
 						@endguest
 					</ul>
 				</div>
-			</div>
+			</div> --}}
 		</nav>
 
 
-		<main class="py-4">
+		<main>
 			@yield('content')
 		</main>
 	</div>
+
+	<!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
+    <script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+
+    <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+
 </body>
+
+@yield('extra-js')
+
 </html>

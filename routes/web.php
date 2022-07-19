@@ -13,7 +13,9 @@ use App\Http\Middleware\ControlAccessMiddleware;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::redirect('/', 'login')->name('login');
 
 Auth::routes();
 

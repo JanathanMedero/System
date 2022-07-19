@@ -75,5 +75,19 @@ class DatabaseSeeder extends Seeder
             'password'  => Hash::make('logistica.pyscom2021'),
         ]);
 
+        DB::table('users')->insert([
+            'role_id'   => $RolEmpleado->id,
+            'name'      => 'Estefany',
+            'email'     => 'ventasvirrey@pyscom.com',
+            'password'  => Hash::make('ventas.virrey.pyscom.2021'),
+        ]);
+
+        DB::table('users')->insert([
+            'role_id'   => $RolEmpleado->id,
+            'name'      => 'Jessica Hernandez Pille',
+            'email'     => 'adminvirrey@pyscom.com',
+            'password'  => Hash::make('adminvirrey.pyscom.2021'),
+        ]);
+
     }
 }

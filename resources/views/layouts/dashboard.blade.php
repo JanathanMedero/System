@@ -146,6 +146,7 @@ data-template="vertical-menu-template-free"
 					<span class="menu-header-text">Sistema de ordenes</span>
 				</li>
 
+				@auth
 				@if(Auth::user()->role->id == 1)
 				<li class="menu-item {{ (request()->is('empleados')) ? 'active' : '' }}">
 					<a href="{{ route('employe.index') }}" class="menu-link">
@@ -154,6 +155,8 @@ data-template="vertical-menu-template-free"
 					</a>
 				</li>
 				@endif
+				@endauth
+
 				<li class="menu-item {{ (request()->is('clientes')) ? 'active' : '' }}">
 					<a href="{{ route('client.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-user"></i>
@@ -212,9 +215,11 @@ data-template="vertical-menu-template-free"
 
 			<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 				<!-- Search -->
+				@auth
 				<div class="navbar-nav align-items-center">
 					<p class="mb-0"><strong><h4 class="mb-0">Bienvenid@: {{ Auth::user()->name }}</h4></strong></p>
 				</div>
+				@endauth
 				<!-- /Search -->
 
 				<ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -237,9 +242,11 @@ data-template="vertical-menu-template-free"
 											</div>
 										</div>
 										<div class="flex-grow-1">
+											@auth
 											<span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
 											@if(Auth::user()->role->id == 1)
 											<small class="text-muted">Administrador</small>
+											@endauth
 											@else
 											<small class="text-muted">Empleado</small>
 											@endif
