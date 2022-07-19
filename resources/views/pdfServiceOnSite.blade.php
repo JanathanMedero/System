@@ -147,11 +147,11 @@
 		<div style="width: 100%;" class="mt-4">
 			@if($order->advance)
 			<div style="width: 25%; display:inline-block;">
-				<p class="text-format"><strong>Anticipo: </strong>$ {{ $order->advance }}.00</p>
+				<p class="text-format"><strong>Anticipo: </strong>${{ $order->advance }}.00</p>
 			</div>
 			@endif
-			<div style="width: 25%; display:inline-block;">
-				<p class="text-format"><strong>Total NETO: </strong>$ {{ $total }}.00</p>
+			<div style="width: 30%; display:inline-block;">
+				<p class="text-format"><strong>Total NETO: </strong>${{ $total }}.00</p>
 			</div>
 			<div style="width: 40%; display:inline-block;">
 				<p class="text-format" style="text-align: right;"><strong>TOTAL A PAGAR: </strong><u>${{ $subtotal }}.00</p>

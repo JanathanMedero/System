@@ -82,9 +82,15 @@
 			<div style="width: 50%; display: inline-block;">
 				<p class="text-format mb-0"><strong>NOMBRE: </strong><u>{{ $order->client->name }}</u></p>
 			</div>
+			@if($order->client->phone)
 			<div style="width: 25%; display: inline-block;">
 				<p class="text-format mb-0"><strong>TEL.: </strong><u>{{ $order->client->phone }}</u></p>
 			</div>
+			@else
+			<div style="width: 25%; display: inline-block;">
+				<p class="text-format mb-0"><strong>TEL.: </strong><u>Sin registrar</u></p>
+			</div>
+			@endif
 			@if($order->client->rfc)
 			<div style="width: 20%; display: inline-block;">
 				<p class="text-format mb-0"><strong>RFC: </strong><u>{{ $order->client->rfc }}</u></p>
