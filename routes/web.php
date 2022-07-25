@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SaleOrderController;
 use App\Http\Controllers\ServiceController;
@@ -78,5 +79,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');
     Route::get('orden-de-servicio/{id}/PDF', [PDFController::class, 'serviceOrder'])->name('pdf.serviceOrder');
     Route::get('orden-de-servicio-en-sitio/{id}/PDF', [PDFController::class, 'serviceOnSite'])->name('pdf.serviceOnSite');
+
+    Route::get('inventario', [InventoryController::class, 'index'])->name('inventory');
 
 });

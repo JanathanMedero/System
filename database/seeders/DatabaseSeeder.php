@@ -89,5 +89,29 @@ class DatabaseSeeder extends Seeder
             'password'  => Hash::make('adminvirrey.pyscom.2021'),
         ]);
 
+        DB::table('categories')->insert([
+            'name' => 'Toner',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Redes',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Accesorios',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Energía',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Perifericos',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Papelería',
+        ]);
+
     }
 }
