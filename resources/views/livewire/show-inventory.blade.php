@@ -2,10 +2,10 @@
 	<!-- Bordered Table -->
 	<div class="card">
 		<div class="row">
-			<div class="col-lg-4 mt-2">
+			<div class="col-lg-3 mt-2">
 				<h4 class="mt-4 mx-4 mb-0"><strong>Tabla de inventario</strong></h4>
 			</div>
-			<div class="col-lg-6 mt-4 px-4">
+			<div class="col-lg-5 mt-4 px-4">
 				<div class="row d-flex justify-content-end">
 					<div class="col-md-12 px-4">
 						<div class="input-group input-group-merge">
@@ -15,8 +15,40 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-2 d-flex justify-content-end mt-4">
-				<button type="button" class="btn btn-success mx-4" data-bs-toggle="modal" data-bs-target="#new-product">Nuevo producto</button>
+
+			<div class="col-lg-4 d-flex justify-content-around mt-4">
+				<div>
+					<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#new-category">Agregar categoría</button>
+				</div>
+				<div>
+					<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#new-product">Nuevo producto</button>
+				</div>
+			</div>
+
+			<div class="modal fade" id="new-category" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel1">Nueva categoría</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<form action="{{ route('category.store') }}" method="POST">
+							@csrf
+							<div class="modal-body">
+								<div class="row">
+									<div class="col mb-3">
+										<label for="nameBasic" class="form-label">Nombre de la categoría</label>
+										<input type="text" id="nameBasic" name="name" class="form-control" placeholder="Ingrese el nombre de la categoría" required />
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+								<button type="submit" class="btn btn-primary">Guardar</button>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 
 			<div class="modal fade" id="new-product" tabindex="-1" aria-hidden="true" wire:ignore.self>
@@ -137,7 +169,7 @@
 							<td>{{ Str::limit($product->description, 40) }}</td>
 							<td>{{ $product->brand }}</td>
 							<td>{{ $product->category->name }}</td>
-							<td>{{ $product->public_price }}</td>
+							<td>${{ $product->public_price }}</td>
 							<td>{{ $product->stock_total }}</td>
 							<td>
 								<div class="d-flex justify-content-around">

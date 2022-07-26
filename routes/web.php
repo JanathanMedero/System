@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeController;
@@ -81,5 +82,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('orden-de-servicio-en-sitio/{id}/PDF', [PDFController::class, 'serviceOnSite'])->name('pdf.serviceOnSite');
 
     Route::get('inventario', [InventoryController::class, 'index'])->name('inventory');
+
+
+    Route::post('inventario/nueva-categoria', [CategoryController::class, 'store'])->name('category.store');
 
 });

@@ -49,7 +49,7 @@ class ShowInventory extends Component
     public function render()
     {
          $products = Inventory::where('description', 'like', '%' . $this->search . '%')
-        ->orderBy('created_at', 'ASC')->paginate(10);
+        ->orderBy('created_at', 'DESC')->paginate(10);
 
         $categories = Category::all();
 
