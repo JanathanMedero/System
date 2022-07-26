@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\ServiceOrder;
 use App\Models\User;
 use DB;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ServiceOrderController extends Controller
@@ -26,11 +27,14 @@ class ServiceOrderController extends Controller
 	{
 		$client = Client::where('slug', $slug)->first();
 
+		$random = Str::random(15);
+
 		DB::beginTransaction();
 
 		try{
 
 			$serviceOrder = ServiceOrder::create([
+				'folio'			=> $random,
 				'employe_id'    => $request->employe_id,
 				'client_id'     => $client->id,
 				'office_id'     => $request->office_id,

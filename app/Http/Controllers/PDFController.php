@@ -8,6 +8,7 @@ use App\Models\ServiceOrderSite;
 use App\Models\User;
 use Carbon\carbon;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use PDF;
 
 class PDFController extends Controller
@@ -30,8 +31,19 @@ class PDFController extends Controller
 
         $date = Carbon::parse($order->created_at)->format('d-m-Y');
 
+        $url = ('http://192.168.1.9:3000/show-order-service/client/'.$order->client->slug.'/order/'.$order->folio);
+
+        $qr = QrCode::size(150)->generate($url, '../public/qrcodes/qrcode-'.$order->folio.'.svg');
+
         $pdf = PDF::loadView('pdfServiceOrder', compact('order', 'date'));
         return $pdf->stream();
+    }
+
+    public function showOrderService($slug, $folio)
+    {
+        $order = ServiceOrder::where('folio', $folio)->first();
+
+        return view('qr.showOrderService', compact('order'));
     }
 
     public function serviceOnSite($id)

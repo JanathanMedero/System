@@ -13,7 +13,7 @@ class ServiceOrder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['employe_id', 'client_id', 'office_id', 'report_id', 'advance', 'pay', 'status'];
+    protected $fillable = ['folio','employe_id', 'client_id', 'office_id', 'report_id', 'advance', 'pay', 'status'];
 
     public function client()
     {

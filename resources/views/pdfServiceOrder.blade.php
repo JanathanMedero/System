@@ -62,9 +62,11 @@
 			<div class="px-4" style="width: 50%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Nombre: </strong><u>{{ $order->client->name }}</u></p>
 			</div>
+			@if($order->client->phone)
 			<div class="px-4" style="width: 49%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Teléfono: </strong><u>{{ $order->client->phone }}</u></p>
 			</div>
+			@endif
 		</div>
 
 		<div class="alert alert-info" style="width: 95%; margin-top: 10px;" role="alert">
@@ -167,14 +169,14 @@
 			</div>
 		</div>
 
-		{{-- <div style="width: 100%; margin-top: 15px;">
+		<div style="width: 100%; margin-top: 15px;">
 			<div style="width: 15%; display: inline-block;">
 				<img src="{{ asset('qrcodes/qrcode-'.$order->folio.'.svg') }}" style="width: 100%;">
 			</div>
 			<div style="width: 80%; display: inline-block; height: 106px; padding-left: 10px;">
 				<p class="text-format">Puede consultar el estatus de su servicio en todo momento, solamente escaneé el siguiente código QR.</p>
 			</div>
-		</div> --}}
+		</div>
 
 		<footer style="padding-top: 15px;">
 
