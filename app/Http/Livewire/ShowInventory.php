@@ -14,8 +14,14 @@ class ShowInventory extends Component
 
     public $category_id, $brand, $description, $public_price, $dealer_price, $stock_matriz, $stock_virrey, $stock_total, $investment, $gain_public, $dealer_profit, $key_sat, $description_sat;
 
+    public $modal = false;
+
     public function updated()
     {
+
+        if ($this->dealer_price == null) {
+            $this->dealer_price = 0;
+        }
 
         //Existencias totales
         if ($this->stock_matriz == null) {
@@ -37,27 +43,27 @@ class ShowInventory extends Component
             $this->investment = 0;
         }
 
-       $this->dealer_profit = ($this->dealer_price) - ($this->investment);
+        $this->dealer_profit = ($this->dealer_price) - ($this->investment);
 
         //Ganancia apúblico
 
-       $this->gain_public = ($this->public_price) - ($this->investment);
+        $this->gain_public = ($this->public_price) - ($this->investment);
 
 
     }
 
     public function render()
     {
-         $products = Inventory::where('description', 'like', '%' . $this->search . '%')
-        ->orderBy('created_at', 'DESC')->paginate(10);
+     $products = Inventory::where('description', 'like', '%' . $this->search . '%')
+     ->orderBy('created_at', 'DESC')->paginate(10);
 
-        $categories = Category::all();
+     $categories = Category::all();
 
-        return view('livewire.show-inventory', compact('products', 'categories'));
-    }
+     return view('livewire.show-inventory', compact('products', 'categories'));
+ }
 
-    public function storeProduct()
-    {
+     public function storeProduct()
+     {
         Inventory::create([
             'category_id'       => $this->category_id,
             'brand'             => $this->brand,
@@ -75,5 +81,79 @@ class ShowInventory extends Component
         ]);
 
         return redirect()->route('inventory')->with('success', 'Producto creado correctamente');
+    }
+
+    public function closeModal()
+    {
+        $this->modal = false;
+    }
+
+    public function openModal()
+    {
+        $this->modal = true;
+    }
+
+    public function clearData()
+    {
+        $this->category_id      = null;
+        $this->brand            = null;
+        $this->description      = null;
+        $this->public_price     = null;
+        $this->dealer_price     = null;
+        $this->stock_matriz     = null;
+        $this->stock_virrey     = null;
+        $this->stock_total      = null;
+        $this->investment       = null;
+        $this->gain_public      = null;
+        $this->dealer_profit    = null;
+        $this->key_sat          = null;
+        $this->description_sat  = null;
+    }
+
+    public function edit($product_id)
+    {
+
+            // $this->loading();
+
+        $product = Inventory::where('id', $product_id)->first();
+
+        $this->category_id      = $product->category_id;
+        $this->brand            = $product->brand;
+        $this->description      = $product->description;
+        $this->public_price     = $product->public_price;
+        $this->dealer_price     = $product->dealer_price;
+        $this->stock_matriz     = $product->stock_matriz;
+        $this->stock_virrey     = $product->stock_virrey;
+        $this->stock_total      = $product->stock_total;
+        $this->investment       = $product->investment;
+        $this->gain_public      = $product->gain_public;
+        $this->dealer_profit    = $product->dealer_profit;
+        $this->key_sat          = $product->key_sat;
+        $this->description_sat  = $product->description_sat;
+
+        $this->openModal();
+    }
+
+    public function updateProduct($product_id)
+    {
+        $product = Inventory::where('id', $product_id)->first();
+
+        $product->category_id           = $this->category_id;
+        $product->brand                 = $this->brand;
+        $product->description           = $this->description;
+        $product->public_price          = $this->public_price;
+        $product->dealer_price          = $this->dealer_price;
+        $product->stock_matriz          = $this->stock_matriz;
+        $product->stock_virrey          = $this->stock_virrey;
+        $product->stock_total           = $this->stock_total;
+        $product->investment            = $this->investment;
+        $product->gain_public           = $this->gain_public;
+        $product->dealer_profit         = $this->dealer_profit;
+        $product->key_sat               = $this->key_sat;
+        $product->description_sat       = $this->description_sat;
+
+        $product->save();
+
+        return redirect()->route('inventory')->with('info', 'Producto actualizado correctamente');
     }
 }
