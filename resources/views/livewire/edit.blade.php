@@ -1,5 +1,5 @@
 <div>
-    <div class="modal fade" tabindex="-1" id="edit" aria-hidden="true" wire:ignore.self>
+    <div class="modal fade" tabindex="-1" id="edit_{{ $product->id }}" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">

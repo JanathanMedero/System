@@ -185,7 +185,7 @@
 									<div>
 										{{-- <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#edit-product-{{ $product->id }}">Ver</button> --}}
 
-										<button wire:click="edit({{ $product->id }})" type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#edit">Ver</button>
+										<button wire:click="edit({{ $product->id }})" type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#edit_{{ $product->id }}">Ver</button>
 
 										{{-- <button wire:click="edit({{ $product->id }})" type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#edit-product">
 											Ver
@@ -193,10 +193,7 @@
 												<span class="visually-hidden">Loading...</span>
 											</div>
 										</button> --}}
-
-										@if($modal)
 										@include('livewire.edit')
-										@endif
 
 
 									</div>
