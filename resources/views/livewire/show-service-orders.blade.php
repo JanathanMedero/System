@@ -51,11 +51,11 @@
                                 @endif
                             </td>
                             <td>
-                                <div class="row">
-                                    <div class="col-md-4">
+                                <div class="d-flex justify-content-around">
+                                    <div>
                                         <a href="{{ route('serviceOrder.show', $order->id) }}" type="button" class="btn rounded-pill btn-info"> <span class="tf-icons bx bx-show"></span>&nbsp;Mostrar orden</a>
                                     </div>
-                                    <div class="col-md-4 mx-2">
+                                    <div>
                                         {{-- <a type="button" href="#" class="btn rounded-pill btn-danger">Cancelar orden</a> --}}
 
                                         @if($order->status == 'active')
@@ -73,7 +73,6 @@
                                             </button>
                                         </form>
                                         @endif
-
                                     </div>
                                 </div>
                             </td>

@@ -169,15 +169,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- @if(Auth::user()->role->id == 1)
-                                    <div class="col-md-6">
-                                        <form action="#" method="POST">
-                                            @csrf
-                                            @method('PUT')
-                                            <button type="submit" class="btn rounded-pill btn-danger show_confirm">Suspender</button>
-                                        </form>
-                                    </div>
-                                    @endif --}}
                                 </div>
                             </td>
                         </tr>
