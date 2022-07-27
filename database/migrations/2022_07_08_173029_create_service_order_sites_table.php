@@ -16,6 +16,8 @@ class CreateServiceOrderSitesTable extends Migration
         Schema::create('service_order_sites', function (Blueprint $table) {
              $table->id()->startingValue(9000);
 
+             $table->string('folio');
+
             $table->unsignedBigInteger('employe_id');
             $table->foreign('employe_id')->references('id')->on('users');
 

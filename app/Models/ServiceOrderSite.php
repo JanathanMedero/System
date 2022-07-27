@@ -13,7 +13,7 @@ class ServiceOrderSite extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['employe_id', 'client_id', 'office_id', 'date_of_service', 'observations', 'advance'];
+    protected $fillable = ['folio','employe_id', 'client_id', 'office_id', 'date_of_service', 'observations', 'advance'];
 
     public function client()
     {

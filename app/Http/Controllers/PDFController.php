@@ -59,4 +59,11 @@ class PDFController extends Controller
         $pdf = PDF::loadView('pdfServiceOnSite', compact('order', 'date', 'total', 'subtotal'));
         return $pdf->stream();
     }
+
+    public function showOrderServiceSite($folio)
+    {
+        $order = ServiceOrderSite::where('folio', $folio)->first();
+
+        return view('qr.showOrderServiceSite', compact('order'));
+    }
 }

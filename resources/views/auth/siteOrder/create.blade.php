@@ -86,16 +86,6 @@
 								</div>
 							</div>
 							<div class="col-lg-3">
-								<div class="mt-1 input-group">
-									<label class="form-label" for="advance">Anticipo (Opcional)</label>
-									<div class="input-group">
-										<span class="input-group-text">$</span>
-										<input type="number" id="advance" class="form-control" name="advance" placeholder="Ingrese el anticipo" value="{{ old('advance', 0) }}" defaultValue="0">
-										<span class="input-group-text">.00</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
 								<label for="office_id" class="form-label">Seleccione una sucursal:</label>
 								<div class="mb-3 input-group">
 									<select class="form-select" id="office_id" name="office_id" required>

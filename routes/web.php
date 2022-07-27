@@ -22,6 +22,7 @@ Route::redirect('/', 'login')->name('login');
 Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
 
 Route::get('show-order-service/client/{slug}/order/{folio}', [PDFController::class, 'showOrderService'])->name('qr.serviceOrder');
+Route::get('show-order-service-site/client/{slug}/order/{folio}', [PDFController::class, 'showOrderServiceSite'])->name('qr.serviceOrderSite');
 
 Route::middleware(['auth'])->group(function () {
 
