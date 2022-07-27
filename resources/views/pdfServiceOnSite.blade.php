@@ -157,14 +157,14 @@
 				<p class="text-format" style="text-align: right;"><strong>TOTAL A PAGAR: </strong><u>${{ $subtotal }}.00</p>
 			</div>
 		</div>
-		{{-- <div style="width: 100%; margin-top: 15px;">
+		<div style="width: 100%; margin-top: 15px;">
 			<div style="width: 15%; display: inline-block;">
 				<img src="{{ asset('qrcodes/qrcode-'.$order->folio.'.svg') }}" style="width: 100%;">
 			</div>
 			<div style="width: 80%; display: inline-block; height: 106px; padding-left: 10px;">
 				<p class="text-format">Puede consultar el estatus de su servicio en todo momento, solamente escaneé el siguiente código QR.</p>
 			</div>
-		</div> --}}
+		</div>
 		<footer style="padding-top: 15px;">
 
 			<div style="width: 50%; display: inline-block;">

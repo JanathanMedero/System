@@ -20,7 +20,7 @@
 
 	<div class="row">
 		<div class="col d-flex justify-content-end mb-4">
-			<a href="{{ route('pdf.serviceOrder', $order->id) }}" target="_blank" type="button" class="btn rounded-pill btn-danger">
+			<a href="{{ route('pdf.serviceOrder', $order->folio) }}" target="_blank" type="button" class="btn rounded-pill btn-danger">
 				<span class="tf-icons bx bx-printer"></span>&nbsp; Imprimir orden
 			</a>
 		</div>

@@ -25,9 +25,9 @@ class PDFController extends Controller
         return $pdf->stream();
     }
 
-    public function serviceOrder($id)
+    public function serviceOrder($folio)
     {
-        $order = ServiceOrder::where('id', $id)->first();
+        $order = ServiceOrder::where('folio', $folio)->first();
 
         $date = Carbon::parse($order->created_at)->format('d-m-Y');
 
@@ -46,9 +46,9 @@ class PDFController extends Controller
         return view('qr.showOrderService', compact('order'));
     }
 
-    public function serviceOnSite($id)
+    public function serviceOnSite($folio)
     {
-        $order = ServiceOrderSite::where('id', $id)->first();
+        $order = ServiceOrderSite::where('folio', $folio)->first();
 
         $date = Carbon::parse($order->created_at)->format('d-m-Y');
 
@@ -56,14 +56,22 @@ class PDFController extends Controller
 
         $subtotal = ($total - $order->advance);
 
+        $url = ('http://192.168.1.9:3000/show-order-service-site/client/'.$order->client->slug.'/order/'.$order->folio);
+
+        $qr = QrCode::size(150)->generate($url, '../public/qrcodes/qrcode-'.$order->folio.'.svg');
+
         $pdf = PDF::loadView('pdfServiceOnSite', compact('order', 'date', 'total', 'subtotal'));
         return $pdf->stream();
     }
 
-    public function showOrderServiceSite($folio)
+    public function showOrderServiceSite($slug, $folio)
     {
         $order = ServiceOrderSite::where('folio', $folio)->first();
 
-        return view('qr.showOrderServiceSite', compact('order'));
+        $total = $order->services->pluck('net_price')->sum();
+
+        $subtotal = ($total - $order->advance);
+
+        return view('qr.showOrderServiceSite', compact('order', 'total', 'subtotal'));
     }
 }

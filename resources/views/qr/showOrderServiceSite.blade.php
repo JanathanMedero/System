@@ -91,77 +91,53 @@ lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-defa
 
 			<div class="row">
 				<div class="col">
-					<div class="alert alert-primary mb-0 mt-4 text-center" role="alert"><strong>Datos del equipo</strong></div>
+					<div class="alert alert-primary mb-0 mt-4 text-center" role="alert"><strong>Servicios solicitados</strong></div>
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col">
-					<div class="demo-inline-spacing mt-2 mb-4">
-						<ul class="list-group">
-							<li class="list-group-item d-flex align-items-center">
-								<i class="bx bx-laptop me-2"></i>
-								<p class="mb-0"><strong>Equipo:</strong> {{ $order->service->equip }}</p>
-							</li>
-							<li class="list-group-item d-flex align-items-center">
-								<i class="bx bx-at me-2"></i>
-								<p class="mb-0"><strong>Modelo o marca:</strong> {{ $order->service->brand }}</p>
-							</li>
-							<li class="list-group-item d-flex align-items-center">
-								<i class="bx bx-receipt me-2"></i>
-								<p class="mb-0"><strong>Características:</strong> {{ $order->service->features }}</p>
-							</li>
-							@if($order->service->serie)
-							<li class="list-group-item d-flex align-items-center">
-								<i class="bx bx-barcode me-2"></i>
-								<p class="mb-0"><strong>No. de serie:</strong> {{ $order->service->serie }}</p>
-							</li>
-							@else
-							<li class="list-group-item d-flex align-items-center">
-								<i class="bx bx-barcode me-2"></i>
-								<p class="mb-0"><strong>No. de serie:</strong> No registrado</p>
-							</li>
-							@endif
-							@if($order->service->accesories)
-							<li class="list-group-item d-flex align-items-center">
-								<i class="bx bx-plug me-2"></i>
-								<p class="mb-0"><strong>Accesorios:</strong> {{ $order->service->accesories }}</p>
-							</li>
-							@else
-							<li class="list-group-item d-flex align-items-center">
-								<i class="bx bx-plug me-2"></i>
-								<p class="mb-0"><strong>Accesorios:</strong> No registrado</p>
-							</li>
-							@endif
-							<li class="list-group-item d-flex align-items-center">
-								<i class="bx bx-x-circle me-2"></i>
-								<p class="mb-0"><strong>Falla:</strong> {{ $order->service->failure }}</p>
-							</li>
-							<li class="list-group-item d-flex align-items-center">
-								<i class="bx bx-flag me-2"></i>
-								<p class="mb-0"><strong>Servicio solicitado:</strong> {{ $order->service->solicited_service }}</p>
-							</li>
-							@if($order->service->observations)
-							<li class="list-group-item d-flex align-items-center">
-								<i class="bx bx-show-alt me-2"></i>
-								<p class="mb-0"><strong>Observaciones:</strong> {{ $order->service->observations }}</p>
-							</li>
-							@else
-							<li class="list-group-item d-flex align-items-center">
-								<i class="bx bx-show-alt me-2"></i>
-								<p class="mb-0"><strong>Observaciones:</strong> No registrado</p>
-							</li>
-							@endif
-						</ul>
-					</div>
-				</div>
-			</div>
+			<div class="table-responsive text-nowrap mt-4">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th><strong>Nombre del servicio</strong></th>
+                            <th><strong>Precio</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($order->services as $service)
+                        <tr>
+                            <td>{{ $service->name }}</td>
+                            <td>${{ $service->net_price }}</td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="5"><h3 class="mb-0 text-center"><strong>No se encontró ningúna orden de servicio</strong></h3></td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+            	<div class="col-12 d-flex justify-content-end">
+            		@if($order->advance)
+            		<p class="mb-2">Dejo un anticipo de: <strong>${{ $order->advance }}</strong></p>
+            		@endif
+            	</div>
+            	<div class="col-12 d-flex justify-content-end">
+            		<p class="mb-2">Total: <strong>${{ $total }}</strong></p>
+            	</div>
+            	<div class="col-12 d-flex justify-content-end">
+            		<p class="mb-4">Total a pagar: <strong>${{ $subtotal }}</strong></p>
+            	</div>
+            </div>
+
 			<div class="row d-flex justify-content-center">
 				<div class="col-12">
-					<p class="text-center"><strong>Nuestros técnicos estan trabajando actualmente en su equipo 🖥 no se preocupe, esta en buenas manos. 😄</strong></p>
+					<p class="text-center"><strong>Nuestros técnicos estan trabajando lo mas rapido posible 🚗 para atender su solicitud. 😄</strong></p>
 				</div>
 				<div class="col-6 mb-4">
-					<img src="{{ asset('images/work.svg') }}" class="img-fluid">
+					<img src="{{ asset('images/run.svg') }}" class="img-fluid">
 				</div>
 				<div class="col-12">
 					<p class="text-center"><strong>Tiene alguna duda? 🤔 No dude en comunicarse con nosotros.</strong></p>

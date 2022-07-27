@@ -81,8 +81,8 @@ Route::middleware(['auth'])->group(function () {
 
     //PDF
     Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');
-    Route::get('orden-de-servicio/{id}/PDF', [PDFController::class, 'serviceOrder'])->name('pdf.serviceOrder');
-    Route::get('orden-de-servicio-en-sitio/{id}/PDF', [PDFController::class, 'serviceOnSite'])->name('pdf.serviceOnSite');
+    Route::get('orden-de-servicio/{folio}/PDF', [PDFController::class, 'serviceOrder'])->name('pdf.serviceOrder');
+    Route::get('orden-de-servicio-en-sitio/{folio}/PDF', [PDFController::class, 'serviceOnSite'])->name('pdf.serviceOnSite');
 
     Route::get('inventario', [InventoryController::class, 'index'])->name('inventory');
 
