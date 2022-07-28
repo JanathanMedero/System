@@ -58,7 +58,7 @@
 							<h5 class="modal-title" id="exampleModalLabel4">Nuevo producto</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-						<form wire:submit.prevent="storeProduct">
+						<form wire:submit.prevent="storeProduct" enctype="multipart/form-data">
 							<div class="modal-body">
 								<div class="row mb-3">
 									<div class="col-4">
@@ -129,12 +129,33 @@
 											@endforeach
 										</select>
 									</div>
-
+									<div class="col">
+										<label for="image" class="form-label">Seleccione una imágen (Opcional)</label>
+										<input class="form-control" type="file" name="image" id="image" wire:model="file">
+									</div>
 								</div>
+								<div wire:loading wire:target="file">
+									<div class="row d-flex justify-content-center">
+										<div>
+											Cargando imágen, espere...
+											<div class="spinner-border" role="status">
+												<span class="visually-hidden"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+								@if($file)
+								<div class="row d-flex justify-content-center">
+									<div class="col-4">
+										<h3 class="text-center"><strong>Visualización de imágen</strong></h3>
+										<img src="{{ $file->temporaryURL() }}" class="img-fluid">
+									</div>
+								</div>
+								@endif
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-								<button type="submit" class="btn btn-primary">Guardar producto</button>
+								<button type="submit" wire:loading.attr="disabled" class="btn btn-primary">Guardar producto</button>
 							</div>
 						</form>
 					</div>

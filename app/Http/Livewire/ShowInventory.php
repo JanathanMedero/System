@@ -6,15 +6,22 @@ use App\Models\Category;
 use App\Models\Inventory;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Illuminate\Http\Request;
+use Livewire\WithFileUploads;
 
 class ShowInventory extends Component
 {
+    use WithFileUploads;
 
     public $search = "";
 
     public $category_id, $brand, $description, $public_price, $dealer_price, $stock_matriz, $stock_virrey, $stock_total, $investment, $gain_public, $dealer_profit, $key_sat, $description_sat;
 
     public $modal = false;
+
+    public $file;
+
+    public $disabled = 'disabled';
 
     public function updated()
     {
@@ -49,6 +56,9 @@ class ShowInventory extends Component
 
         $this->gain_public = ($this->public_price) - ($this->investment);
 
+        if ($this->file != null) {
+            $this->disabled = '';
+        }
 
     }
 
@@ -62,12 +72,22 @@ class ShowInventory extends Component
      return view('livewire.show-inventory', compact('products', 'categories'));
  }
 
-     public function storeProduct()
+     public function storeProduct(Request $request)
      {
+
+        if ($this->file != null)
+        {
+            $this->file = 'public/'.$this->file->store('imagenes');
+        }else
+        {
+            $this->file = 'no-image.png';
+        }
+
         Inventory::create([
             'category_id'       => $this->category_id,
             'brand'             => $this->brand,
             'description'       => $this->description,
+            'image'             => $this->file,
             'public_price'      => $this->public_price,
             'dealer_price'      => $this->dealer_price,
             'stock_matriz'      => $this->stock_matriz,

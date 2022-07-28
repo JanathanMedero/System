@@ -21,6 +21,7 @@ class CreateInventoriesTable extends Migration
 
             $table->string('brand');
             $table->text('description');
+            $table->string('image')->nullable();
             $table->double('public_price', 8,2);
             $table->integer('dealer_price');
             $table->integer('stock_matriz');
