@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert([
             'role_id'   => $RolEmpleado->id,
-            'name'      => 'Estefany',
+            'name'      => 'Stefani Rangel',
             'email'     => 'ventasvirrey@pyscom.com',
             'password'  => Hash::make('ventas.virrey.pyscom.2021'),
         ]);
@@ -93,7 +93,6 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'role_id'   => $RolEmpleado->id,
             'name'      => 'María Monica Aavalos Villaseñor',
-            'slug'      =>  Str::slug('María Monica Aavalos Villaseñor'),
             'email'     => 'gerenciavirrey@pyscom.com',
             'password'  => Hash::make('gerenciavirrey.pyscom2021'),
         ]);
@@ -101,7 +100,6 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'role_id'   => $RolEmpleado->id,
             'name'      => 'Homero Patricio Acosta Pérez',
-            'slug'      =>  Str::slug('Homero Patricio Acosta Pérez'),
             'email'     => 'tivirrey@pyscom.com',
             'password'  => Hash::make('tivirrey.pyscom2021'),
         ]);
@@ -109,7 +107,6 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'role_id'   => $RolEmpleado->id,
             'name'      => 'Edgar García Gómez',
-            'slug'      =>  Str::slug('Edgar García Gómez'),
             'email'     => 'edgar@pyscom.com',
             'password'  => Hash::make('edgar.pyscom2021'),
         ]);
