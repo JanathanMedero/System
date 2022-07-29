@@ -159,6 +159,9 @@ class ShowInventory extends Component
 
     public function updateProduct($product_id)
     {
+
+
+
         $product = Inventory::where('id', $product_id)->first();
 
         if ($this->file != null)
