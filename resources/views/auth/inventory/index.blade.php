@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-<title>Inventario</title>
+<title>Inventario - Pyscom</title>
 @endsection
 
 @section('content')

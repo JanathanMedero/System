@@ -78,11 +78,54 @@
                                 </select>
                             </div>
 
+                            <div class="col">
+                                <label for="image" class="form-label">Seleccione una imágen (Opcional)</label>
+                                <input class="form-control" type="file" name="image" id="image" wire:model="file">
+                            </div>
                         </div>
+
+                        <div wire:loading wire:target="file">
+                            <div class="row d-flex justify-content-center">
+                                <div>
+                                    Cargando imágen, espere...
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @if($file)
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-4">
+                                <h3 class="text-center"><strong>Visualización de imágen</strong></h3>
+                                <img src="{{ $file->temporaryURL() }}" class="img-fluid">
+                            </div>
+                        </div>
+                        @endif
+
+                       @if(is_null($product->image))
+                       <p style="color: red; font-size: 18px;" class="text-center mt-2 mb-0"><strong>Este producto no cuenta con ningúna imágen actualmente</strong></p>
+                       @endif
+
+                       @if($file == null)
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-4">
+                                @if($product->image)
+                                <h3 class="text-center"><strong>Visualización de imágen</strong></h3>
+                                <img src="{{ asset('uploads/'.$product->image) }}" class="img-fluid">
+                                @endif
+                            </div>
+                        </div>
+                        @endif
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" wire:click="updateProduct({{ $product->id }})" class="btn btn-info">Actualizar producto</button>
+                        @if($product->image)
+                        <button type="button" wire:loading.attr="disabled" wire:target="file" wire:click="deleteImage({{ $product->id }})" class="btn btn-danger">Eliminar imágen</button>
+                        @endif
+                        <button type="button" wire:loading.attr="disabled" wire:target="file" wire:click="updateProduct({{ $product->id }})" class="btn btn-info">Actualizar producto</button>
                     </div>
                 </form>
             </div>

@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 class ShowInventory extends Component
 {
@@ -77,10 +79,10 @@ class ShowInventory extends Component
 
         if ($this->file != null)
         {
-            $this->file = 'public/'.$this->file->store('imagenes');
+            $this->file = $this->file->store('imagenes');
         }else
         {
-            $this->file = 'no-image.png';
+            $this->file = null;
         }
 
         Inventory::create([
@@ -118,6 +120,7 @@ class ShowInventory extends Component
         $this->category_id      = null;
         $this->brand            = null;
         $this->description      = null;
+        $this->file             = null;
         $this->public_price     = null;
         $this->dealer_price     = null;
         $this->stock_matriz     = null;
@@ -133,7 +136,7 @@ class ShowInventory extends Component
     public function edit($product_id)
     {
 
-            // $this->loading();
+        $this->clearData();
 
         $product = Inventory::where('id', $product_id)->first();
 
@@ -158,9 +161,21 @@ class ShowInventory extends Component
     {
         $product = Inventory::where('id', $product_id)->first();
 
+        if ($this->file != null)
+        {
+            if (is_file('uploads/'.$product->image)) {
+            unlink('uploads/'.$product->image);
+        }
+            $this->file = $this->file->store('imagenes');
+        }else
+        {
+            $this->file = null;
+        }
+
         $product->category_id           = $this->category_id;
         $product->brand                 = $this->brand;
         $product->description           = $this->description;
+        $product->image                 = $this->file;
         $product->public_price          = $this->public_price;
         $product->dealer_price          = $this->dealer_price;
         $product->stock_matriz          = $this->stock_matriz;
@@ -176,4 +191,35 @@ class ShowInventory extends Component
 
         return redirect()->route('inventory')->with('info', 'Producto actualizado correctamente');
     }
+
+    public function deleteImage($product_id)
+    {
+        $product = Inventory::where('id', $product_id)->first();
+
+        if (is_file('uploads/'.$product->image)) {
+            unlink('uploads/'.$product->image);
+        }
+
+        $product->image = null;
+        $product->save();
+
+        return redirect()->route('inventory')->with('info', 'Imágen eliminada correctamente');
+    }
+
+    protected function cleanupOldUploads()
+    {
+        $storage = Storage::disk('public');
+
+        foreach ($storage->allFiles('livewire-tmp') as $filePathname) {
+            // On busy websites, this cleanup code can run in multiple threads causing part of the output
+            // of allFiles() to have already been deleted by another thread.
+            if (! $storage->exists($filePathname)) continue;
+
+            $yesterdaysStamp = now()->subDay()->timestamp;
+            if ($yesterdaysStamp > $storage->lastModified($filePathname)) {
+                $storage->delete($filePathname);
+            }
+        }
+    }
+
 }
