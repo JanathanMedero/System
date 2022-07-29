@@ -6,6 +6,7 @@ use App\Models\Role;
 use DB;
 use Hash;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
