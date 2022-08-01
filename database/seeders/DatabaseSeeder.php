@@ -20,31 +20,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        // for ($i=0; $i < 100; $i++) {
-
-        //     $category = Category::all();
-
-        //     $random = $category->random(1);
-
-        //     Inventory::create([
-        //         'category_id'       => $random[0]->id,
-        //         'brand'             => $this->brand,
-        //         'description'       => $this->description,
-        //         'image'             => $this->file,
-        //         'public_price'      => $this->public_price,
-        //         'dealer_price'      => $this->dealer_price,
-        //         'stock_matriz'      => $this->stock_matriz,
-        //         'stock_virrey'      => $this->stock_virrey,
-        //         'stock_total'       => $this->stock_total,
-        //         'investment'        => $this->investment,
-        //         'gain_public'       => $this->gain_public,
-        //         'dealer_profit'     => $this->dealer_profit,
-        //         'key_sat'           => $this->key_sat,
-        //         'description_sat'   => $this->description_sat,
-        //     ]);
-        // }
-
-
         DB::table('offices')->insert([
             'name' => 'Matríz',
         ]);
