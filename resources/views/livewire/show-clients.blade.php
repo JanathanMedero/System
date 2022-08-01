@@ -85,6 +85,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th>No. cliente</th>
                             <th>Nombre</th>
                             <th>Correo electrónico</th>
                             <th>Acciones</th>
@@ -95,6 +96,9 @@
                         @forelse($clients as $client)
 
                         <tr>
+                            <td>
+                                {{ $client->id }}
+                            </td>
                             <td>
                                 <strong>{{ $client->name }}</strong>
                             </td>
@@ -183,7 +187,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 d-flex justify-content-end px-4">
-                <div class="mx-2">{{ $clients->links('vendor.pagination.custom_pagination') }}</div>
+                <div class="mx-2">{{ $clients->links('vendor.pagination.bootstrap-4') }}</div>
             </div>
         </div>
     </div>

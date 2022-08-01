@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Client;
 use App\Models\Inventory;
 use App\Models\Role;
 use DB;
@@ -137,7 +138,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Papelería',
         ]);
 
-        Inventory::factory()->times(30)->create();
+        Inventory::factory()->times(50)->create();
+
+        Client::factory()->times(50)->create();
 
     }
 }
