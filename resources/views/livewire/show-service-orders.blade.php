@@ -88,8 +88,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 d-flex justify-content-end px-4">
-                {{-- <div class="mx-2">{{ $clients->links('vendor.pagination.custom_pagination') }}</div> --}}
-                {{ $orders->links('vendor.pagination.custom_pagination') }}
+                {{ $products->links('vendor.pagination.bootstrap-4') }}
             </div>
         </div>
     </div>

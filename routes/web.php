@@ -26,6 +26,9 @@ Route::get('show-order-service-site/client/{slug}/order/{folio}', [PDFController
 
 Route::middleware(['auth'])->group(function () {
 
+    Route::get('inventario', [InventoryController::class, 'index'])->name('inventory');
+    Route::post('inventario/nueva-categoria', [CategoryController::class, 'store'])->name('category.store');
+
     Route::get('dashboard', [DashboardController::class, 'home'])->name('dashboard');
 
     //Empleados
@@ -83,10 +86,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');
     Route::get('orden-de-servicio/{folio}/PDF', [PDFController::class, 'serviceOrder'])->name('pdf.serviceOrder');
     Route::get('orden-de-servicio-en-sitio/{folio}/PDF', [PDFController::class, 'serviceOnSite'])->name('pdf.serviceOnSite');
-
-    Route::get('inventario', [InventoryController::class, 'index'])->name('inventory');
-
-
-    Route::post('inventario/nueva-categoria', [CategoryController::class, 'store'])->name('category.store');
 
 });

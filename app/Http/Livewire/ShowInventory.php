@@ -8,12 +8,15 @@ use Illuminate\Support\Str;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 
 class ShowInventory extends Component
 {
     use WithFileUploads;
+
+    use WithPagination;
 
     public $search = "";
 
@@ -25,8 +28,17 @@ class ShowInventory extends Component
 
     public $disabled = 'disabled';
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function updated()
     {
+
+        if ($this->search == '') {
+            $this->updatingSearch();
+        }
 
         if ($this->dealer_price == null) {
             $this->dealer_price = 0;
@@ -67,6 +79,7 @@ class ShowInventory extends Component
     public function render()
     {
      $products = Inventory::where('description', 'like', '%' . $this->search . '%')
+     ->orWhere('id', 'like', '%' . $this->search . '%')
      ->orderBy('created_at', 'DESC')->paginate(10);
 
      $categories = Category::all();

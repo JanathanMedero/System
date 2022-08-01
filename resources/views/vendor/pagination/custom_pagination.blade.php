@@ -4,9 +4,9 @@
 	<ul class="pagination">
 
 		@if ($paginator->onFirstPage())
-		<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+		<button class="page-item disabled"><a class="page-link" href="#">Anterior</a></button>
 		@else
-		<li class="page-item"><a class="page-link" href="{{ $paginator->previousPageUrl() }}">Anterior</a></li>
+		<button class="page-item" wire:click="previousPage" wire:loading.attr="disabled">Anterior</button>
 		@endif
 
 		{{-- Pagination Elements --}}
@@ -30,9 +30,9 @@
 
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
-            <li class="page-item"><a class="page-link" href="{{ $paginator->nextPageUrl() }}">Siguiente</a></li>
+            <button class="page-item" wire:click="nextPage">Siguiente</button>
             @else
-                <li class="page-item disabled"><a class="page-link" href="{{ $paginator->nextPageUrl() }}">Siguiente</a></li>
+                <button class="page-item disabled"><a class="page-link" href="#">Siguiente</a></button>
             @endif
 	</ul>
 </nav>

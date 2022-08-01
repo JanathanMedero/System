@@ -17,9 +17,11 @@
 			</div>
 
 			<div class="col-lg-4 d-flex justify-content-around mt-4">
+				@if(Auth::user()->role->id == 1)
 				<div>
 					<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#new-category">Agregar categoría</button>
 				</div>
+				@endif
 				<div>
 					<button type="button" wire:click="clearData()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#new-product">Nuevo producto</button>
 				</div>
@@ -221,8 +223,7 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12 d-flex justify-content-end px-4">
-				{{-- <div class="mx-2">{{ $clients->links('vendor.pagination.custom_pagination') }}</div> --}}
-				{{ $products->links('vendor.pagination.custom_pagination') }}
+				{{ $products->links('vendor.pagination.bootstrap-4') }}
 			</div>
 		</div>
 	</div>
