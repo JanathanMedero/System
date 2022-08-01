@@ -19,11 +19,11 @@ class ClientFactory extends Factory
             'name'      => $name,
             'slug'      => Str::slug($name),
             'rfc'       => $this->faker->text(10),
-            'phone'     => $this->faker->phoneNumber(),
+            'phone'     => $this->faker->randomNumber(9),
             'street'    => $this->faker->streetAddress(),
             'number'    => $this->faker->randomDigit(),
             'suburb'    => $this->faker->streetAddress(),
-            'cp'        => $this->faker->postcode(),
+            'cp'        => $this->faker->randomNumber(5),
         ];
     }
 }

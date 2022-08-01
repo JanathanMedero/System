@@ -87,7 +87,7 @@
                         <tr>
                             <th>No. cliente</th>
                             <th>Nombre</th>
-                            <th>Correo electrónico</th>
+                            <th>Teléfono</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -121,7 +121,7 @@
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="modalCenterTitle">Editar empleado: {{ $client->name }}</h5>
+                                                    <h5 class="modal-title" id="modalCenterTitle">Editar cliente: {{ $client->name }}</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <form action="{{ route('client.update', $client->slug) }}" method="POST">
@@ -140,7 +140,7 @@
                                                                 <input type="text" id="rfc" name="rfc" class="form-control" placeholder="Ingrese el RFC del cliente" value="{{ $client->rfc }}" />
                                                             </div>
                                                             <div class="col mb-0">
-                                                                <label for="phone" class="form-label">Telefono (Opcional)</label>
+                                                                <label for="phone" class="form-label">Teléfono (Opcional)</label>
                                                                 <input type="number" id="phone" name="phone" class="form-control" placeholder="Ingrese el teléfono del cliente" value="{{ $client->phone }}" />
                                                             </div>
                                                         </div>
