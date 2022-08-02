@@ -4,13 +4,15 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\Inventory;
+use App\Models\Sale;
+use Illuminate\Http\File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Component;
-use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
+use DB;
 
 class ShowInventory extends Component
 {
@@ -78,110 +80,111 @@ class ShowInventory extends Component
 
     public function render()
     {
-     $products = Inventory::where('description', 'like', '%' . $this->search . '%')
-     ->orWhere('id', 'like', '%' . $this->search . '%')
-     ->orderBy('created_at', 'DESC')->paginate(10);
+       $products = Inventory::where('description', 'like', '%' . $this->search . '%')
+       ->orWhere('id', 'like', '%' . $this->search . '%')
+       ->orderBy('created_at', 'DESC')->paginate(10);
 
-     $categories = Category::all();
+       $categories = Category::all();
 
-     return view('livewire.show-inventory', compact('products', 'categories'));
- }
+       return view('livewire.show-inventory', compact('products', 'categories'));
+   }
 
-     public function storeProduct(Request $request)
-     {
+   public function storeProduct(Request $request)
+   {
 
-        if ($this->file != null)
-        {
-            $this->file = $this->file->store('imagenes');
-        }else
-        {
-            $this->file = null;
-        }
-
-        Inventory::create([
-            'category_id'       => $this->category_id,
-            'brand'             => $this->brand,
-            'description'       => $this->description,
-            'image'             => $this->file,
-            'public_price'      => $this->public_price,
-            'dealer_price'      => $this->dealer_price,
-            'stock_matriz'      => $this->stock_matriz,
-            'stock_virrey'      => $this->stock_virrey,
-            'stock_total'       => $this->stock_total,
-            'investment'        => $this->investment,
-            'gain_public'       => $this->gain_public,
-            'dealer_profit'     => $this->dealer_profit,
-            'key_sat'           => $this->key_sat,
-            'description_sat'   => $this->description_sat,
-        ]);
-
-        return redirect()->route('inventory')->with('success', 'Producto creado correctamente');
+    if ($this->file != null)
+    {
+        $this->file = $this->file->store('imagenes');
+    }else
+    {
+        $this->file = null;
     }
 
-    public function closeModal()
-    {
-        $this->modal = false;
-    }
+    Inventory::create([
+        'category_id'       => $this->category_id,
+        'brand'             => $this->brand,
+        'description'       => $this->description,
+        'image'             => $this->file,
+        'public_price'      => $this->public_price,
+        'dealer_price'      => $this->dealer_price,
+        'stock_matriz'      => $this->stock_matriz,
+        'stock_virrey'      => $this->stock_virrey,
+        'stock_total'       => $this->stock_total,
+        'investment'        => $this->investment,
+        'gain_public'       => $this->gain_public,
+        'dealer_profit'     => $this->dealer_profit,
+        'key_sat'           => $this->key_sat,
+        'description_sat'   => $this->description_sat,
+    ]);
 
-    public function openModal()
-    {
-        $this->modal = true;
-    }
+    return redirect()->route('inventory')->with('success', 'Producto creado correctamente');
+}
 
-    public function clearData()
-    {
-        $this->category_id      = null;
-        $this->brand            = null;
-        $this->description      = null;
-        $this->file             = null;
-        $this->public_price     = null;
-        $this->dealer_price     = null;
-        $this->stock_matriz     = null;
-        $this->stock_virrey     = null;
-        $this->stock_total      = null;
-        $this->investment       = null;
-        $this->gain_public      = null;
-        $this->dealer_profit    = null;
-        $this->key_sat          = null;
-        $this->description_sat  = null;
-    }
+public function closeModal()
+{
+    $this->modal = false;
+}
 
-    public function edit($product_id)
-    {
+public function openModal()
+{
+    $this->modal = true;
+}
 
-        $this->clearData();
+public function clearData()
+{
+    $this->category_id      = null;
+    $this->brand            = null;
+    $this->description      = null;
+    $this->file             = null;
+    $this->public_price     = null;
+    $this->dealer_price     = null;
+    $this->stock_matriz     = null;
+    $this->stock_virrey     = null;
+    $this->stock_total      = null;
+    $this->investment       = null;
+    $this->gain_public      = null;
+    $this->dealer_profit    = null;
+    $this->key_sat          = null;
+    $this->description_sat  = null;
+}
 
-        $product = Inventory::where('id', $product_id)->first();
+public function edit($product_id)
+{
 
-        $this->category_id      = $product->category_id;
-        $this->brand            = $product->brand;
-        $this->description      = $product->description;
-        $this->public_price     = $product->public_price;
-        $this->dealer_price     = $product->dealer_price;
-        $this->stock_matriz     = $product->stock_matriz;
-        $this->stock_virrey     = $product->stock_virrey;
-        $this->stock_total      = $product->stock_total;
-        $this->investment       = $product->investment;
-        $this->gain_public      = $product->gain_public;
-        $this->dealer_profit    = $product->dealer_profit;
-        $this->key_sat          = $product->key_sat;
-        $this->description_sat  = $product->description_sat;
+    $this->clearData();
 
-        $this->openModal();
-    }
+    $product = Inventory::where('id', $product_id)->first();
 
-    public function updateProduct($product_id)
-    {
+    $this->category_id      = $product->category_id;
+    $this->brand            = $product->brand;
+    $this->description      = $product->description;
+    $this->public_price     = $product->public_price;
+    $this->dealer_price     = $product->dealer_price;
+    $this->stock_matriz     = $product->stock_matriz;
+    $this->stock_virrey     = $product->stock_virrey;
+    $this->stock_total      = $product->stock_total;
+    $this->investment       = $product->investment;
+    $this->gain_public      = $product->gain_public;
+    $this->dealer_profit    = $product->dealer_profit;
+    $this->key_sat          = $product->key_sat;
+    $this->description_sat  = $product->description_sat;
 
+    $this->openModal();
+}
 
+public function updateProduct($product_id)
+{
+    DB::beginTransaction();
 
-        $product = Inventory::where('id', $product_id)->first();
+    $product = Inventory::where('id', $product_id)->first();
+
+    try{
 
         if ($this->file != null)
         {
             if (is_file('uploads/'.$product->image)) {
-            unlink('uploads/'.$product->image);
-        }
+                unlink('uploads/'.$product->image);
+            }
             $this->file = $this->file->store('imagenes');
         }else
         {
@@ -194,8 +197,8 @@ class ShowInventory extends Component
         $product->image                 = $this->file;
         $product->public_price          = $this->public_price;
         $product->dealer_price          = $this->dealer_price;
-        $product->stock_matriz          = $this->stock_matriz;
-        $product->stock_virrey          = $this->stock_virrey;
+        // $product->stock_matriz          = $this->stock_matriz;
+        // $product->stock_virrey          = $this->stock_virrey;
         $product->stock_total           = $this->stock_total;
         $product->investment            = $this->investment;
         $product->gain_public           = $this->gain_public;
@@ -203,39 +206,80 @@ class ShowInventory extends Component
         $product->key_sat               = $this->key_sat;
         $product->description_sat       = $this->description_sat;
 
+        if (intval($this->stock_matriz) < intval($product->stock_matriz)) {
+
+            $quantity = intval($product->stock_matriz) - intval($this->stock_matriz);
+
+            Sale::create([
+                'brand'         => $this->brand,
+                'description'   => $this->description,
+                'quantity'      => $quantity,
+                'category'      => $product->category->name,
+                'public_price'  => $this->public_price,
+                'office'        => 'Sucursal Matriz',
+            ]);
+
+            $product->stock_matriz  = $this->stock_matriz;
+        }
+
+        if (intval($this->stock_virrey) < intval($product->stock_virrey)) {
+
+            $quantity = intval($product->stock_virrey) - intval($this->stock_virrey);
+
+            Sale::create([
+                'brand'         => $this->brand,
+                'description'   => $this->description,
+                'quantity'      => $quantity,
+                'category'      => $product->category->name,
+                'public_price'  => $this->public_price,
+                'office'        => 'Sucursal Virrey',
+            ]);
+
+            $product->stock_virrey  = $this->stock_virrey;
+        }
+
         $product->save();
+
+        DB::commit();
 
         return redirect()->route('inventory')->with('info', 'Producto actualizado correctamente');
+
+    }catch(\Exception $e){
+        DB::rollback();
+        dd($e);
     }
 
-    public function deleteImage($product_id)
-    {
-        $product = Inventory::where('id', $product_id)->first();
 
-        if (is_file('uploads/'.$product->image)) {
-            unlink('uploads/'.$product->image);
-        }
+}
 
-        $product->image = null;
-        $product->save();
+public function deleteImage($product_id)
+{
+    $product = Inventory::where('id', $product_id)->first();
 
-        return redirect()->route('inventory')->with('info', 'Imágen eliminada correctamente');
+    if (is_file('uploads/'.$product->image)) {
+        unlink('uploads/'.$product->image);
     }
 
-    protected function cleanupOldUploads()
-    {
-        $storage = Storage::disk('public');
+    $product->image = null;
+    $product->save();
 
-        foreach ($storage->allFiles('livewire-tmp') as $filePathname) {
+    return redirect()->route('inventory')->with('info', 'Imágen eliminada correctamente');
+}
+
+protected function cleanupOldUploads()
+{
+    $storage = Storage::disk('public');
+
+    foreach ($storage->allFiles('livewire-tmp') as $filePathname) {
             // On busy websites, this cleanup code can run in multiple threads causing part of the output
             // of allFiles() to have already been deleted by another thread.
-            if (! $storage->exists($filePathname)) continue;
+        if (! $storage->exists($filePathname)) continue;
 
-            $yesterdaysStamp = now()->subDay()->timestamp;
-            if ($yesterdaysStamp > $storage->lastModified($filePathname)) {
-                $storage->delete($filePathname);
-            }
+        $yesterdaysStamp = now()->subDay()->timestamp;
+        if ($yesterdaysStamp > $storage->lastModified($filePathname)) {
+            $storage->delete($filePathname);
         }
     }
+}
 
 }

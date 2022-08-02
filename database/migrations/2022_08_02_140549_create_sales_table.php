@@ -18,6 +18,7 @@ class CreateSalesTable extends Migration
 
             $table->string('brand');
             $table->text('description');
+            $table->text('quantity');
             $table->string('category');
             $table->double('public_price', 8,2);
             $table->string('office');

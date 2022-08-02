@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SaleOrderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceOrderController;
@@ -81,6 +82,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('orden-de-servicio-en-sitio/servicio/{id}/eliminado', [ServiceOrderSiteController::class, 'destroy_service'])->name('siteOrder.destroyService');
     Route::post('orden-de-servicio-en-sitio/{id}/reporte-tecnico', [ServiceOrderSiteController::class, 'report'])->name('siteOrder.report');
     Route::put('orden-de-servicio-en-sitio/{id}/reporte-tecnico-editado', [ServiceOrderSiteController::class, 'report_update'])->name('siteOrder.reportUpdate');
+
+    //Ventas
+    Route::get('ventas', [SaleController::class, 'index'])->name('sale.index');
 
     //PDF
     Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');
