@@ -21,7 +21,7 @@ class ClientFactory extends Factory
             'rfc'       => $this->faker->text(10),
             'phone'     => $this->faker->randomNumber(9),
             'street'    => $this->faker->streetAddress(),
-            'number'    => $this->faker->randomDigit(),
+            'number'    => $this->faker->randomDigit(3),
             'suburb'    => $this->faker->streetAddress(),
             'cp'        => $this->faker->randomNumber(5),
         ];
