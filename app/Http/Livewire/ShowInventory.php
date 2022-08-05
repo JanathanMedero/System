@@ -22,31 +22,28 @@ class ShowInventory extends Component
 
     public $search = "";
 
-    public $category_id, $brand, $description, $public_price, $dealer_price, $stock_matriz, $stock_virrey, $stock_total, $investment, $gain_public, $dealer_profit, $key_sat, $description_sat;
+    public $categories, $brand, $description, $public_price, $dealer_price, $stock_matriz, $stock_virrey, $stock_total, $investment, $gain_public, $dealer_profit, $key_sat, $description_sat;
 
     public $modal = false;
+
+    public $category_id;
 
     public $file;
 
     public $disabled = 'disabled';
 
-    public function updatingSearch()
+    public function mount()
     {
-        $this->resetPage();
+        $this->categories = Category::all();
     }
 
     public function updated()
     {
 
-        if ($this->search == '') {
-            $this->updatingSearch();
-        }
-
         if ($this->dealer_price == null) {
             $this->dealer_price = 0;
         }
 
-        //Existencias totales
         if ($this->stock_matriz == null) {
             $this->stock_matriz = 0;
         }
@@ -55,26 +52,37 @@ class ShowInventory extends Component
             $this->stock_virrey = 0;
         }
 
-        $this->stock_total = ($this->stock_matriz) + ($this->stock_virrey);
+        $this->categories = Category::all();
 
-        //Ganancia a distribuidor
-        if ($this->public_price == null) {
-            $this->public_price = 0;
-        }
+        // //Existencias totales
+        // if ($this->stock_matriz == null) {
+        //     $this->stock_matriz = 0;
+        // }
 
-        if ($this->investment == null) {
-            $this->investment = 0;
-        }
+        // if ($this->stock_virrey == null) {
+        //     $this->stock_virrey = 0;
+        // }
 
-        $this->dealer_profit = ($this->dealer_price) - ($this->investment);
+        // $this->stock_total = ($this->stock_matriz) + ($this->stock_virrey);
 
-        //Ganancia apúblico
+        // //Ganancia a distribuidor
+        // if ($this->public_price == null) {
+        //     $this->public_price = 0;
+        // }
 
-        $this->gain_public = ($this->public_price) - ($this->investment);
+        // if ($this->investment == null) {
+        //     $this->investment = 0;
+        // }
 
-        if ($this->file != null) {
-            $this->disabled = '';
-        }
+        // $this->dealer_profit = ($this->dealer_price) - ($this->investment);
+
+        // //Ganancia apúblico
+
+        // $this->gain_public = ($this->public_price) - ($this->investment);
+
+        // if ($this->file != null) {
+        //     $this->disabled = '';
+        // }
 
     }
 
@@ -84,13 +92,21 @@ class ShowInventory extends Component
        ->orWhere('id', 'like', '%' . $this->search . '%')
        ->orderBy('created_at', 'DESC')->paginate(10);
 
-       $categories = Category::all();
+       // $categories = Category::all();
 
-       return view('livewire.show-inventory', compact('products', 'categories'));
+       return view('livewire.show-inventory', compact('products'));
    }
 
-   public function storeProduct(Request $request)
+   public function storeProduct()
    {
+
+    // if ($this->stock_matriz == 0 && $this->stock_virrey == 0) {
+    //     return redirect()->route('inventory')->with('danger', 'Debes ingresar al 1 pieza en la sucursal matriz o en la sucursal virrey');
+    // }
+
+    $this->gain_public = ($this->public_price) - ($this->investment);
+
+    $this->dealer_profit = ($this->dealer_price) - ($this->investment);
 
     if ($this->file != null)
     {
@@ -99,6 +115,8 @@ class ShowInventory extends Component
     {
         $this->file = null;
     }
+
+    $this->stock_total = intval($this->stock_matriz) + intval($this->stock_matriz);
 
     Inventory::create([
         'category_id'       => $this->category_id,
@@ -219,7 +237,7 @@ public function updateProduct($product_id)
                 'office'        => 'Sucursal Matriz',
             ]);
 
-            $product->stock_matriz  = $this->stock_matriz;
+            
         }
 
         if (intval($this->stock_virrey) < intval($product->stock_virrey)) {
@@ -234,9 +252,13 @@ public function updateProduct($product_id)
                 'public_price'  => $this->public_price,
                 'office'        => 'Sucursal Virrey',
             ]);
-
-            $product->stock_virrey  = $this->stock_virrey;
         }
+
+        $product->stock_matriz  = $this->stock_matriz;
+
+        $product->stock_virrey  = $this->stock_virrey;
+
+        $product->stock_total   = ($this->stock_matriz + $this->stock_virrey);
 
         $product->save();
 

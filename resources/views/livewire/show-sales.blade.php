@@ -43,7 +43,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="5"><h3 class="mb-0 text-center"><strong>No se encontró ningúna orden de servicio</strong></h3></td>
+                            <td colspan="6"><h3 class="mb-0 text-center"><strong>No se encontró ningúna venta</strong></h3></td>
                         </tr>
                         @endforelse
                     </tbody>

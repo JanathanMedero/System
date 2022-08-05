@@ -30,8 +30,8 @@ class CreateInventoriesTable extends Migration
             $table->double('investment', 8,2);
             $table->double('gain_public', 8,2);
             $table->double('dealer_profit', 8,2);
-            $table->string('key_sat');
-            $table->string('description_sat');
+            $table->string('key_sat')->nullable();
+            $table->string('description_sat')->nullable();
 
             $table->timestamps();
         });

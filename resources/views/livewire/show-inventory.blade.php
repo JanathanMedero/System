@@ -97,35 +97,35 @@
 									</div>
 									<div class="col-4">
 										<label for="key_sat" class="form-label">Clave del SAT</label>
-										<input type="text" id="key_sat" class="form-control" name="key_sat" placeholder="Ingrese la clave del SAT" min="0" wire:model="key_sat" required />
+										<input type="text" id="key_sat" class="form-control" name="key_sat" placeholder="Ingrese la clave del SAT" min="0" wire:model="key_sat" />
 									</div>
 									<div class="col-4">
 										<label for="description_sat" class="form-label">Descripción del SAT</label>
-										<input type="text" id="description_sat" class="form-control" name="description_sat" placeholder="Ingrese la descripción del SAT" wire:model="description_sat" min="0" required />
+										<input type="text" id="description_sat" class="form-control" name="description_sat" placeholder="Ingrese la descripción del SAT" wire:model="description_sat" min="0" />
 									</div>
 								</div>
 
-								<div class="row mb-3">
+								{{-- <div class="row mb-3">
 									<div class="col-4">
 										<label for="stock_total" class="form-label">Existencias totales</label>
-										<input type="number" id="stock_total" class="form-control" name="stock_total" placeholder="Ingrese las existencias totales" wire:model="stock_total" value="{{ $stock_matriz + $stock_virrey }}" min="0" required disabled />
+										<input type="number" id="stock_total" class="form-control" name="stock_total" placeholder="Se calcula automaticamente" wire:model="stock_total" value="{{ $stock_matriz + $stock_virrey }}" min="0" required disabled />
 									</div>
 
 									<div class="col-4">
 										<label for="gain_public" class="form-label">Ganancia a público</label>
-										<input type="number" disabled id="gain_public" class="form-control" name="gain_public" placeholder="Ingrese la ganancia al público" wire:model="gain_public" min="0" step="0.01" required />
+										<input type="number" disabled id="gain_public" class="form-control" name="gain_public" placeholder="Se calcula automaticamente" wire:model="gain_public" min="0" step="0.01" required />
 									</div>
 									<div class="col-4">
 										<label for="dealer_profit" class="form-label">Ganancia a distribuidor</label>
-										<input type="number" disabled id="dealer_profit" class="form-control" name="dealer_profit" placeholder="Ingrese la ganancia a distribuidor" wire:model="dealer_profit" min="0" step="0.01" required />
+										<input type="number" disabled id="dealer_profit" class="form-control" name="dealer_profit" placeholder="Se calcula automaticamente" wire:model="dealer_profit" min="0" step="0.01" required />
 									</div>
-								</div>
+								</div> --}}
 								<div class="row mb-3">
 
 									<div class="col">
 										<label for="category" class="form-label">Seleccione una categoría</label>
-										<select class="form-select" wire:model="category_id" name="category_id" id="category" aria-label="Default select example">
-											<option selected disabled>Seleccione una categoría</option>
+										<select class="form-select" id="category" wire:model="category_id" name="category" required>
+											<option selected value="">Seleccione una categoría</option>
 											@foreach($categories as $category)
 											<option value="{{ $category->id }}">{{ $category->name }}</option>
 											@endforeach
