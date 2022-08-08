@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeController;
@@ -90,5 +91,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');
     Route::get('orden-de-servicio/{folio}/PDF', [PDFController::class, 'serviceOrder'])->name('pdf.serviceOrder');
     Route::get('orden-de-servicio-en-sitio/{folio}/PDF', [PDFController::class, 'serviceOnSite'])->name('pdf.serviceOnSite');
+
+    //Charts
+    Route::post('reporte-de-ventas', [ChartController::class, 'chart'])->name('report.chart');
+
 
 });

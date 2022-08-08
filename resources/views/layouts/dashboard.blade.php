@@ -137,7 +137,7 @@ data-template="vertical-menu-template-free"
 						<div data-i18n="Basic">Inventario</div>
 					</a>
 				</li>
-				<li class="menu-item {{ (request()->is('ventas')) ? 'active' : '' }}">
+				<li class="menu-item {{ (request()->is('ventas')) ? 'active' : '' }} {{ (request()->is('reporte-de-ventas')) ? 'active' : '' }}">
 					<a href="{{ route('sale.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-dollar" ></i>
 						<div data-i18n="Basic">Ventas</div>
