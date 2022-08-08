@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/system-pyscom
 .env
 .env.backup
 .phpunit.result.cache
