@@ -34,7 +34,7 @@ class ShowInventory extends Component
 
     public function mount()
     {
-        $this->categories = Category::all();
+        $this->categories = Category::all()->sortBy('name');
     }
 
     public function updated()
