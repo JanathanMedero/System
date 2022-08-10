@@ -80,9 +80,11 @@
                             <td>{{ $sale->office }}</td>
                             <td>{{ $sale->created_at->diffForHumans() }}</td>
                             <td>
-                            	<button type="button" class="btn rounded-pill btn-success">
+                            	<button type="button" class="btn rounded-pill btn-success" data-bs-toggle="modal" data-bs-target="#product_{{ $sale->id }}">
                               	<span class="tf-icons bx bx-dollar"></span>&nbsp; Mostrar venta
                             	</button>
+
+                            	@include('partials.show-sale')
                             </td>
                         </tr>
                         @empty
