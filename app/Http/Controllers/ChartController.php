@@ -16,7 +16,7 @@ class ChartController extends Controller
 
         $categories = $sales->pluck('category')->unique()->values();
 
-        // $cat = $sales->pluck('category')->countBy()->values();
+        $products = $sales->countBy('category');
 
         $data = [];
 
@@ -29,6 +29,7 @@ class ChartController extends Controller
             $data['data'][] = $quantity;
         }
 
+
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);
 
         $start  = $request->start;
@@ -36,6 +37,6 @@ class ChartController extends Controller
 
         $total = $sales->sum('public_price');
 
-        return view('chart', compact('data', 'sales', 'start', 'end', 'total'));
+        return view('chart', compact('data', 'sales', 'start', 'end', 'total', 'products'));
     }
 }
