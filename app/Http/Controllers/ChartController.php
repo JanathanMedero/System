@@ -12,11 +12,9 @@ class ChartController extends Controller
 
     public function chart(Request $request)
     {
-        $sales = Sale::where('created_at', '>=', $request->start)->where('created_at', '<=', $request->end)->get();
+        $sales = Sale::orderBy('id', 'DESC')->where('created_at', '>=', $request->start)->where('created_at', '<=', $request->end)->get();
 
-        $total = $sales->sum('public_price');
-
-        dd($sales);
+        $total = $sales->sum('total');
 
         $categories = $sales->pluck('category')->unique()->values();
 

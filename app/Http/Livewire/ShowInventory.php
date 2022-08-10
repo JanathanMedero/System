@@ -88,17 +88,17 @@ class ShowInventory extends Component
 
     public function render()
     {
-       $products = Inventory::where('description', 'like', '%' . $this->search . '%')
-       ->orWhere('id', 'like', '%' . $this->search . '%')
-       ->orderBy('created_at', 'DESC')->paginate(10);
+     $products = Inventory::where('description', 'like', '%' . $this->search . '%')
+     ->orWhere('id', 'like', '%' . $this->search . '%')
+     ->orderBy('created_at', 'DESC')->paginate(10);
 
        // $categories = Category::all();
 
-       return view('livewire.show-inventory', compact('products'));
-   }
+     return view('livewire.show-inventory', compact('products'));
+ }
 
-   public function storeProduct()
-   {
+ public function storeProduct()
+ {
 
     // if ($this->stock_matriz == 0 && $this->stock_virrey == 0) {
     //     return redirect()->route('inventory')->with('danger', 'Debes ingresar al 1 pieza en la sucursal matriz o en la sucursal virrey');
@@ -116,7 +116,7 @@ class ShowInventory extends Component
         $this->file = null;
     }
 
-    $this->stock_total = intval($this->stock_matriz) + intval($this->stock_matriz);
+    $this->stock_total = (intval($this->stock_matriz) + intval($this->stock_virrey));
 
     Inventory::create([
         'category_id'       => $this->category_id,
@@ -264,6 +264,8 @@ public function updateProduct($product_id)
 
         $product->save();
 
+        $this->cleanupOldUploads();
+
         DB::commit();
 
         return redirect()->route('inventory')->with('info', 'Producto actualizado correctamente');
@@ -295,10 +297,7 @@ protected function cleanupOldUploads()
     $storage = Storage::disk('public');
 
     foreach ($storage->allFiles('livewire-tmp') as $filePathname) {
-            // On busy websites, this cleanup code can run in multiple threads causing part of the output
-            // of allFiles() to have already been deleted by another thread.
         if (! $storage->exists($filePathname)) continue;
-
         $yesterdaysStamp = now()->subDay()->timestamp;
         if ($yesterdaysStamp > $storage->lastModified($filePathname)) {
             $storage->delete($filePathname);
