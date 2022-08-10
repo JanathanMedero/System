@@ -13,7 +13,7 @@
 		<div class="col-lg-7">
 			<div class="row">
 				<div class="col-lg-12">
-					<h4 class="text-center">Ventas a partir del <strong>{{ date('d-m-Y', strtotime($start)); }}</strong> hasta <strong>{{ date('d-m-Y', strtotime($end)); }}</strong>
+					<h4 class="text-center">Ventas a partir del <strong>"{{ date('d-m-Y', strtotime($start)); }}"</strong> hasta <strong>"{{ date('d-m-Y', strtotime($end)); }}"</strong>
 					</h4>
 				</div>
 				<div class="col-lg-12">
@@ -34,8 +34,22 @@
 					</div>
 				</div>
 
-				<div class="col-lg-12 mt-4 d-flex justify-content-end">
-					<h5>Venta total de este periodo: <strong>$ {{ $total }} MX</strong></h5>
+				<div class="col-lg-12 mt-4">
+					<div class="row">
+						<div class="col-lg-12 d-flex justify-content-end">
+							<h5>Ventas de sucursal matriz de este periodo: <strong>$ {{ $salesMatriz }} MX</strong></h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 d-flex justify-content-end">
+							<h5><h5>Ventas de sucursal virrey de este periodo: <strong>$ {{ $salesVirrey }} MX</strong></h5></strong></h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 d-flex justify-content-end">
+							<h5><h5>Venta total de este periodo: <strong>$ {{ $total }} MX</strong></h5></strong></h5>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

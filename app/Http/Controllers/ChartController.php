@@ -20,6 +20,14 @@ class ChartController extends Controller
 
         $products = $sales->countBy('category');
 
+        $salesMatriz = Sale::where('created_at', '>=', $request->start)->where('created_at', '<=', $request->end)->where('office', 'Sucursal Matriz')->get();
+
+        $salesMatriz = $salesMatriz->sum('total');
+
+        $salesVirrey = Sale::where('created_at', '>=', $request->start)->where('created_at', '<=', $request->end)->where('office', 'Sucursal Virrey')->get();
+
+        $salesVirrey = $salesVirrey->sum('total');
+
         $data = [];
 
         foreach($categories as $category)
@@ -37,6 +45,6 @@ class ChartController extends Controller
         $start  = $request->start;
         $end    = $request->end;
 
-        return view('chart', compact('data', 'sales', 'start', 'end', 'total', 'products'));
+        return view('chart', compact('data', 'sales', 'start', 'end', 'total', 'products', 'salesMatriz', 'salesVirrey'));
     }
 }
