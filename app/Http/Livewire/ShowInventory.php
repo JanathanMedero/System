@@ -234,6 +234,7 @@ public function updateProduct($product_id)
                 'quantity'      => $quantity,
                 'category'      => $product->category->name,
                 'public_price'  => $this->public_price,
+                'total'         => ($this->public_price * $quantity),
                 'office'        => 'Sucursal Matriz',
             ]);
 
@@ -250,6 +251,7 @@ public function updateProduct($product_id)
                 'quantity'      => $quantity,
                 'category'      => $product->category->name,
                 'public_price'  => $this->public_price,
+                'total'         => ($this->public_price * $quantity),
                 'office'        => 'Sucursal Virrey',
             ]);
         }

@@ -138,7 +138,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Papelería',
         ]);
 
-        Inventory::factory()->times(150)->create();
+        // Inventory::factory()->times(150)->create();
 
         Client::factory()->times(50)->create();
 

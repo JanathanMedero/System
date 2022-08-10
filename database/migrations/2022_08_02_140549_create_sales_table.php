@@ -21,6 +21,7 @@ class CreateSalesTable extends Migration
             $table->text('quantity');
             $table->string('category');
             $table->double('public_price', 8,2);
+            $table->double('total', 8,2);
             $table->string('office');
 
             $table->timestamps();

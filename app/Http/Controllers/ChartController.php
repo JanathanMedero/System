@@ -14,6 +14,10 @@ class ChartController extends Controller
     {
         $sales = Sale::where('created_at', '>=', $request->start)->where('created_at', '<=', $request->end)->get();
 
+        $total = $sales->sum('public_price');
+
+        dd($sales);
+
         $categories = $sales->pluck('category')->unique()->values();
 
         $products = $sales->countBy('category');
@@ -34,8 +38,6 @@ class ChartController extends Controller
 
         $start  = $request->start;
         $end    = $request->end;
-
-        $total = $sales->sum('public_price');
 
         return view('chart', compact('data', 'sales', 'start', 'end', 'total', 'products'));
     }
