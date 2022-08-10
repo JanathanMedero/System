@@ -11,9 +11,4 @@ class Sale extends Model
 
     protected $guarded = [];
 
-    // public function getCreatedAtAttribute($date)
-    // {
-    //     return new Date($date);
-    // }
-
 }

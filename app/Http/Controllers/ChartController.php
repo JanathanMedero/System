@@ -16,6 +16,8 @@ class ChartController extends Controller
 
         $categories = $sales->pluck('category')->unique()->values();
 
+        // $cat = $sales->pluck('category')->countBy()->values();
+
         $data = [];
 
         foreach($categories as $category)
