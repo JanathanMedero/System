@@ -86,6 +86,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Ventas
     Route::get('ventas', [SaleController::class, 'index'])->name('sale.index');
+    Route::delete('venta/{id}/eliminada', [SaleController::class, 'destroy'])->name('sale.destroy');
 
     //PDF
     Route::get('orden-de-venta/{id}/PDF', [PDFController::class, 'saleOrder'])->name('pdf.saleOrder');

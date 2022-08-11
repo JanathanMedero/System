@@ -12,7 +12,13 @@ class ChartController extends Controller
 
     public function chart(Request $request)
     {
-        $sales = Sale::orderBy('id', 'DESC')->where('created_at', '>=', $request->start)->where('created_at', '<=', $request->end)->get();
+        // $sales = Sale::orderBy('id', 'DESC')->where('created_at', '>=', $request->start)->where('created_at', '<=', $request->end)->get();
+
+        $sales = Sale::orderBy('id', 'DESC')->whereBetween('created_at', [$request->start, $request->end])->get();
+
+        if ($sales->isEmpty()) {
+            return back()->with('danger', 'No hay ventas en el rango de fechas seleccionadas');
+        }
 
         $total = $sales->sum('total');
 
