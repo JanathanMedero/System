@@ -31,4 +31,23 @@
         });
     });
 </script>
+
+<script type="text/javascript">
+    document.getElementById('dates').onchange = function() {
+        document.getElementById('date_start').disabled = !this.checked;
+        document.getElementById('date_end').disabled = !this.checked;
+        document.getElementById('button_send').disabled = !this.checked;
+    };
+    document.getElementById('today').onchange = function() {
+        document.getElementById('date_start').disabled = this.checked;
+        document.getElementById('date_end').disabled = this.checked;
+        document.getElementById('button_send').disabled = !this.checked;
+    };
+    document.getElementById('month').onchange = function() {
+        document.getElementById('date_start').disabled = this.checked;
+        document.getElementById('date_end').disabled = this.checked;
+        document.getElementById('button_send').disabled = !this.checked;
+    };
+</script>
+
 @endsection

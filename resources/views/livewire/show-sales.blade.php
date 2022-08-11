@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="chart" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="chart" tabindex="-1" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -20,19 +20,44 @@
                         <div class="row">
                             <div class="col mb-3">
                                 <label for="nameBasic" class="form-label">Fecha de inicio</label>
-                                <input class="form-control" type="date" name="start" id="start" required>
+                                <input class="form-control" type="date" name="start" id="date_start" disabled>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col mb-3">
                                 <label for="nameBasic" class="form-label">Fecha de fin</label>
-                                <input class="form-control" type="date" name="end" id="end" required>
+                                <input class="form-control" type="date" name="end" id="date_end" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-check mt-1">
+                                    <input name="option" class="form-check-input" type="radio" id="dates" value="dates">
+                                    <label class="form-check-label" for="dates"> Seleccione un rango de fechas </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 mt-2">
+                                <div class="form-check mt-1">
+                                    <input name="option" class="form-check-input" type="radio" value="today" id="today">
+                                    <label class="form-check-label" for="today"> Reporte diario (Mostrar ventas de hoy) </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 mt-2">
+                                <div class="form-check mt-1">
+                                    <input name="option" class="form-check-input" type="radio" value="month" id="month">
+                                    <label class="form-check-label" for="month"> Reporte mensual (Mostrar ventas de este mes) </label>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Generar reporte</button>
+                        <button type="submit" class="btn btn-primary" id="button_send" disabled>Generar reporte</button>
                     </div>
                 </form>
             </div>
@@ -138,7 +163,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="6"><h3 class="mb-0 text-center"><strong>No se encontró ningúna venta</strong></h3></td>
+                            <td colspan="7"><h3 class="mb-0 text-center"><strong>No se encontró ningúna venta</strong></h3></td>
                         </tr>
                         @endforelse
                     </tbody>
@@ -147,9 +172,9 @@
         </div>
         <div class="row">
             <div class="col-lg-12 d-flex justify-content-end px-4">
-             {{--  {{ $orders->links('vendor.pagination.bootstrap-4') }} --}}
-         </div>
-     </div>
- </div>
- <!--/ Bordered Table -->
+               {{--  {{ $orders->links('vendor.pagination.bootstrap-4') }} --}}
+           </div>
+       </div>
+   </div>
+   <!--/ Bordered Table -->
 </div>

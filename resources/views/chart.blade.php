@@ -13,8 +13,16 @@
 		<div class="col-lg-7">
 			<div class="row">
 				<div class="col-lg-12">
+					@if($status == 'dates')
 					<h4 class="text-center">Ventas a partir del <strong>"{{ date('d-m-Y', strtotime($start)); }}"</strong> hasta <strong>"{{ date('d-m-Y', strtotime($end)); }}"</strong>
 					</h4>
+					@elseif($status == 'today')
+					<h4 class="text-center">Ventas del dia de hoy</strong>
+					</h4>
+					@else
+					<h4 class="text-center">Ventas del mes</strong>
+					</h4>
+					@endif
 				</div>
 				<div class="col-lg-12">
 					<hr>
@@ -59,7 +67,17 @@
 <div class="card my-4">
         <div class="row">
             <div class="col-lg-12 mt-2">
-                <h4 class="mt-4 mx-4 mb-0"><strong>Tabla de ventas del periodo "{{ date('d-m-Y', strtotime($start)); }}" hasta "{{ date('d-m-Y', strtotime($end)); }}"</strong></h4>
+
+            	@if($status == 'dates')
+					<h4 class="mt-4 mx-4 mb-0"><strong>Tabla de ventas del periodo "{{ date('d-m-Y', strtotime($start)); }}" hasta "{{ date('d-m-Y', strtotime($end)); }}"</strong>
+                	</h4>
+					@elseif($status == 'today')
+					<h4 class="text-center mt-4">Tabla de ventas del dia de hoy</strong>
+					</h4>
+					@else
+					<h4 class="text-center mt-4">Tabla de ventas del mes</strong>
+					</h4>
+					@endif
             </div>
             <div class="col-lg-8 mt-4 px-4">
                 <div class="row d-flex justify-content-end">
