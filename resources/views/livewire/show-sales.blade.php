@@ -1,4 +1,5 @@
 <div>
+    @if($sales->isNotEmpty())
     <div class="row d-flex justify-content-end">
         <div class="col-lg-4 d-flex justify-content-end">
             <button type="button" class="btn rounded-pill btn-success mx-4 mb-4" data-bs-toggle="modal" data-bs-target="#chart">
@@ -6,6 +7,7 @@
             </button>
         </div>
     </div>
+    @endif
 
     <div class="modal fade" id="chart" tabindex="-1" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog" role="document">

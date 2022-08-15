@@ -31,7 +31,7 @@ class PDFController extends Controller
 
         $date = Carbon::parse($order->created_at)->format('d-m-Y');
 
-        $url = ('http://192.168.1.9:3000/show-order-service/client/'.$order->client->slug.'/order/'.$order->folio);
+        $url = ('http://192.168.1.13:3000/show-order-service/client/'.$order->client->slug.'/order/'.$order->folio);
 
         $qr = QrCode::size(150)->generate($url, '../public/qrcodes/qrcode-'.$order->folio.'.svg');
 
@@ -56,7 +56,7 @@ class PDFController extends Controller
 
         $subtotal = ($total - $order->advance);
 
-        $url = ('http://192.168.1.9:3000/show-order-service-site/client/'.$order->client->slug.'/order/'.$order->folio);
+        $url = ('http://192.168.1.13:3000/show-order-service-site/client/'.$order->client->slug.'/order/'.$order->folio);
 
         $qr = QrCode::size(150)->generate($url, '../public/qrcodes/qrcode-'.$order->folio.'.svg');
 

@@ -214,7 +214,7 @@
 						</tr>
 						@empty
 						<tr>
-							<td colspan="6"><h3 class="mb-0 text-center"><strong>Sin productos en el inventario</strong></h3></td>
+							<td colspan="7"><h3 class="mb-0 text-center"><strong>Sin productos en el inventario</strong></h3></td>
 						</tr>
 						@endforelse
 					</tbody>
