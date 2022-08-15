@@ -96,5 +96,8 @@ Route::middleware(['auth'])->group(function () {
     //Charts
     Route::post('reporte-de-ventas', [ChartController::class, 'chart'])->name('report.chart');
 
+    //categorias
+    Route::get('inventario/administrar-categorias', [CategoryController::class, 'index'])->name('category.index');
+
 
 });

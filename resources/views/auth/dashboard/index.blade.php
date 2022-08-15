@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="col-lg-12">
+<div class="col-lg-12 mb-4">
 	<div class="row d-flex justify-content-center">
 		<div class="col-lg-8 mb-4">
 			<div class="card">
@@ -30,64 +30,10 @@
 	</div>
 </div>
 
-<div class="col-lg-12">
-	<div class="row d-flex justify-content-center">
-		<div class="col-lg-5 col-md-12 col-6 mb-4">
-			<div class="card">
-				<div class="card-body">
-					<div class="card-title ">
-						<div class="row">
-							<div class="col-md-6 d-flex align-items-center">
-								<div class="row">
-									<div class="col-md-12">
-										<h3 class="card-title mb-0"><strong>Ordenes de venta</strong></h3>
-									</div>
-									<div class="col-md-12 mt-4">
-										<a href="{{ route('saleOrder.index') }}" class="btn btn-primary">Ordenes de venta</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 px-4">
-								<img src="{{ asset('images/order-sale.svg') }}" style="height: 148px;" class="img-fluid">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-lg-5 col-md-12 col-6 mb-4">
-			<div class="card">
-				<div class="card-body">
-					<div class="card-title ">
-
-						<div class="row">
-							<div class="col-md-6 d-flex align-items-center">
-								<div class="row">
-									<div class="col-md-12">
-										<h4 class="card-title mb-0"><strong>Sistema de inventario</strong></h4>
-									</div>
-									<div class="col-md-12 mt-4">
-										<a href="{{ route('inventory') }}" class="btn btn-primary">Inventario</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 px-4">
-								<img src="{{ asset('images/inventory.svg') }}" style="height: 148px;" class="img-fluid">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-</div>
-
 
 <div class="col-lg-12">
 	<div class="row d-flex justify-content-center">
-		<div class="col-lg-5 col-md-12 col-6 mb-4">
+		<div class="col-lg-4 col-md-12 col-6 mb-4">
 			<div class="card">
 				<div class="card-body">
 					<div class="card-title ">
@@ -111,7 +57,31 @@
 			</div>
 		</div>
 
-		<div class="col-lg-5 col-md-12 col-6 mb-4">
+		<div class="col-lg-4 col-md-12 col-6 mb-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="card-title ">
+						<div class="row">
+							<div class="col-md-6 d-flex align-items-center">
+								<div class="row">
+									<div class="col-md-12">
+										<h3 class="card-title mb-0"><strong>Ordenes de venta</strong></h3>
+									</div>
+									<div class="col-md-12 mt-4">
+										<a href="{{ route('saleOrder.index') }}" class="btn btn-primary">Ordenes de venta</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 px-4">
+								<img src="{{ asset('images/order-sale.svg') }}" style="height: 148px;" class="img-fluid">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-4 col-md-12 col-6 mb-4">
 			<div class="card">
 				<div class="card-body">
 					<div class="card-title ">
@@ -141,7 +111,31 @@
 
 <div class="col-lg-12">
 	<div class="row d-flex justify-content-center">
-		<div class="col-lg-5 col-md-12 col-6 mb-4">
+		<div class="col-lg-4 col-md-12 col-6 mb-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="card-title ">
+
+						<div class="row">
+							<div class="col-md-6 d-flex align-items-center">
+								<div class="row">
+									<div class="col-md-12">
+										<h4 class="card-title mb-0"><strong>Sistema de inventario</strong></h4>
+									</div>
+									<div class="col-md-12 mt-4">
+										<a href="{{ route('inventory') }}" class="btn btn-primary">Inventario</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 px-4">
+								<img src="{{ asset('images/inventory.svg') }}" style="height: 148px;" class="img-fluid">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4 col-md-12 col-6 mb-4">
 			<div class="card">
 				<div class="card-body">
 					<div class="card-title ">
@@ -166,4 +160,5 @@
 		</div>
 	</div>
 </div>
+
 @endsection

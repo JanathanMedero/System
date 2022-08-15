@@ -131,7 +131,7 @@ data-template="vertical-menu-template-free"
 
 				<li class="menu-header small text-uppercase"><span class="menu-header-text">Sistema de inventario</span></li>
 				<!-- Cards -->
-				<li class="menu-item {{ (request()->is('inventario')) ? 'active' : '' }}">
+				<li class="menu-item {{ (request()->is('inventario')) ? 'active' : '' }} {{ (request()->is('inventario/administrar-categorias')) ? 'active' : '' }}">
 					<a href="{{ route('inventory') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-package" ></i>
 						<div data-i18n="Basic">Inventario</div>

@@ -15,4 +15,11 @@ class CategoryController extends Controller
 
         return back()->with('success', 'Categoría agregada correctamente');
     }
+
+    public function index()
+    {
+        $categories = Category::orderBy('name', 'ASC')->get();
+
+        return view('auth.categories.index', compact('categories'));
+    }
 }
