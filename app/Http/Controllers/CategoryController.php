@@ -9,8 +9,15 @@ class CategoryController extends Controller
 {
     public function store(Request $request)
     {
+
+        $category = Category::where('name', $request->name)->first();
+
+        if ($category) {
+            return back()->with('danger', 'Esta categoría ya esta registrada');
+        }
+
         Category::create([
-            'name' => $request->name,
+            'name' => ucwords($request->name),
         ]);
 
         return back()->with('success', 'Categoría agregada correctamente');

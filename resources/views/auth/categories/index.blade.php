@@ -14,7 +14,7 @@
 		<div class="col-lg-8 mt-4">
 			<div class="row">
 				<div class="col-lg-12 d-flex justify-content-end px-4">
-					<button type="button" class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#new-category">Agregar categoría</button>
+					<button type="button" class="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#new-category">Agregar categoría</button>
 				</div>
 
 				{{-- modal --}}
@@ -51,9 +51,7 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th>id</th>
 						<th>Nombre de la categoría</th>
-						<th>Acciones</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -61,20 +59,11 @@
 					@forelse($categories as $category)
 
 					<tr>
-						<td><strong>{{ $category->id }}</strong></td>
 						<td>{{ $category->name }}</td>
-						
-						<td>
-							<form class="form-delete mx-2" action="#" method="POST">
-								@method('DELETE')
-								@csrf
-								<button type="submit" class="btn rounded-pill btn-danger">Eliminar</button>
-							</form>
-						</td>
 					</tr>
 					@empty
 					<tr>
-						<td colspan="3"><h3 class="mb-0 text-center"><strong>No se encontró ningúna categoría</strong></h3></td>
+						<td colspan="1"><h3 class="mb-0 text-center"><strong>No se encontró ningúna categoría</strong></h3></td>
 					</tr>
 					@endforelse
 				</tbody>
