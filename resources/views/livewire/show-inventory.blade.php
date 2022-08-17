@@ -16,12 +16,8 @@
 				</div>
 			</div>
 
+			@if(Auth::user()->role->id == 1)
 			<div class="col-lg-5 d-flex justify-content-around mt-4">
-				@if(Auth::user()->role->id == 1)
-				<div>
-					
-				</div>
-				@endif
 				<div>
 					<a type="button" href="{{ route('category.index') }}" class="btn btn-warning">Mostrar categorías</a>
 				</div>
@@ -29,6 +25,13 @@
 					<button type="button" wire:click="clearData()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#new-product">Nuevo producto</button>
 				</div>
 			</div>
+			@else
+			<div class="col-lg-5 d-flex justify-content-end mt-4">
+				<div class="mx-4">
+					<button type="button" wire:click="clearData()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#new-product">Nuevo producto</button>
+				</div>
+			</div>
+			@endif
 
 			<div class="modal fade" id="new-product" tabindex="-1" aria-hidden="true" wire:ignore.self>
 				<div class="modal-dialog modal-dialog-centered modal-xl" role="document">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Auth;
 
 class CategoryController extends Controller
 {
@@ -25,6 +26,10 @@ class CategoryController extends Controller
 
     public function index()
     {
+        if (Auth::user()->id != 1) {
+            abort(403, 'No tienes permisos');
+        }
+
         $categories = Category::orderBy('name', 'ASC')->get();
 
         return view('auth.categories.index', compact('categories'));

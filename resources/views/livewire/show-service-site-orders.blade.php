@@ -1,18 +1,15 @@
 <div>
     <!-- Bordered Table -->
     <div class="card">
-        <div class="row">
-            <div class="col-lg-4 mt-2">
-                <h4 class="mt-4 mx-4 mb-0"><strong>Tabla de ordenes de servicio en sitio</strong></h4>
+
+        <div class="d-flex mt-4 mx-4 justify-content-between align-items-center">
+            <div>
+                <h4 class="mb-0"><strong>Tabla de ordenes de servicio en sitio</strong></h4>
             </div>
-            <div class="col-lg-8 mt-4 px-4">
-                <div class="row d-flex justify-content-end">
-                    <div class="col-md-12 px-4">
-                        <div class="input-group input-group-merge">
-                            <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                            <input type="number" wire:model="search" class="form-control" placeholder="Buscar orden de servicio en sitio (Ingrese el no. de orden)... "aria-label="Search..."/>
-                        </div>
-                    </div>
+            <div style="flex-grow: 2; margin-left: 48px;">
+                <div class="input-group input-group-merge">
+                    <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+                    <input type="text" wire:model="search" class="form-control" placeholder="Buscar orden de servicio en sitio (Ingrese el no. de orden)... "aria-label="Search..."/>
                 </div>
             </div>
         </div>

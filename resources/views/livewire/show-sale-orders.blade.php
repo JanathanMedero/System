@@ -1,7 +1,20 @@
 <div>
     <!-- Bordered Table -->
     <div class="card">
-        <div class="row">
+
+        <div class="d-flex justify-between align-items-center pt-4">
+            <div>
+                <h4 class="mb-0 mx-4"><strong>Tabla de ordenes de venta</strong></h4>
+            </div>
+            <div style="flex-grow: 2" class="mx-4">
+                <div class="input-group input-group-merge">
+                    <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+                    <input type="text" wire:model="search" class="form-control" placeholder="Buscar orden de venta (Ingrese el no. de orden) o el nombre del cliente "aria-label="Search..."/>
+                </div>
+            </div>
+        </div>
+
+        {{-- <div class="row">
             <div class="col-lg-4 mt-2">
                 <h4 class="mt-4 mx-4 mb-0"><strong>Tabla de ordenes de venta</strong></h4>
             </div>
@@ -15,7 +28,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="card-body">
             <div class="table-responsive text-nowrap">
                 <table class="table table-bordered">
@@ -25,6 +38,7 @@
                             <th>Cliente</th>
                             <th>Fecha de creación de orden</th>
                             <th>Sucursal</th>
+                            <th>Estatus</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
