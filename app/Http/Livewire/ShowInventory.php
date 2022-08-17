@@ -37,6 +37,11 @@ class ShowInventory extends Component
         $this->categories = Category::all()->sortBy('name');
     }
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function updated()
     {
 

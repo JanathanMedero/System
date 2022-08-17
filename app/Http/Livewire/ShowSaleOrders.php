@@ -12,6 +12,11 @@ class ShowSaleOrders extends Component
 
     public $search = "";
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $orders = SaleOrder::where('id', 'like', '%' . $this->search . '%')

@@ -13,6 +13,11 @@ class ShowClients extends Component
 
     public $search = "";
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $clients = Client::where('name', 'like', '%' . $this->search . '%')->orderBy('created_at', 'DESC')
