@@ -24,8 +24,7 @@ class ShowSaleOrders extends Component
     {
         $orders = SaleOrder::where('id', 'like', '%' . $this->search . '%')
         ->orWhereHas('client', function(Builder $query){
-            $query->where('name', 'LIKE', '%' . $this->search . '%');
-
+            $query->where('name', 'LIKE', '%'.$this->search.'%');
         })
         ->orderBy('created_at', 'DESC')->paginate(10);
 

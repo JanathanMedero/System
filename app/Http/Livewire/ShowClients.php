@@ -20,8 +20,10 @@ class ShowClients extends Component
 
     public function render()
     {
-        $clients = Client::where('name', 'like', '%' . $this->search . '%')->orderBy('created_at', 'DESC')
-        ->orWhere('id', 'like', '%' . $this->search . '%')->paginate(10);
+        // $clients = Client::where('name', 'like', '%' . $this->search . '%')->orderBy('created_at', 'DESC')
+        // ->orWhere('id', 'like', '%' . $this->search . '%')->get();
+
+        $clients = Client::all();
 
         return view('livewire.show-clients', compact('clients'));
     }
