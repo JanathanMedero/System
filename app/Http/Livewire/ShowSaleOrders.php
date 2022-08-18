@@ -22,11 +22,9 @@ class ShowSaleOrders extends Component
 
     public function render()
     {
-        $orders = SaleOrder::where('id', 'LIKE', '%' . $this->search . '%')
+        $orders = SaleOrder::where('id', 'like', '%' . $this->search . '%')
         ->orWhereHas('client', function(Builder $query){
-            // $query->where('name', 'LIKE', '%' . $this->search . '%');
-
-            $query->where('name', 'LIKE', '%'. strtoupper($this->search). '%'); 
+            $query->where('name', 'LIKE', '%' . $this->search . '%');
 
         })
         ->orderBy('created_at', 'DESC')->paginate(10);
