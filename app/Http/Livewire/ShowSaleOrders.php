@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\SaleOrder;
 use Livewire\Component;
 use Livewire\WithPagination;
+use DB;
 use Illuminate\Database\Eloquent\Builder;
 
 class ShowSaleOrders extends Component
@@ -23,7 +24,10 @@ class ShowSaleOrders extends Component
     {
         $orders = SaleOrder::where('id', 'LIKE', '%' . $this->search . '%')
         ->orWhereHas('client', function(Builder $query){
-            $query->where('name', 'LIKE', '%' . $this->search . '%');
+            // $query->where('name', 'LIKE', '%' . $this->search . '%');
+
+            $query->where(strtoupper('name'), 'LIKE', '%'. strtoupper($this->search). '%'); 
+
         })
         ->orderBy('created_at', 'DESC')->paginate(10);
 
