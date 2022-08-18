@@ -169,7 +169,7 @@
 			</div>
 		</div>
 
-		@if(file_exists(asset('qrcodes/qrcode-'.$order->folio.'.svg')))
+		@if(file_exists(public_path().'/qrcodes/qrcode-'.$order->folio.'.svg'))
 		<div style="width: 100%; margin-top: 15px;">
 			<div style="width: 15%; display: inline-block;">
 				<img src="{{ asset('qrcodes/qrcode-'.$order->folio.'.svg') }}" style="width: 100%;">
