@@ -4,10 +4,12 @@ namespace App\Http\Livewire;
 
 use App\Models\ServiceOrderSite;
 use Livewire\Component;
+use Livewire\WithPagination;
 use Illuminate\Database\Eloquent\Builder;
 
 class ShowServiceSiteOrders extends Component
 {
+    use WithPagination;
 
     public $search = "";
 

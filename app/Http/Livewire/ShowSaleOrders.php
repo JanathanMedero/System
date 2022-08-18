@@ -5,10 +5,12 @@ namespace App\Http\Livewire;
 use App\Models\Client;
 use App\Models\SaleOrder;
 use Livewire\Component;
+use Livewire\WithPagination;
 use Illuminate\Database\Eloquent\Builder;
 
 class ShowSaleOrders extends Component
 {
+    use WithPagination;
 
     public $search = "";
 
