@@ -46,7 +46,7 @@
 									<div class="mb-3">
 										<label for="rol" class="form-label">Asigne un rol para el empleado</label>
 										<select class="form-select" id="rol" aria-label="Default select example" name="rol_id" required>
-											<option selected disabled>Seleccione una de las opciones</option>
+											<option disabled selected value="">Seleccione una de las opciones</option>
 											<option value="1">Administrador</option>
 											<option value="2">Empleado</option>
 										</select>
@@ -77,7 +77,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($employees as $user)
+					@forelse($employees as $user)
 					<tr>
 						<td>
 							<strong>{{ $user->name }}</strong>
@@ -166,7 +166,11 @@
 								</div>
 							</td>
 						</tr>
-						@endforeach
+						@empty
+						<tr>
+                            <td colspan="4"><h3 class="mb-0 text-center"><strong>No se encontró ningún empleado</strong></h3></td>
+                        </tr>
+						@endforelse
 					</tbody>
 				</table>
 			</div>

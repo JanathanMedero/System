@@ -26,7 +26,7 @@ Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
 Route::get('show-order-service/client/{slug}/order/{folio}', [PDFController::class, 'showOrderService'])->name('qr.serviceOrder');
 Route::get('show-order-service-site/client/{slug}/order/{folio}', [PDFController::class, 'showOrderServiceSite'])->name('qr.serviceOrderSite');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'SuspendedAccount'])->group(function () {
 
     Route::get('inventario', [InventoryController::class, 'index'])->name('inventory');
     Route::post('inventario/nueva-categoria', [CategoryController::class, 'store'])->name('category.store');

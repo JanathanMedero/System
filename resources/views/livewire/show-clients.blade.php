@@ -2,7 +2,7 @@
     <!-- Bordered Table -->
     <div class="card">
 
-        {{-- <div class="d-flex justify-content-between px-4 mt-4 align-items-center">
+        <div class="d-flex justify-content-between px-4 mt-4 align-items-center">
             <div>
                 <h4 class="mb-0"><strong>Tabla de clientes</strong></h4>
             </div>
@@ -15,7 +15,7 @@
             <div>
                 <button class="btn btn-success mx-auto" data-bs-toggle="modal" data-bs-target="#modalCenter">Nuevo cliente</button>
             </div>
-        </div> --}}
+        </div>
 
         {{-- modal --}}
         <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
@@ -74,13 +74,13 @@
             </div>
         </div>
 
-        <div class="card-header" style="padding-bottom: 0px;">
+        {{-- <div class="card-header" style="padding-bottom: 0px;">
             <div class="row">
                 <div class="col-lg-4">
                     <h3><strong>Tabla de clientes</strong></h3>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="card-body">
             <div class="table-responsive text-nowrap">
                 <table class="table table-bordered clients_table">
@@ -186,11 +186,11 @@
                 </table>
             </div>
         </div>
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-lg-12 d-flex justify-content-end px-4">
                 <div class="mx-2">{{ $clients->links('vendor.pagination.bootstrap-4') }}</div>
             </div>
-        </div> --}}
+        </div>
     </div>
     <!--/ Bordered Table -->
 </div>
