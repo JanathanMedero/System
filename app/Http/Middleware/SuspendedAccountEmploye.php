@@ -22,7 +22,7 @@ class SuspendedAccountEmploye
 
             Auth::logout();
 
-            return redirect('/login')->with('daneger', 'Opps! algo no esta funcionando bien, por favor, vuelva a iniciar sesión');
+            return redirect()->route('login')->with('danger', 'Opps! su cuenta esta suspendida temporalmente, por favor comuniquese con el administrador del sitio');
             
           }
         return $next($request);
