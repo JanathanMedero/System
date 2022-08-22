@@ -23,9 +23,6 @@
 				<div class="card-body">
 					<!-- Logo -->
 					<div class="app-brand justify-content-center">
-						{{-- <a href="index.html" class="app-brand-link gap-2">
-							<span class="app-brand-text demo text-body fw-bolder">Sneat</span>
-						</a> --}}
 						<img src="{{ asset('images/logo.png') }}" class="img-fluid" style="width: 250px;">
 					</div>
 					<!-- /Logo -->

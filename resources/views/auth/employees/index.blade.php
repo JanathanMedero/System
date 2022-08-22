@@ -37,9 +37,13 @@
 										<label for="email" class="form-label">Correo electrónico</label>
 										<input type="email" id="email" name="email" class="form-control" placeholder="Ingrese el correo electrónico" required />
 									</div>
-									<div class="col mb-0">
-										<label for="password" class="form-label">Contraseña</label>
-										<input type="password" id="password" name="password" class="form-control" placeholder="Ingrese la contraseña" required minlength="5"/>
+									<div class="col mb-0 form-password-toggle">
+										<label class="form-label" for="password">Contraseña</label>
+										<div class="input-group input-group-merge">
+											<input type="password" id="password" class="form-control" name="password"
+											placeholder="Ingresa la contraseña" aria-describedby="password" required value="{{ old('password') }}" />
+											<span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+										</div>
 									</div>
 								</div>
 								<div class="row">
@@ -168,8 +172,8 @@
 						</tr>
 						@empty
 						<tr>
-                            <td colspan="4"><h3 class="mb-0 text-center"><strong>No se encontró ningún empleado</strong></h3></td>
-                        </tr>
+							<td colspan="4"><h3 class="mb-0 text-center"><strong>No se encontró ningún empleado</strong></h3></td>
+						</tr>
 						@endforelse
 					</tbody>
 				</table>
