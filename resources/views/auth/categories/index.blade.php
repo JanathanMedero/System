@@ -6,6 +6,40 @@
 
 @section('content')
 
+@if(Auth::user()->role->id == 1)
+    <div class="row">
+        <div class="col d-flex justify-content-end mb-4">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCategories">Importar categorias
+            </button>
+
+            <div class="modal fade" id="modalCategories" tabindex="-1" style="display: none;" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalCenterTitle">Importar categorías</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('categories.import') }}" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="row my-4">
+                            @csrf
+                            <label for="clientsImport" class="form-label">Seleccione el archivo de excel a importar (.xlsx)</label>
+                            <input class="form-control" type="file" id="clientsImport" name="categories">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-primary">Importar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+@endif
+
 <div class="card">
 	<div class="row">
 		<div class="col-lg-4 mt-2">

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\CategoriesImport;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
@@ -33,5 +35,13 @@ class CategoryController extends Controller
         $categories = Category::orderBy('name', 'ASC')->get();
 
         return view('auth.categories.index', compact('categories'));
+    }
+
+    public function importCategories(Request $request)
+    {
+        $file = $request->file('categories');
+        Excel::import(new CategoriesImport, $file);
+
+        return back()->with('success', 'Categorías importadas con exito');
     }
 }
