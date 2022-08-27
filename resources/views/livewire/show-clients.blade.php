@@ -74,13 +74,6 @@
             </div>
         </div>
 
-        {{-- <div class="card-header" style="padding-bottom: 0px;">
-            <div class="row">
-                <div class="col-lg-4">
-                    <h3><strong>Tabla de clientes</strong></h3>
-                </div>
-            </div>
-        </div> --}}
         <div class="card-body">
             <div class="table-responsive text-nowrap">
                 <table class="table table-bordered clients_table">
@@ -109,13 +102,17 @@
                             <td>{{ $client->phone }}</td>
                             @endif
                             <td>
-                                <div class="row">
-                                    <div class="col-md-3">
+                                <div class="row d-flex justify-content-around">
+                                    <div class="col">
                                         <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#modalCenter-{{ $client->slug }}">Editar
                                         </button>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col">
                                         <a type="button" href="{{ route('service.all', $client->slug) }}" class="btn rounded-pill btn-success">Nuevo servicio</a>
+                                    </div>
+
+                                    <div class="col">
+                                        <a type="button" href="#" class="btn rounded-pill btn-warning">Servicios</a>
                                     </div>
 
                                     <div class="modal fade" id="modalCenter-{{ $client->slug }}" tabindex="-1" aria-hidden="true">
