@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ClientsImport;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ClientController extends Controller
 {
@@ -68,6 +70,14 @@ class ClientController extends Controller
          }else{
             return back()->with('danger', 'Cuenta suspendida correctamente');
          }
+    }
+
+    public function importClients(Request $request)
+    {
+        $file = $request->file('clients');
+        Excel::import(new ClientsImport, $file);
+
+        return back()->with('success', 'Clientes importados con exito');
     }
 
 }
