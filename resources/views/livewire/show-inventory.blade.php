@@ -1,4 +1,36 @@
 <div>
+	<div class="row">
+		<div class="col d-flex justify-content-end">
+			<div class="mb-4">
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importProducts">Importar productos
+				</button>
+			</div>
+		</div>
+		<div class="modal fade" id="importProducts" tabindex="-1" style="display: none;" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalCenterTitle">Importar productos</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<form action="{{ route('products.import') }}" method="POST" enctype="multipart/form-data">
+						@csrf
+						<div class="modal-body">
+							<div class="row my-4">
+								<label for="productsImport" class="form-label">Seleccione el archivo de excel a importar (.xlsx)</label>
+								<input class="form-control" type="file" id="productsImport" name="Importproducts">
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar
+								</button>
+								<button type="submit" class="btn btn-primary">Importar</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Bordered Table -->
 	<div class="card">
 		<div class="row">

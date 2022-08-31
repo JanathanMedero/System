@@ -47,6 +47,7 @@ Route::middleware(['auth', 'SuspendedAccount'])->group(function () {
     //importaciones
     Route::post('importando/clientes', [ClientController::class, 'importClients'])->name('clients.import');
     Route::post('importando/categorias', [CategoryController::class, 'importCategories'])->name('categories.import');
+    Route::post('importando/productos', [InventoryController::class, 'importProducts'])->name('products.import');
 
     //servicios
     Route::get('servicio/{slug}', [ServiceController::class, 'all_services'])->name('service.all');
