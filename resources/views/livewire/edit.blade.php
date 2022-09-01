@@ -9,17 +9,20 @@
                 <form>
                     <div class="modal-body">
                         <div class="row mb-3">
-                            <div class="col-4">
+                            <div class="col-6">
                                 <label for="brand" class="form-label">Marca</label>
                                 <input type="text" wire:model="brand" id="brand" class="form-control" name="brand" placeholder="Ingrese la marca" value="{{ $brand }}" required />
                             </div>
-                            <div class="col-4">
-                                <label for="description" class="form-label">Descripción</label>
-                                <input type="text" id="description" class="form-control" name="description" placeholder="Ingrese una breve descripción" wire:model="description" value="{{ $description }}" required />
-                            </div>
-                            <div class="col-4">
+                            <div class="col-6">
                                 <label for="public_price" class="form-label">Precio público</label>
                                 <input type="number" id="public_price" class="form-control" name="public_price" placeholder="Ingrese el precio al público" onClick="this.select();" wire:model="public_price" min="1" required />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="description" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="description" rows="3" name="description" placeholder="Ingrese una breve descripción" wire:model="description" required>{{ $description }}</textarea>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -104,11 +107,11 @@
                         </div>
                         @endif
 
-                       @if(is_null($product->image))
-                       <p style="color: red; font-size: 18px;" class="text-center mt-2 mb-0"><strong>Este producto no cuenta con ningúna imágen actualmente</strong></p>
-                       @endif
+                        @if(is_null($product->image))
+                        <p style="color: red; font-size: 18px;" class="text-center mt-2 mb-0"><strong>Este producto no cuenta con ningúna imágen actualmente</strong></p>
+                        @endif
 
-                       @if($file == null)
+                        @if($file == null)
                         <div class="row d-flex justify-content-center">
                             <div class="col-4">
                                 @if($product->image)

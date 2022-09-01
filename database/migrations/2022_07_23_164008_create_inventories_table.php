@@ -23,7 +23,7 @@ class CreateInventoriesTable extends Migration
             $table->text('description');
             $table->string('image')->nullable();
             $table->double('public_price', 8,2);
-            $table->integer('dealer_price')->nullable();
+            $table->double('dealer_price', 8,2)->nullable();
             $table->integer('stock_matriz');
             $table->integer('stock_virrey');
             $table->integer('stock_total');
