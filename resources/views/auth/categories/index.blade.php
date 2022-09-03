@@ -93,7 +93,7 @@
 					@forelse($categories as $category)
 
 					<tr>
-						<td>{{ $category->name }}</td>
+						<td><strong>{{ $category->id }}</strong> - {{ $category->name }}</td>
 					</tr>
 					@empty
 					<tr>

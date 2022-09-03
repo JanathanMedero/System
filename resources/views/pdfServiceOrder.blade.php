@@ -146,7 +146,7 @@
 		<div class="mb-2" style="width: 100%;">
 			<div style="width: 100%;">
 				<div class="mb-2">
-					<p class="mb-0"><strong>Observaciones Especiales: ________________________________________________________________</strong></p>
+					<p class="mb-0"><strong>Tecnico que atendio: ____________________________________________________________________</strong></p>
 				</div>
 			</div>
 		</div>
@@ -156,7 +156,7 @@
 				<p class="mb-2"><strong>Costo del servicio: ___________________________</strong></p>
 			</div>
 			<div style="width: 49%; display: inline-block;">
-				<p class="mb-2"><strong>Fecha de entrega: ___________________________</strong></p>
+				<p class="mb-2"><strong>Fecha de entrega: __________________________</strong></p>
 			</div>
 		</div>
 
