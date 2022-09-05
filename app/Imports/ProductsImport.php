@@ -28,7 +28,7 @@ class ProductsImport implements ToModel
             'gain_public'       => $row[8],
             'dealer_profit'     => $row[9],
             'key_sat'           => $row[10],
-            'description_sat'   => $row[11],
+            // 'description_sat'   => $row[11],
         ]);
     }
 }
