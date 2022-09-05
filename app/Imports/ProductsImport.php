@@ -23,7 +23,6 @@ class ProductsImport implements ToModel
             'stock_virrey'      => $row[5],
             'stock_matriz'      => $row[6],
             'stock_total'       => ($row[5] + $row[6]),
-            'stock_virrey'      => $row[6],
             'investment'        => $row[7],
             'gain_public'       => $row[8],
             'dealer_profit'     => $row[9],

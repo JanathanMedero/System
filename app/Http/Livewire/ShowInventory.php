@@ -183,9 +183,11 @@ public function edit($product_id)
     $this->description      = $product->description;
     $this->public_price     = $product->public_price;
     $this->dealer_price     = $product->dealer_price;
+
     $this->stock_matriz     = $product->stock_matriz;
     $this->stock_virrey     = $product->stock_virrey;
     $this->stock_total      = $product->stock_total;
+    
     $this->investment       = $product->investment;
     $this->gain_public      = $product->gain_public;
     $this->dealer_profit    = $product->dealer_profit;
