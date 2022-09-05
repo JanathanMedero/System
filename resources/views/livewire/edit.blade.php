@@ -22,7 +22,7 @@
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="description" class="form-label">Descripción</label>
-                                <textarea class="form-control" id="description" rows="3" name="description" placeholder="Ingrese una breve descripción" wire:model="description" required>{{ $description }}</textarea>
+                                <textarea class="form-control" id="description" rows="3" name="description" placeholder="Ingrese una breve descripción" wire:model="description" required wire:ignore>{{ $description }}</textarea>
                             </div>
                         </div>
                         <div class="row mb-3">
