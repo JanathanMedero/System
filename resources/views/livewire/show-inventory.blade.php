@@ -234,7 +234,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-12 d-flex justify-content-end px-4">
+			<div class="col-12 d-flex justify-content-end px-4">
 				{{ $products->links('vendor.pagination.bootstrap-4') }}
 			</div>
 		</div>
