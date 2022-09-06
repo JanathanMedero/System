@@ -47,12 +47,12 @@
             </div>
         </div>
         <div>
-            <button class="btn btn-success mx-auto" data-bs-toggle="modal" data-bs-target="#modalCenter">Nuevo cliente</button>
+            <button class="btn btn-success mx-auto" data-bs-toggle="modal" data-bs-target="#createClient">Nuevo cliente</button>
         </div>
     </div>
 
     {{-- modal --}}
-    <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="createClient" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">

@@ -27,17 +27,17 @@
 							@csrf
 							<div class="modal-body">
 								<div class="row">
-									<div class="col mb-3">
+									<div class="col-12 mb-3">
 										<label for="name" class="form-label">Nombre</label>
 										<input type="text" id="name" name="name" class="form-control" placeholder="Ingrese el nombre" required />
 									</div>
 								</div>
 								<div class="row g-2 mb-3">
-									<div class="col mb-0">
+									<div class="col-12 mb-0">
 										<label for="email" class="form-label">Correo electrónico</label>
 										<input type="email" id="email" name="email" class="form-control" placeholder="Ingrese el correo electrónico" required />
 									</div>
-									<div class="col mb-0 form-password-toggle">
+									<div class="col-12 mb-0 form-password-toggle">
 										<label class="form-label" for="password">Contraseña</label>
 										<div class="input-group input-group-merge">
 											<input type="password" id="password" class="form-control" name="password"
