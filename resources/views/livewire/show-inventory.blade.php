@@ -75,43 +75,43 @@
 						<form wire:submit.prevent="storeProduct" enctype="multipart/form-data">
 							<div class="modal-body">
 								<div class="row mb-3">
-									<div class="col-4">
+									<div class="col-12 col-md-6">
 										<label for="brand" class="form-label">Marca</label>
 										<input type="text" wire:model="brand" id="brand" class="form-control" name="brand" placeholder="Ingrese la marca" required />
 									</div>
-									<div class="col-4">
-										<label for="description" class="form-label">Descripción</label>
-										<input type="text" id="description" class="form-control" name="description" placeholder="Ingrese una breve descripción" wire:model="description" required />
-									</div>
-									<div class="col-4">
+									<div class="col-12 mt-2 col-md-6 mt-md-0">
 										<label for="public_price" class="form-label">Precio público</label>
 										<input type="number" id="public_price" class="form-control" name="public_price" placeholder="Ingrese el precio al público" onClick="this.select();" wire:model="public_price" min="1" required />
 									</div>
+									<div class="col-12 mt-2 col-md-12">
+										<label for="description" class="form-label">Descripción</label>
+										<input type="text" id="description" class="form-control" name="description" placeholder="Ingrese una breve descripción" wire:model="description" required />
+									</div>
 								</div>
 								<div class="row mb-3">
-									<div class="col-4">
+									<div class="col-md-12">
 										<label for="dealer_price" class="form-label">Precio distribuidor</label>
 										<input type="number" id="dealer_price" class="form-control" name="dealer_price" placeholder="Ingrese el precio de distribuidor" onClick="this.select();" wire:model="dealer_price" min="1"/>
 									</div>
-									<div class="col-4">
+									<div class="col-12 col-sm-6 mt-2 col-md-6">
 										<label for="stock_matriz" class="form-label">Existencias en matriz</label>
 										<input type="number" min="0" id="stock_matriz" class="form-control" placeholder="Ingrese las existencias en matriz" onClick="this.select();" wire:model="stock_matriz" required />
 									</div>
-									<div class="col-4">
+									<div class="col-12 col-sm-6 mt-2 col-md-6">
 										<label for="stock_virrey" class="form-label">Existencias en virrey</label>
 										<input type="number" id="stock_virrey" class="form-control" placeholder="Ingrese las existencias en virrey" min="0" onClick="this.select();"  wire:model="stock_virrey" required />
 									</div>
 								</div>
 								<div class="row mb-3">
-									<div class="col-4">
+									<div class="col-md-12">
 										<label for="investment" class="form-label">Inversión</label>
 										<input type="number" min="0" id="investment" class="form-control" name="investment" placeholder="Ingrese la inversión" onClick="this.select();" wire:model="investment" step="0.01" required />
 									</div>
-									<div class="col-4">
+									<div class="col-md-12 mt-2 col-md-4">
 										<label for="key_sat" class="form-label">Clave del SAT</label>
 										<input type="text" id="key_sat" class="form-control" name="key_sat" placeholder="Ingrese la clave del SAT" min="0" wire:model="key_sat" />
 									</div>
-									<div class="col-4">
+									<div class="col-md-12 mt-2 col-md-4">
 										<label for="description_sat" class="form-label">Descripción del SAT</label>
 										<input type="text" id="description_sat" class="form-control" name="description_sat" placeholder="Ingrese la descripción del SAT" wire:model="description_sat" min="0" />
 									</div>
@@ -134,7 +134,7 @@
 								</div> --}}
 								<div class="row mb-3">
 
-									<div class="col">
+									<div class="col-12 col-xl-6">
 										<label for="category" class="form-label">Seleccione una categoría</label>
 										<select class="form-select" id="category" wire:model="category_id" name="category" required>
 											<option selected value="">Seleccione una categoría</option>
@@ -143,7 +143,7 @@
 											@endforeach
 										</select>
 									</div>
-									<div class="col">
+									<div class="col-12 col-xl-6 mt-2 mt-xl-0">
 										<label for="image" class="form-label">Seleccione una imágen (Opcional)</label>
 										<input class="form-control" type="file" name="image" id="image" wire:model="file">
 									</div>
