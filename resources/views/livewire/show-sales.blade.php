@@ -122,11 +122,15 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="row mb-3">
-                                                    <div class="col-6">
+                                                    <div class="col-4">
+                                                        <label for="sku" class="form-label">SKU</label>
+                                                        <input type="text" id="sku" class="form-control" name="sku" placeholder="Ingrese la marca" value="{{ $sale->id }}" readonly />
+                                                    </div>
+                                                    <div class="col-4">
                                                         <label for="brand" class="form-label">Marca</label>
                                                         <input type="text" id="brand" class="form-control" name="brand" placeholder="Ingrese la marca" value="{{ $sale->brand }}" readonly />
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-4">
                                                         <label for="public_price" class="form-label">Precio público</label>
                                                         <input type="number" id="public_price" class="form-control" name="public_price" placeholder="Ingrese el precio al público" value="{{ $sale->public_price }}" readonly />
                                                     </div>

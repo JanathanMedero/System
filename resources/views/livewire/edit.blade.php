@@ -9,11 +9,11 @@
                 <form>
                     <div class="modal-body">
                         <div class="row mb-3">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <label for="brand" class="form-label">Marca</label>
                                 <input type="text" wire:model="brand" id="brand" class="form-control" name="brand" placeholder="Ingrese la marca" value="{{ $brand }}" required />
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <label for="public_price" class="form-label">Precio público</label>
                                 <input type="number" id="public_price" class="form-control" name="public_price" placeholder="Ingrese el precio al público" onClick="this.select();" wire:model="public_price" min="1" required />
                             </div>
@@ -26,52 +26,51 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-4">
+                            <div class="col-12 col-md-4">
                                 <label for="dealer_price" class="form-label">Precio distribuidor</label>
                                 <input type="number" id="dealer_price" class="form-control" name="dealer_price" placeholder="Ingrese el precio de distribuidor" onClick="this.select();" wire:model="dealer_price" min="1"/>
                             </div>
-                            <div class="col-4">
+                            <div class="col-6 mt-2 col-md-4 mt-md-0">
                                 <label for="stock_matriz" class="form-label">Existencias en matriz</label>
                                 <input type="number" min="0" id="stock_matriz" class="form-control" placeholder="Ingrese las existencias en matriz" onClick="this.select();" wire:model="stock_matriz" required />
                             </div>
-                            <div class="col-4">
+                            <div class="col-6 mt-2 col-md-4 mt-md-0">
                                 <label for="stock_virrey" class="form-label">Existencias en virrey</label>
                                 <input type="number" id="stock_virrey" class="form-control" placeholder="Ingrese las existencias en virrey" min="0" onClick="this.select();"  wire:model="stock_virrey" required />
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-4">
-                                <label for="investment" class="form-label">Inversión</label>
-                                <input type="number" min="0" id="investment" class="form-control" name="investment" placeholder="Ingrese la inversión" onClick="this.select();" wire:model="investment" step="0.01" required />
-                            </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-12">
                                 <label for="key_sat" class="form-label">Clave del SAT</label>
                                 <input type="text" id="key_sat" class="form-control" name="key_sat" placeholder="Ingrese la clave del SAT" min="0" wire:model="key_sat" required />
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 mt-2 col-md-12 mt-md-2">
                                 <label for="description_sat" class="form-label">Descripción del SAT</label>
                                 <input type="text" id="description_sat" class="form-control" name="description_sat" placeholder="Ingrese la descripción del SAT" wire:model="description_sat" min="0" required />
+                            </div>
+                            <div class="col-12 mt-2 col-md-12 mt-md-2">
+                                <label for="investment" class="form-label">Inversión</label>
+                                <input type="number" min="0" id="investment" class="form-control" name="investment" placeholder="Ingrese la inversión" onClick="this.select();" wire:model="investment" step="0.01" required />
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <div class="col-4">
+                            <div class="col-6 col-md-4">
                                 <label for="stock_total" class="form-label">Existencias totales</label>
                                 <input type="number" id="stock_total" class="form-control" name="stock_total" placeholder="Ingrese las existencias totales" wire:model="stock_total" value="{{ $stock_matriz + $stock_virrey }}" min="0" required disabled />
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-6 col-md-4">
                                 <label for="gain_public" class="form-label">Ganancia a público</label>
                                 <input type="number" disabled id="gain_public" class="form-control" name="gain_public" placeholder="Ingrese la ganancia al público" wire:model="gain_public" min="0" step="0.01" required />
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 mt-2 col-md-4 mt-md-0">
                                 <label for="dealer_profit" class="form-label">Ganancia a distribuidor</label>
                                 <input type="number" disabled id="dealer_profit" class="form-control" name="dealer_profit" placeholder="Ingrese la ganancia a distribuidor" wire:model="dealer_profit" min="0" step="0.01" required />
                             </div>
                         </div>
                         <div class="row mb-3">
-
-                            <div class="col">
+                            <div class="col col-md-12 col-xl-6 mt-xl-0">
                                 <label for="category" class="form-label">Seleccione una categoría</label>
                                 <select class="form-select" wire:model="category_id" name="category_id" id="category" aria-label="Default select example">
                                     <option selected disabled>Seleccione una categoría</option>
@@ -81,7 +80,7 @@
                                 </select>
                             </div>
 
-                            <div class="col">
+                            <div class="col-md-12 mt-2 mt-md-2 col-xl-6 mt-xl-0">
                                 <label for="image" class="form-label">Seleccione una imágen (Opcional)</label>
                                 <input class="form-control" type="file" name="image" id="image" wire:model="file">
                             </div>
@@ -108,7 +107,11 @@
                         @endif
 
                         @if(is_null($product->image))
-                        <p style="color: red; font-size: 18px;" class="text-center mt-2 mb-0"><strong>Este producto no cuenta con ningúna imágen actualmente</strong></p>
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <p style="color: red;"><strong>Este producto no cuenta con ningúna imágen</strong></p>
+                            </div>
+                        </div>
                         @endif
 
                         @if($file == null)
