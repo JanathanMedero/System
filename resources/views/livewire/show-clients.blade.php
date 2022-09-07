@@ -36,20 +36,40 @@
 <!-- Bordered Table -->
 <div class="card">
 
-    <div class="d-flex justify-content-between px-4 mt-4 align-items-center d-none d-sm-block">
-        <div>
+    <div class="d-sm-flex px-4 mt-4 d-none d-sm-block justify-content-between align-items-center d-lg-none">
+        <div style="margin-right: 1.5rem;">
             <h4 class="mb-0"><strong>Tabla de clientes</strong></h4>
         </div>
-        <div style="flex-grow: 8" class="mx-4">
+        <div style="flex-grow: 8" class="ml-4">
+            <div class="input-group input-group-merge">
+                <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+                <input type="text" wire:model="search" class="form-control" placeholder="Buscar cliente... "aria-label="Search..."/>
+            </div>
+        </div>    
+    </div>
+
+    <div class="d-sm-flex px-4 mt-4 d-none d-sm-block justify-content-end align-items-center d-lg-none">
+        <div>
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createClient">Nuevo cliente</button>
+        </div>
+    </div>
+
+    <div class="d-none d-sm-none d-lg-flex px-4 mt-4 d-sm-block justify-content-between align-items-center d-lg-block">
+        <div style="margin-right: 1.5rem;">
+            <h4 class="mb-0"><strong>Tabla de clientes</strong></h4>
+        </div>
+        <div style="flex-grow: 8" class="ml-4">
             <div class="input-group input-group-merge">
                 <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
                 <input type="text" wire:model="search" class="form-control" placeholder="Buscar cliente... "aria-label="Search..."/>
             </div>
         </div>
-        <div>
-            <button class="btn btn-success mx-auto" data-bs-toggle="modal" data-bs-target="#createClient">Nuevo cliente</button>
-        </div>
+        <div style="margin-left: 1.5rem;">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createClient">Nuevo cliente</button>
+        </div>    
     </div>
+
+
 
     <div class="row px-2 d-block d-sm-none">
         <div class="col-12 px-4 mt-4 d-flex justify-content-center">
@@ -168,7 +188,9 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="modalCenterTitle">Editar cliente: {{ $client->name }}</h5>
+                                                <div class="modal-title flex">
+                                                    {{ $client->name }}
+                                                </div>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <form action="{{ route('client.update', $client->slug) }}" method="POST">
