@@ -94,7 +94,7 @@ class ShowInventory extends Component
     public function render()
     {
      $products = Inventory::where('description', 'like', '%' . $this->search . '%')
-     ->orWhere('id', 'like', '%' . $this->search . '%')
+     ->orWhere('id', $this->search)
      ->orderBy('id', 'DESC')->paginate(10);
 
        // $categories = Category::all();

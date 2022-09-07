@@ -151,16 +151,16 @@
                         <td>{{ $client->phone }}</td>
                         @endif
                         <td>
-                            <div class="row d-flex justify-content-around">
-                                <div class="col">
+                            <div class="d-flex">
+                                <div>
                                     <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#modalCenter-{{ $client->slug }}">Editar
                                     </button>
                                 </div>
-                                <div class="col">
+                                <div class="mx-2">
                                     <a type="button" href="{{ route('service.all', $client->slug) }}" class="btn rounded-pill btn-success">Nuevo servicio</a>
                                 </div>
 
-                                <div class="col">
+                                <div>
                                     <a type="button" href="#" class="btn rounded-pill btn-warning">Servicios</a>
                                 </div>
 
