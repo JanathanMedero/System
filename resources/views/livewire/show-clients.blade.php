@@ -36,7 +36,7 @@
 <!-- Bordered Table -->
 <div class="card">
 
-    <div class="d-flex justify-content-between px-4 mt-4 align-items-center">
+    <div class="d-flex justify-content-between px-4 mt-4 align-items-center d-none d-sm-block">
         <div>
             <h4 class="mb-0"><strong>Tabla de clientes</strong></h4>
         </div>
@@ -48,6 +48,21 @@
         </div>
         <div>
             <button class="btn btn-success mx-auto" data-bs-toggle="modal" data-bs-target="#createClient">Nuevo cliente</button>
+        </div>
+    </div>
+
+    <div class="row px-2 d-block d-sm-none">
+        <div class="col-12 px-4 mt-4 d-flex justify-content-center">
+            <h4 class="mb-0"><strong>Tabla de clientes</strong></h4>
+        </div>
+        <div class="col-12 px-4 mt-4">
+            <div class="input-group input-group-merge">
+                <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+                <input type="text" wire:model="search" class="form-control" placeholder="Buscar cliente... "aria-label="Search..."/>
+            </div>
+        </div>
+        <div class="d-grid col-12 mt-3 px-4">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createClient">Nuevo cliente</button>
         </div>
     </div>
 
@@ -69,31 +84,31 @@
                             </div>
                         </div>
                         <div class="row g-2 mb-3">
-                            <div class="col mb-0">
+                            <div class="col-12 mb-0">
                                 <label for="rfc" class="form-label">RFC (Opcional)</label>
                                 <input type="text" id="rfc" name="rfc" class="form-control" placeholder="Ingrese el RFC del cliente" />
                             </div>
-                            <div class="col mb-0">
+                            <div class="col-12 mb-0">
                                 <label for="phone" class="form-label">Telefono (Opcional)</label>
                                 <input type="number" id="phone" name="phone" class="form-control" placeholder="Ingrese el teléfono del cliente"/>
                             </div>
                         </div>
                         <div class="row g-2 mb-3">
-                            <div class="col mb-0">
+                            <div class="col-12 mb-0">
                                 <label for="street" class="form-label">Calle (Opcional)</label>
                                 <input type="text" id="street" name="street" class="form-control" placeholder="Ingrese la calle del cliente" />
                             </div>
-                            <div class="col mb-0">
+                            <div class="col-12 mb-0">
                                 <label for="number" class="form-label">Número (Opcional)</label>
                                 <input type="number" min="1" id="number" name="number" class="form-control" placeholder="Ingrese el número de casa"/>
                             </div>
                         </div>
                         <div class="row g-2 mb-3">
-                            <div class="col mb-0">
+                            <div class="col-12 mb-0">
                                 <label for="suburb" class="form-label">Colonia (Opcional)</label>
                                 <input type="text" id="suburb" name="suburb" class="form-control" placeholder="Ingrese la colonia del cliente" />
                             </div>
-                            <div class="col mb-0">
+                            <div class="col-12 mb-0">
                                 <label for="cp" class="form-label">Código Postal (Opcional)</label>
                                 <input type="number" min="1" id="cp" name="cp" class="form-control" placeholder="Ingrese el código postal"/>
                             </div>
