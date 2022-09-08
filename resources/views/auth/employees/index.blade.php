@@ -99,37 +99,6 @@
 							@else
 							<span class="badge bg-label-primary me-1">{{ $user->role->role }}</span></td>
 							@endif
-
-							{{-- <td class="d-md-none">
-								<div class="row">
-									@if(Auth::user()->role->id == 1 || $user->id == Auth::user()->id )
-									<div class="col-md-3">
-										<button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#modalCenter-{{ $user->id }}">Editar</button>
-									</div>
-
-									@endif
-									@if(Auth::user()->role->id == 1)
-									@if($user->confirmed == 1)
-									<div class="col-md-6">
-										<form action="{{ route('employe.suspend', $user->id) }}" method="POST">
-											@csrf
-											@method('PUT')
-											<button type="submit" class="btn rounded-pill btn-danger show_confirm">Suspender</button>
-										</form>
-									</div>
-									@else
-									<div class="col-md-6">
-										<form action="{{ route('employe.suspend', $user->id) }}" method="POST">
-											@csrf
-											@method('PUT')
-											<button type="submit" class="btn rounded-pill btn-success show_active">Activar</button>
-										</form>
-									</div>
-									@endif
-									@endif
-								</div>
-							</td> --}}
-
 							<td>
 								<div class="d-flex">
 									@if(Auth::user()->role->id == 1 || $user->id == Auth::user()->id )
@@ -167,7 +136,7 @@
 								<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
-											<h5 class="modal-title" id="modalCenterTitle">Datos del empleado: {{ $user->name }}</h5>
+											<h5 class="modal-title" id="modalCenterTitle"><strong>{{ $user->name }}</strong></h5>
 											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<form action="{{ route('employe.update', $user->id) }}" method="POST">
