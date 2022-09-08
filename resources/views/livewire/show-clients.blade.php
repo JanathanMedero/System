@@ -204,29 +204,29 @@
                                                         </div>
                                                     </div>
                                                     <div class="row g-2 mb-3">
-                                                        <div class="col mb-0">
+                                                        <div class="col-12 mb-0">
                                                             <label for="rfc" class="form-label">RFC (Opcional)</label>
                                                             <input type="text" id="rfc" name="rfc" class="form-control" placeholder="Ingrese el RFC del cliente" value="{{ $client->rfc }}" />
                                                         </div>
-                                                        <div class="col mb-0">
+                                                        <div class="col-12 mb-0">
                                                             <label for="phone" class="form-label">Teléfono (Opcional)</label>
                                                             <input type="number" id="phone" name="phone" class="form-control" placeholder="Ingrese el teléfono del cliente" value="{{ $client->phone }}" />
                                                         </div>
                                                     </div>
                                                     <div class="row g-2 mb-3">
-                                                        <div class="col mb-0">
+                                                        <div class="col-12 mb-0">
                                                             <label for="street" class="form-label">Calle (Opcional)</label>
                                                             <input type="text" id="street" name="street" class="form-control" placeholder="Ingrese la calle del cliente" value="{{ $client->street }}" />
                                                         </div>
-                                                        <div class="col mb-0">
-                                                            <label for="number" class="form-label">Número (Opcional)</label>
-                                                            <input type="number" id="number" name="number" class="form-control" placeholder="Ingrese el número de casa" value="{{ $client->number }}" />
+                                                        <div class="col-12 mb-0">
+                                                            <label for="suburb" class="form-label">Colonia (Opcional)</label>
+                                                            <input type="text" id="suburb" name="suburb" class="form-control" placeholder="Ingrese la colonia del cliente" value="{{ $client->suburb }}" />
                                                         </div>
                                                     </div>
                                                     <div class="row g-2 mb-3">
                                                         <div class="col mb-0">
-                                                            <label for="suburb" class="form-label">Colonia (Opcional)</label>
-                                                            <input type="text" id="suburb" name="suburb" class="form-control" placeholder="Ingrese la colonia del cliente" value="{{ $client->suburb }}" />
+                                                            <label for="number" class="form-label">Número (Opcional)</label>
+                                                            <input type="number" id="number" name="number" class="form-control" placeholder="Ingrese el número de casa" value="{{ $client->number }}" />
                                                         </div>
                                                         <div class="col mb-0">
                                                             <label for="cp" class="form-label">Código Postal (Opcional)</label>
