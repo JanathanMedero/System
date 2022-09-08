@@ -15,8 +15,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-lg-4 mb-4">
+	<div class="row d-flex justify-content-center">
+		<div class="col-sm-8 col-md-6 col-lg-4 mb-4">
 			<div class="card h-100">
 				<img class="card-img-top" src="{{ asset('images/saleOrder.png') }}" style="height: 235px;" alt="Card image cap" />
 				<div class="card-body">
@@ -30,7 +30,7 @@
 			</div>
 		</div>
 
-		<div class="col-lg-4 mb-4">
+		<div class="col-sm-8 col-md-6 col-lg-4 mb-4">
 			<div class="card h-100">
 				<img class="card-img-top" src="{{ asset('images/serviceOrder.png') }}" style="height: 235px;" alt="Card image cap" />
 				<div class="card-body">
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 
-		<div class="col-lg-4 mb-4">
+		<div class="col-sm-8 col-md-6 col-lg-4 mb-4">
 			<div class="card h-100">
 				<img class="card-img-top" src="{{ asset('images/serviceSite.png') }}" style="height: 235px;" alt="Card image cap" />
 				<div class="card-body">
