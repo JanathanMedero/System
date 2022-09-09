@@ -2,11 +2,11 @@
     <!-- Bordered Table -->
     <div class="card">
 
-        <div class="d-flex justify-between align-items-center pt-4">
-            <div>
+        <div class="d-flex flex-md-row flex-column align-items-center pt-4">
+            <div class="d-flex col-12 col-md-6 justify-content-center justify-content-md-start">
                 <h4 class="mb-0 mx-4"><strong>Tabla de ordenes de venta</strong></h4>
             </div>
-            <div style="flex-grow: 2" class="mx-4">
+            <div class="col-12 col-md-6 px-4 mt-4 mt-md-0" style="flex-grow: 8">
                 <div class="input-group input-group-merge">
                     <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
                     <input type="text" wire:model="search" class="form-control" placeholder="Buscar orden de venta (Ingrese el no. de orden) o el nombre del cliente "aria-label="Search..."/>
@@ -14,21 +14,6 @@
             </div>
         </div>
 
-        {{-- <div class="row">
-            <div class="col-lg-4 mt-2">
-                <h4 class="mt-4 mx-4 mb-0"><strong>Tabla de ordenes de venta</strong></h4>
-            </div>
-            <div class="col-lg-8 mt-4 px-4">
-                <div class="row d-flex justify-content-end">
-                    <div class="col-md-12 px-4">
-                        <div class="input-group input-group-merge">
-                            <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                            <input type="number" wire:model="search" class="form-control" placeholder="Buscar orden de venta (Ingrese el no. de orden)... "aria-label="Search..."/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
         <div class="card-body">
             <div class="table-responsive text-nowrap">
                 <table class="table table-bordered">
