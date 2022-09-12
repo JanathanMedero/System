@@ -164,8 +164,11 @@ data-template="vertical-menu-template-free"
 			<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 				<!-- Search -->
 				@auth
-				<div class="navbar-nav align-items-center">
-					<p class="mb-0"><strong><h4 class="mb-0">Bienvenid@: {{ Auth::user()->name }}</h4></strong></p>
+				<div class="navbar-nav align-items-center d-block d-sm-none">
+					<p class=""><strong><h6 class="mb-0">Bienvenid@: {{ Auth::user()->name }}</h6></strong></p>
+				</div>
+				<div class="navbar-nav align-items-center d-none d-sm-block">
+					<p class=""><strong><h4 class="mb-0">Bienvenid@: {{ Auth::user()->name }}</h4></strong></p>
 				</div>
 				@endauth
 				<!-- /Search -->
