@@ -243,11 +243,6 @@ data-template="vertical-menu-template-free"
 		</div>
 		<div class="row">
 
-
-
-
-
-
 		</div>
 		<!-- / Content -->
 

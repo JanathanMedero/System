@@ -83,7 +83,7 @@
 								</div>
 							</div>
 							<div class="col-md-12 d-block d-flex justify-content-center">
-								<a href="{{ route('serviceOrder.index') }}" class="btn btn-primary">Ordenes de venta</a>
+								<a href="{{ route('saleOrder.index') }}" class="btn btn-primary">Ordenes de venta</a>
 							</div>
 						</div>
 					</div>
