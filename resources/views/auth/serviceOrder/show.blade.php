@@ -31,28 +31,27 @@
 			<div class="card">
 				<div class="card-body">
 					<div class="row">
-						<div class="col-md-6 mb-4">
+						<div class="col-12 col-lg-6 mb-4">
 							<div class="row">
-								<div class="col-lg-12">
-									<h4 class="mb-0"><strong>Orden de servicio: {{ $order->id }}</strong></h4>
+								<div class="col-12">
+									<h6 class="mb-0 d-block d-sm-none"><strong>Orden de servicio: {{ $order->id }}</strong></h6>
+									<h4 class="mb-0 d-none d-sm-block"><strong>Orden de servicio: {{ $order->id }}</strong></h4>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-lg-12 mt-3">
-									<h4 class="mb-0"><strong>Cliente: {{ $order->client->name }}</strong></h4>
+								<div class="col-12 mt-3">
+									<h6 class="mb-0 d-block d-sm-none"><strong>Cliente: {{ $order->client->name }}</strong></h6>
+									<h4 class="mb-0 d-none d-sm-block"><strong>Cliente: {{ $order->client->name }}</strong></h4>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-6 d-flex align-items-center justify-content-end">
+						<div class="col-12 col-lg-6">
 							<div class="row">
-								<div class="d-flex justify-content-end">
+								<div class="d-flex flex-column flex-sm-row justify-content-center justify-content-md-end">
 									@if($order->report)
-									<div>
-										<button type="button" class="btn rounded-pill btn-warning mx-3" data-bs-toggle="modal" data-bs-target="#report-update">
-											<span class="tf-icons bx bx-edit"></span>&nbsp; Editar reporte
-										</button>
-									</div>
-
+									<button type="button" class="btn rounded-pill btn-warning" data-bs-toggle="modal" data-bs-target="#report-update">
+										<span class="tf-icons bx bx-edit"></span>&nbsp; Editar reporte
+									</button>
 									<div class="modal fade" id="report-update" tabindex="-1" aria-hidden="true">
 										<div class="modal-dialog modal-lg" role="document">
 											<div class="modal-content">
@@ -89,14 +88,15 @@
 											</div>
 										</div>
 									</div>
-
 									@else
-									<div>
-										<button type="button" class="btn rounded-pill btn-success mx-3" data-bs-toggle="modal" data-bs-target="#report">
-											<span class="tf-icons bx bx-edit"></span>&nbsp; Levantar reporte
-										</button>
-									</div>
-
+									<button type="button" class="btn rounded-pill btn-success" data-bs-toggle="modal" data-bs-target="#report">
+										<span class="tf-icons bx bx-edit"></span>&nbsp; Levantar reporte
+									</button>
+									@endif
+									<div class="mx-2"></div>
+									<button type="button" class="btn rounded-pill btn-info mt-4 mt-sm-0" data-bs-toggle="modal" data-bs-target="#largeModal">
+										<span class="tf-icons bx bx-edit"></span>&nbsp; Editar orden
+									</button>
 									<div class="modal fade" id="report" tabindex="-1" aria-hidden="true">
 										<div class="modal-dialog modal-lg" role="document">
 											<div class="modal-content">
@@ -132,14 +132,6 @@
 											</div>
 										</div>
 									</div>
-									@endif
-
-									<div>
-										<button type="button" class="btn rounded-pill btn-info mx-3" data-bs-toggle="modal" data-bs-target="#largeModal">
-											<span class="tf-icons bx bx-edit"></span>&nbsp; Editar orden
-										</button>
-									</div>
-
 									<div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true">
 										<div class="modal-dialog modal-lg" role="document">
 											<div class="modal-content">
