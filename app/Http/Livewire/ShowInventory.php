@@ -237,6 +237,7 @@ public function updateProduct($product_id)
 
             Sale::create([
                 'brand'         => $this->brand,
+                'sku_product'   => $product->id,
                 'description'   => $this->description,
                 'quantity'      => $quantity,
                 'category'      => $product->category->name,
@@ -254,6 +255,7 @@ public function updateProduct($product_id)
 
             Sale::create([
                 'brand'         => $this->brand,
+                'sku_product'   => $product->id,
                 'description'   => $this->description,
                 'quantity'      => $quantity,
                 'category'      => $product->category->name,

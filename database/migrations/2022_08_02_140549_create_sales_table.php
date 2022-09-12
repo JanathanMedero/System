@@ -17,6 +17,7 @@ class CreateSalesTable extends Migration
             $table->id();
 
             $table->string('brand');
+            $table->string('sku_product');
             $table->text('description');
             $table->text('quantity');
             $table->string('category');
