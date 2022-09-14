@@ -128,11 +128,7 @@
                 </table>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 d-flex justify-content-end px-4">
-                {{-- {{ $sales->links('vendor.pagination.bootstrap-4') }} --}}
-           </div>
-       </div>
+        
    </div>
 
 @endsection

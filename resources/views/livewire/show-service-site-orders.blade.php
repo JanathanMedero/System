@@ -82,9 +82,14 @@
                 </table>
             </div>
         </div>
-        <div class="row">
+        <div class="row d-none d-md-block">
             <div class="col-lg-12 d-flex justify-content-end px-4">
-                {{ $orders->links('vendor.pagination.bootstrap-4') }}
+                <div class="mx-2">{{ $orders->links('vendor.pagination.pagination-with-livewire') }}</div>
+            </div>
+        </div>
+        <div class="row d-block d-md-none">
+            <div class="col-lg-12 d-flex justify-content-end px-4">
+                <div class="mx-2">{{ $orders->links('vendor.pagination.pagination-responsive-with-livewire') }}</div>
             </div>
         </div>
     </div>
