@@ -1,11 +1,13 @@
 <div>
 	<div class="row">
+		@if(Auth::user()->role_id == 1)
 		<div class="col d-flex justify-content-end">
 			<div class="mb-4">
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importProducts">Importar productos
 				</button>
 			</div>
 		</div>
+		@endif
 		<div class="modal fade" id="importProducts" tabindex="-1" style="display: none;" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
