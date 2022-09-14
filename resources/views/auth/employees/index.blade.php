@@ -191,7 +191,7 @@
 		</div>
 		<div class="row d-none d-md-block">
 			<div class="col-lg-12 d-flex justify-content-end">
-				{{ $employees->links('vendor.pagination.custom_pagination') }}
+				{{ $employees->links('vendor.pagination.pagination') }}
 			</div>
 		</div>
 		<div class="row d-block d-md-none">
