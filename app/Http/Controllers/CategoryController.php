@@ -29,7 +29,7 @@ class CategoryController extends Controller
     public function index()
     {
         if (Auth::user()->id != 1) {
-            abort(403, 'No tienes permisos');
+            abort(403);
         }
 
         $categories = Category::orderBy('name', 'ASC')->get();

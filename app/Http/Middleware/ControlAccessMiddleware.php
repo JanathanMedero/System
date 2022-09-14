@@ -25,9 +25,7 @@ class ControlAccessMiddleware
          }
 
            if($blockAccess){
-
-               return back()->with('danger', 'No cuentas con los permisos para acceder a este modulo, contacta con el administrador');
-
+                abort(403);
            }
 
         return $next($request);
