@@ -181,7 +181,7 @@
                                 </div>
 
                                 <div>
-                                    <a type="button" href="#" class="btn rounded-pill btn-warning">Servicios</a>
+                                    <a type="button" href="{{ route('show.services', $client->slug) }}" class="btn rounded-pill btn-warning">Servicios</a>
                                 </div>
 
                                 <div class="modal fade" id="modalCenter-{{ $client->slug }}" tabindex="-1" aria-hidden="true">

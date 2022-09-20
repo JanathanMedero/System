@@ -99,7 +99,7 @@ data-template="vertical-menu-template-free"
 				@endif
 				@endauth
 
-				<li class="menu-item {{ (request()->is('clientes')) ? 'active' : '' }}">
+				<li class="menu-item {{ (request()->is('clientes')) ? 'active' : '' }} {{ (request()->is('servicios/*')) ? 'active' : '' }}">
 					<a href="{{ route('client.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-user"></i>
 						<div data-i18n="Basic">Clientes</div>

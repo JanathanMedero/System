@@ -51,6 +51,7 @@ Route::middleware(['auth', 'SuspendedAccount'])->group(function () {
 
     //servicios
     Route::get('servicio/{slug}', [ServiceController::class, 'all_services'])->name('service.all');
+    Route::get('servicios/{slug}', [ServiceController::class, 'services'])->name('show.services');
 
     //Orden de venta
     Route::get('nueva-orden-de-venta/{slug}', [SaleOrderController::class, 'create'])->name('saleOrder.create');
