@@ -105,19 +105,19 @@ data-template="vertical-menu-template-free"
 						<div data-i18n="Basic">Clientes</div>
 					</a>
 				</li>
-				<li class="menu-item {{ (request()->is('ordenes-de-venta')) ? 'active' : '' }} {{ (request()->is('nueva-orden-de-venta/*')) ? 'active' : '' }} {{ (request()->is('orden-de-venta/*')) ? 'active' : '' }}">
+				<li class="menu-item {{ (request()->is('ordenes-de-venta')) ? 'active' : '' }} {{ (request()->is('nueva-orden-de-venta/*')) ? 'active' : '' }} {{ (request()->is('orden-de-venta/*')) ? 'active' : '' }} {{ (request()->is('ordenes-de-venta/*')) ? 'active' : '' }}">
 					<a href="{{ route('saleOrder.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-money"></i>
 						<div data-i18n="Basic">Ordenes de venta</div>
 					</a>
 				</li>
-				<li class="menu-item {{ (request()->is('ordenes-de-servicio')) ? 'active' : '' }} {{ (request()->is('nueva-orden-de-servicio/*')) ? 'active' : '' }} {{ (request()->is('orden-de-servicio/*')) ? 'active' : '' }}">
+				<li class="menu-item {{ (request()->is('ordenes-de-servicio')) ? 'active' : '' }} {{ (request()->is('nueva-orden-de-servicio/*')) ? 'active' : '' }} {{ (request()->is('orden-de-servicio/*')) ? 'active' : '' }} {{ (request()->is('ordenes-de-servicio/*')) ? 'active' : '' }}">
 					<a href="{{ route('serviceOrder.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-briefcase-alt-2"></i>
 						<div data-i18n="Basic">Ordenes de servicio</div>
 					</a>
 				</li>
-				<li class="menu-item {{ (request()->is('ordenes-de-servicio-en-sitio')) ? 'active' : '' }} {{ (request()->is('nueva-ordenes-de-servicio-en-sitio/*')) ? 'active' : '' }} {{ (request()->is('orden-de-servicio-en-sitio/*')) ? 'active' : '' }}">
+				<li class="menu-item {{ (request()->is('ordenes-de-servicio-en-sitio')) ? 'active' : '' }} {{ (request()->is('nueva-ordenes-de-servicio-en-sitio/*')) ? 'active' : '' }} {{ (request()->is('orden-de-servicio-en-sitio/*')) ? 'active' : '' }} {{ (request()->is('ordenes-de-servicio-en-sitio/*')) ? 'active' : '' }}">
 					<a href="{{ route('serviceSite.index') }}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-buildings"></i>
 						<div data-i18n="Basic">Ordenes de servicio en sitio</div>

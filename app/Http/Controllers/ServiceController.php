@@ -21,12 +21,27 @@ class ServiceController extends Controller
     {
         $client = Client::where('slug', $slug)->first();
 
-        $saleServices = SaleOrder::where('client_id', $client->id)->get();
-
-        $serviceOrder = ServiceOrder::where('client_id', $client->id)->get();
-
-        $serviceOrderSite = ServiceOrderSite::where('client_id', $client->id)->get();
-
         return view('auth.showAllServices', compact('client'));
+    }
+
+    public function saleOrders($slug)
+    {
+        $client = Client::where('slug', $slug)->first();
+
+        return view('auth.services.saleOrder', compact('client'));
+    }
+
+    public function serviceOrders($slug)
+    {
+        $client = Client::where('slug', $slug)->first();
+
+        return view('auth.services.servicesOrder', compact('client'));
+    }
+
+    public function siteOrders($slug)
+    {
+        $client = Client::where('slug', $slug)->first();
+
+        return view('auth.services.siteOrder', compact('client'));
     }
 }
