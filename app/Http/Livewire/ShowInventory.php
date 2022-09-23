@@ -213,7 +213,7 @@ public function updateProduct($product_id)
             $this->file = $this->file->store('imagenes');
         }else
         {
-            $this->file = null;
+            $this->file = $product->image;
         }
 
         $product->category_id           = $this->category_id;

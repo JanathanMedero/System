@@ -76,12 +76,20 @@
 			<div style="width: 50%; display: inline-block;">
 				<p class="text-format mb-0"><strong>NOMBRE: </strong><u>{{ $order->client->name }}</p>
 			</div>
-			@if($order->client->phone)
+			@if($order->client->phone == 'NULL' || $order->client->phone == null)
+			<div style="width: 25%; display: inline-block;">
+				<p class="text-format mb-0"><strong>TEL.: </strong><u>Sin registrar</p>
+			</div>
+			@else
 			<div style="width: 25%; display: inline-block;">
 				<p class="text-format mb-0"><strong>TEL.: </strong><u>{{ $order->client->phone }}</p>
 			</div>
 			@endif
-			@if($order->client->rfc)
+			@if($order->client->rfc == 'NULL' || $order->client->rfc == null)
+			<div style="width: 20%; display: inline-block;">
+				<p class="text-format mb-0"><strong>RFC: </strong><u>Sin registrar</p>
+			</div>
+			@else
 			<div style="width: 20%; display: inline-block;">
 				<p class="text-format mb-0"><strong>RFC: </strong><u>{{ $order->client->rfc }}</p>
 			</div>
@@ -89,12 +97,20 @@
 		</div>
 
 		<div style="width: 100%;">
-			@if($order->client->number)
+			@if($order->client->street == 'NULL' || $order->client->street == null)
+			<div style="width: 50%; display: inline-block;">
+				<p class="text-format mb-0"><strong>DOMICILIO: </strong><u>Sin registrar</p>
+			</div>
+			@else
 			<div style="width: 50%; display: inline-block;">
 				<p class="text-format mb-0"><strong>DOMICILIO: </strong><u>{{ $order->client->street }} {{ $order->client->number }}</p>
 			</div>
 			@endif
-			@if($order->client->suburb)
+			@if($order->client->suburb == 'NULL' || $order->client->suburb == null)
+			<div style="width: 49%; display: inline-block;">
+				<p class="text-format mb-0"><strong>COLONIA: </strong><u>Sin registrar</p>
+			</div>
+			@else
 			<div style="width: 49%; display: inline-block;">
 				<p class="text-format mb-0"><strong>COLONIA: </strong><u>{{ $order->client->suburb }}</p>
 			</div>
@@ -102,9 +118,13 @@
 		</div>
 
 		<div style="width: 100%;" class="mb-2">
-			@if($order->client->postal_code)
+			@if($order->client->cp == 'NULL' || $order->client->suburb == null)
 			<div style="width: 100%; display: inline-block;">
-				<p class="text-format mb-0"><strong>C.P.: </strong><u>{{ $order->client->postal_code }}</p>
+				<p class="text-format mb-0"><strong>C.P.: </strong><u>Sin registrar</p>
+			</div>
+			@else
+			<div style="width: 100%; display: inline-block;">
+				<p class="text-format mb-0"><strong>C.P.: </strong><u>{{ $order->client->cp }}</p>
 			</div>
 			@endif
 		</div>

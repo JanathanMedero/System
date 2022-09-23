@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/png">
+	<link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/png">
 	<title>Pyscom - Orden de servicio: {{ $order->id }}</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -79,18 +79,27 @@
 
 
 		<div style="width: 100%;">
-			<div style="width: 100%;">
+			<div style="width: 49%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Equipo: </strong>{{ $order->service->equip }}</p>
+			</div>
+			<div style="width: 49%; display: inline-block;">
+				<p class="mb-0" style="font-size: 18px;"><strong>Marca: </strong>{{ $order->service->brand }}</p>
 			</div>
 		</div>
 
 		@if($order->service->accesories)
 		<div style="width: 100%;">
-			<div style="width: 100%;">
+			<div style="width: 49%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Accesorios: </strong>{{ $order->service->accesories }}</p>
 			</div>
+			@if($order->service->serie)
+			<div style="width: 49%; display: inline-block;">
+				<p class="mb-0" style="font-size: 18px;"><strong>No. de serie: </strong>{{ $order->service->serie }}</p>
+			</div>
+			@endif
 		</div>
 		@endif
+
 
 		<div style="width: 100%;">
 			<div style="width: 100%;">

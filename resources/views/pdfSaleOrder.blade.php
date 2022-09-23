@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/png">
+	<link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/png">
 	<title>Pyscom - Orden de venta: {{ $order->id }}</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -91,46 +91,46 @@
 				<p class="text-format mb-0"><strong>TEL.: </strong><u>Sin registrar</u></p>
 			</div>
 			@endif
-			@if($order->client->rfc)
+			@if($order->client->rfc == 'NULL' || $order->client->rfc == null)
 			<div style="width: 20%; display: inline-block;">
-				<p class="text-format mb-0"><strong>RFC: </strong><u>{{ $order->client->rfc }}</u></p>
+				<p class="text-format mb-0"><strong>RFC: </strong><u>Sin registrar</u></p>
 			</div>
 			@else
 			<div style="width: 20%; display: inline-block;">
-				<p class="text-format mb-0"><strong>RFC: </strong><u>Sin registrar</u></p>
+				<p class="text-format mb-0"><strong>RFC: </strong><u>{{ $order->client->rfc }}</u></p>
 			</div>
 			@endif
 		</div>
 
 		<div style="width: 100%;" class="mb-2">
-			@if($order->client->street)
-			<div style="width: 50%; display: inline-block;">
-				<p class="text-format mb-0"><strong>DOMICILIO: </strong><u>{{ $order->client->street }} {{ $order->client->number }}</u></p>
-			</div>
-			@else
+			@if($order->client->street == 'NULL' || $order->client->street == null)
 			<div style="width: 50%; display: inline-block;">
 				<p class="text-format mb-0"><strong>DOMICILIO: </strong><u>Sin registrar</p>
 			</div>
+			@else
+			<div style="width: 50%; display: inline-block;">
+				<p class="text-format mb-0"><strong>DOMICILIO: </strong><u>{{ $order->client->street }} {{ $order->client->number }}</u></p>
+			</div>
 			@endif
-			@if($order->client->suburb)
+			@if($order->client->suburb == 'NULL' || $order->client->suburb == null)
 			<div style="width: 49%; display: inline-block;">
-				<p class="text-format mb-0"><strong>COLONIA: </strong><u>{{ $order->client->suburb }}</p>
+				<p class="text-format mb-0"><strong>COLONIA: </strong><u>Sin registrar</u></p>
 			</div>
 			@else
 			<div style="width: 49%; display: inline-block;">
-				<p class="text-format mb-0"><strong>COLONIA: </strong><u>Sin registrar</u></p>
+				<p class="text-format mb-0"><strong>COLONIA: </strong><u>{{ $order->client->suburb }}</p>
 			</div>
 			@endif
 		</div>
 
 		<div style="width: 100%;">
-			@if($order->client->cp)
+			@if($order->client->cp == 'NULL' || $order->client->cp == null)
 			<div style="width: 20%; display: inline-block;">
-				<p class="text-format mb-0"><strong>C.P.: </strong><u>{{ $order->client->cp }}</p>
+				<p class="text-format mb-0"><strong>C.P.: </strong><u>Sin registrar</p>
 			</div>
 			@else
 			<div style="width: 20%; display: inline-block;">
-				<p class="text-format mb-0"><strong>C.P.: </strong><u>Sin registrar</p>
+				<p class="text-format mb-0"><strong>C.P.: </strong><u>{{ $order->client->cp }}</p>
 			</div>
 			@endif
 			@if($order->advance)
