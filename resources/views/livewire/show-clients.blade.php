@@ -2,14 +2,14 @@
     @if(Auth::user()->role->id == 1)
     <div class="row">
         <div class="col d-flex justify-content-end mb-4">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCenter">Importar usuarios
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCenter">Importar clientes
             </button>
 
             <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="modalCenterTitle">Importar usuarios</h5>
+                    <h5 class="modal-title" id="modalCenterTitle">Importar clientes</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('clients.import') }}" method="POST" enctype="multipart/form-data">

@@ -14,7 +14,7 @@ class CreateServiceOrdersTable extends Migration
     public function up()
     {
         Schema::create('service_orders', function (Blueprint $table) {
-            $table->id()->startingValue(6000);
+            $table->id()->startingValue(6520);
 
             $table->string('folio');
 

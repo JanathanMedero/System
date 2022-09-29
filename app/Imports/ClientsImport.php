@@ -19,9 +19,10 @@ class ClientsImport implements ToModel
             'slug'      => $row[2],
             'rfc'       => $row[3],
             'phone'     => $row[4],
-            'number'    => $row[5],
-            'suburb'    => $row[6],
-            'cp'        => $row[7],
+            'street'    => $row[5],
+            'number'    => $row[6],
+            'suburb'    => $row[7],
+            'cp'        => $row[8],
         ]);
     }
 }

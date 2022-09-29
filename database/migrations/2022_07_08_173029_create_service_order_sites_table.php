@@ -14,7 +14,7 @@ class CreateServiceOrderSitesTable extends Migration
     public function up()
     {
         Schema::create('service_order_sites', function (Blueprint $table) {
-             $table->id()->startingValue(9000);
+             $table->id()->startingValue(9120);
 
              $table->string('folio');
 

@@ -32,8 +32,9 @@ class ClientController extends Controller
             'phone'     => $request->phone,
             'street'    => $request->street,
             'number'    => $request->number,
-            'suburb'    => $request->suburb,
-            'cp'        => $request->cp,
+            //Cambiamos por suburb por cp, error detectado ya que esta desplegado el sistema
+            'suburb'    => $request->cp,
+            'cp'        => $request->suburb,
         ]);
 
         return back()->with('success', 'Cliente creado correctamente');
@@ -49,8 +50,9 @@ class ClientController extends Controller
         $client->phone  = $request->phone;
         $client->street = $request->street;
         $client->number = $request->number;
-        $client->suburb = $request->suburb;
-        $client->cp     = $request->cp;
+        //Cambiamos por suburb por cp, error detectado ya que esta desplegado el sistema
+        $client->suburb = $request->cp;
+        $client->cp     = $request->suburb;
 
         $client->save();
 
