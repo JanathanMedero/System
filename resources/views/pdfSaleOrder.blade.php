@@ -16,7 +16,7 @@
 			background-color: #c1d5e0;
 		},
 		.text-format{
-			font-size: 18px;
+			font-size: 14px;
 		},
 		footer{
 			border-top: 5px solid black;

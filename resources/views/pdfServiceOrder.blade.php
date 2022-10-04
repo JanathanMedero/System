@@ -80,14 +80,14 @@
 
 		<div style="width: 100%;">
 			<div style="width: 33%; display: inline-block;">
-				<p class="mb-0" style="font-size: 18px;"><strong>Equipo: </strong>{{ $order->service->equip }}</p>
+				<p class="mb-0" style="font-size: 14px;"><strong>Equipo: </strong>{{ $order->service->equip }}</p>
 			</div>
 			<div style="width: 33%; display: inline-block;">
-				<p class="mb-0" style="font-size: 18px;"><strong>Marca: </strong>{{ $order->service->brand }}</p>
+				<p class="mb-0" style="font-size: 14px;"><strong>Marca: </strong>{{ $order->service->brand }}</p>
 			</div>
 			@if($order->service->serie)
 			<div style="width: 32%; display: inline-block;">
-				<p class="mb-0" style="font-size: 18px;"><strong>No. de serie: </strong>{{ $order->service->serie }}</p>
+				<p class="mb-0" style="font-size: 14px;"><strong>No. de serie: </strong>{{ $order->service->serie }}</p>
 			</div>
 			@endif
 		</div>
@@ -104,13 +104,13 @@
 
 		<div style="width: 100%;">
 			<div style="width: 100%;">
-				<p class="mb-0" style="font-size: 18px;"><strong>Servicio solicitado: </strong>{{ $order->service->solicited_service }}</p>
+				<p class="mb-0" style="font-size: 14px;"><strong>Servicio solicitado: </strong>{{ $order->service->solicited_service }}</p>
 			</div>
 		</div>
 
 		<div style="width: 100%;">
 			<div style="width: 100%;">
-				<p class="mb-0" style="font-size: 18px;"><strong>Características del equipo: </strong>{{ $order->service->features }}</p>
+				<p class="mb-0" style="font-size: 14px;"><strong>Características del equipo: </strong>{{ $order->service->features }}</p>
 			</div>
 		</div>
 

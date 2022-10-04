@@ -132,6 +132,30 @@ lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-defa
             	</div>
             </div>
 
+            @if($order->report)
+			<div class="row">
+				<div class="col">
+					<div class="demo-inline-spacing mt-2 mb-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-primary"><strong>Reporte Técnico</strong></li>						
+							@if($order->report->report)
+							<li class="list-group-item d-flex align-items-center">
+								<i class="bx bxs-report me-2"></i>
+								<p class="mb-0"><strong>Reporte técnico:</strong> {{ $order->report->report }}</p>
+							</li>
+							@endif
+							@if($order->report->observations)
+							<li class="list-group-item d-flex align-items-center">
+								<i class="bx bx-show-alt me-2"></i>
+								<p class="mb-0"><strong>Observaciones:</strong> {{ $order->report->observations }}</p>
+							</li>
+							@endif
+						</ul>
+					</div>
+				</div>
+			</div>
+			@endif
+
 			<div class="row d-flex justify-content-center">
 				<div class="col-12">
 					<p class="text-center"><strong>Nuestros técnicos estan trabajando lo mas rapido posible 🚗 para atender su solicitud. 😄</strong></p>
