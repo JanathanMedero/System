@@ -40,7 +40,7 @@ data-template="vertical-menu-template-free"
 	<link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
 	<!-- Page CSS -->
-
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/confetti.css') }}">
 	<!-- Helpers -->
 	<script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 
@@ -55,6 +55,12 @@ data-template="vertical-menu-template-free"
 	</head>
 
 	<body>
+
+		{{-- Easter Egg aniversario Pyscom 15 de febrero --}}
+		@if(Carbon\Carbon::now()->format('d-m') == '15-02' ) 
+		<canvas id="canvas"></canvas>
+		@endif
+
 		<!-- Layout wrapper -->
 		<div class="layout-wrapper layout-content-navbar">
 			<div class="layout-container">
@@ -276,6 +282,7 @@ data-template="vertical-menu-template-free"
 
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
+
 <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
 <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
 <script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
@@ -296,9 +303,11 @@ data-template="vertical-menu-template-free"
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
+
 @livewireScripts
 
 @yield('extra-js')
 
+<script src="{{ asset('assets/js/confetti.js') }}"></script>
 </body>
 </html>
