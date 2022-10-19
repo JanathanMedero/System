@@ -106,7 +106,15 @@
                             <td>{{ $sale->brand }}</td>
                             <td>{{ $sale->quantity }}</td>
                             <td>{{ $sale->category }}</td>
-                            <td>{{ $sale->office }}</td>
+                            @if($sale->office == 'Sucursal Matriz')
+                            <td>
+                                <span class="badge bg-primary">Sucursal Matriz</span>
+                            </td>
+                            @else
+                            <td>
+                                <span class="badge bg-warning">Sucursal Virrey</span>
+                            </td>
+                            @endif
                             <td>{{ $sale->created_at->diffForHumans() }}</td>
                             <td class="d-flex justify-content-around">
                                 <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal" data-bs-target="#product_{{ $sale->id }}">

@@ -43,8 +43,8 @@
 									<label class="form-label" for="unit_price">Precio unitario</label>
 									<div class="input-group mt-1">
 										<span class="input-group-text">$</span>
-										<input type="number" min="1" id="unit_price" class="form-control" name="unit_price" placeholder="Ingrese el precio unitario" value="{{ old('unit_price') }}">
-										<span class="input-group-text">.00</span>
+										<input type="number" min="1" step="0.01" id="unit_price" class="form-control" name="unit_price" placeholder="Ingrese el precio unitario" value="{{ old('unit_price') }}">
+										
 									</div>
 								</div>
 							</div>
@@ -53,8 +53,8 @@
 									<label class="form-label" for="net_price">Precio neto</label>
 									<div class="input-group mt-1">
 										<span class="input-group-text">$</span>
-										<input type="number" min="1" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto" value="{{ old('net_price') }}">
-										<span class="input-group-text">.00</span>
+										<input type="number" min="1" step="0.01" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto" value="{{ old('net_price') }}">
+										
 									</div>
 								</div>
 							</div>
