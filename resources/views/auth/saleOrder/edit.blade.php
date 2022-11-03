@@ -124,7 +124,7 @@
 											<div class="row">
 												<div class="col-12 mb-3">
 													<label for="quantity" class="form-label">Anticipo</label>
-													<input type="number" min="0" id="quantity" class="form-control" placeholder="Ingrese el anticipo" name="advance" value="{{ $order->advance }}" />
+													<input type="number" min="0" step="0.01" id="quantity" class="form-control" placeholder="Ingrese el anticipo" name="advance" value="{{ number_format($order->advance, 2) }}" />
 												</div>
 											</div>
 										</div>
@@ -169,8 +169,7 @@
 														<label class="form-label" for="unit_price">Precio unitario</label>
 														<div class="input-group">
 															<span class="input-group-text">$</span>
-															<input type="number" id="unit_price" class="form-control" name="unit_price" placeholder="Ingrese el precio unitario" required>
-															<span class="input-group-text">.00</span>
+															<input type="number" min="1" step="0.01" id="unit_price" class="form-control" name="unit_price" placeholder="Ingrese el precio unitario" required>
 														</div>
 													</div>
 												</div>
@@ -179,8 +178,7 @@
 														<label class="form-label" for="net_price">Precio neto</label>
 														<div class="input-group">
 															<span class="input-group-text">$</span>
-															<input type="number" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto" required>
-															<span class="input-group-text">.00</span>
+															<input type="number" min="1" step="0.01" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto" required>
 														</div>
 													</div>
 												</div>
@@ -317,8 +315,8 @@
 									<tr>
 										<td><strong>{{ $product->name }}</strong></td>
 										<td>{{ $product->quantity }}</td>
-										<td>${{ $product->unit_price }} M.N.</td>
-										<td>${{ $product->net_price }} M.N.</td>
+										<td>${{ number_format($product->unit_price, 2) }} M.N.</td>
+										<td>${{ number_format($product->net_price, 2) }} M.N.</td>
 										<td class="d-flex justify-content-center">
 											<div>
 												<a href="{{ route('saleOrder.showProduct', $product->slug) }}" type="button" class="btn rounded-pill btn-info mx-4">
@@ -348,10 +346,10 @@
 							<div class="col-md-12 d-flex justify-content-end">
 								<div class="flex-column">
 									@if($order->advance)
-									<h5 class="mb-1">Anticipo: <strong style="color: red;">${{ $order->advance }} M.N.</strong></h5>
+									<h5 class="mb-1">Anticipo: <strong style="color: red;">${{ number_format($order->advance, 2) }} M.N.</strong></h5>
 									@endif
-									<h5 class="mb-1">Subtotal: <strong style="color: green;">${{ $subtotal }} M.N.</strong></h5>
-									<h5>Venta total: <strong style="color: green;">${{ $total }} M.N.</strong></h5>
+									<h5 class="mb-1">Subtotal: <strong style="color: green;">${{ number_format($subtotal, 2) }} M.N.</strong></h5>
+									<h5>Venta total: <strong style="color: green;">${{ number_format($total, 2) }} M.N.</strong></h5>
 								</div>
 							</div>
 						</div>

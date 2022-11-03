@@ -22,8 +22,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->integer('quantity');
-            $table->integer('unit_price');
-            $table->integer('net_price');
+            $table->double('unit_price', 12,2);
+            $table->double('net_price', 12,2);
             $table->text('description');
             $table->string('warranty')->nullable();
             $table->text('observations')->nullable();

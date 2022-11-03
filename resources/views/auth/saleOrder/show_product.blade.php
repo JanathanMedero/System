@@ -33,29 +33,41 @@
 								<label class="form-label" for="quantity">Cantidad del producto</label>
 								<input type="number" min="1" class="form-control" name="quantity" id="quantity" placeholder="Ingrese la cantidad del producto" value="{{ $product->quantity }}" required>
 							</div>
+
 							<div class="col-lg-3">
 								<div class="mb-3 input-group">
 									<label class="form-label" for="unit_price">Precio unitario</label>
-									<div class="input-group">
+									<div class="input-group mt-1">
 										<span class="input-group-text">$</span>
-										<input type="text" id="unit_price" class="form-control" name="unit_price" placeholder="Ingrese el precio unitario" value="{{ $product->unit_price }}" required>
-										<span class="input-group-text">.00</span>
+										<input type="text" min="1" step="0.01" id="unit_price" class="form-control" name="unit_price" placeholder="Ingrese el precio unitario" value="{{ number_format($product->unit_price, 2) }}">
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-3">
+
+							{{-- <div class="col-lg-3">
 								<div class="mb-3 input-group">
 									<label class="form-label" for="net_price">Precio neto</label>
 									<div class="input-group">
+										<span class="input-group">$</span>
+										<input type="number" min="1" step="0.01" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto" value="{{ number_format($product->net_price, 2) }}" required>
+									</div>
+								</div>
+							</div> --}}
+
+							<div class="col-lg-3">
+								<div class="mb-3 input-group">
+									<label class="form-label" for="net_price">Precio neto</label>
+									<div class="input-group mt-1">
 										<span class="input-group-text">$</span>
-										<input type="text" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto" value="{{ $product->net_price }}" required>
-										<span class="input-group-text">.00</span>
+										<input type="text" min="1" step="0.01" id="net_price" class="form-control" name="net_price" placeholder="Ingrese el precio neto" value="{{ number_format($product->net_price, 2) }}">
+										
 									</div>
 								</div>
 							</div>
+
 							<div class="col-lg-3">
 								<label class="form-label" for="warranty">Garantía (Opcional)</label>
-								<input type="text" min="1" class="form-control" name="warranty" id="warranty" placeholder="Ingrese la garantía del producto" value="{{ $product->warranty }}">
+								<input type="number" min="1" class="form-control" name="warranty" id="warranty" placeholder="Ingrese la garantía del producto" value="{{ $product->warranty }}">
 							</div>
 						</div>
 						<div class="row">

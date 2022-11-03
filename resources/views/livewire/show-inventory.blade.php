@@ -3,8 +3,9 @@
 		@if(Auth::user()->role_id == 1)
 		<div class="col d-flex justify-content-end">
 			<div class="mb-4">
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importProducts">Importar productos
+				<button type="button" class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#importProducts">Importar productos
 				</button>
+				{{-- <button type="button" class="btn btn-success mx-2">Exportar productos a excel</button> --}}
 			</div>
 		</div>
 		@endif
