@@ -5,7 +5,7 @@
 			<div class="mb-4">
 				<button type="button" class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#importProducts">Importar productos
 				</button>
-				{{-- <button type="button" class="btn btn-success mx-2">Exportar productos a excel</button> --}}
+				<a type="button" href="{{ route('inventory.export') }}" class="btn btn-success mx-2">Exportar toners a excel</a>
 			</div>
 		</div>
 		@endif

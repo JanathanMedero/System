@@ -31,6 +31,8 @@ Route::middleware(['auth', 'SuspendedAccount'])->group(function () {
     Route::get('inventario', [InventoryController::class, 'index'])->name('inventory');
     Route::post('inventario/nueva-categoria', [CategoryController::class, 'store'])->name('category.store');
 
+    Route::get('inventario/exportar-invenatario', [InventoryController::class, 'ExportProducts'])->name('inventory.export');
+
     Route::get('dashboard', [DashboardController::class, 'home'])->name('dashboard');
 
     //Empleados
